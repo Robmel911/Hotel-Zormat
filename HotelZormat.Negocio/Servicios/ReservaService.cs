@@ -51,8 +51,28 @@ namespace HotelZormat.Negocio.Servicios
              }
 
              return factor;
+        }
+        /// <summary>
+        /// Genera las líneas de detalle de una factura, una por noche.
+        /// Devuelve una lista de strings con el formato "Noche N: RD$ tarifa".
+        /// Reto 03 · usa for
+        /// /// </summary>
+        public List<string> GenerarLineasFactura(int noches, decimal tarifaPorNoche)
+        {
+            var lineas = new List<string>();
 
-        
+            if (noches <= 0)
+            {
+                return lineas;       // devuelve lista vacía
+            }
+
+            for (int i = 1; i <= noches; i++)
+            {
+                string linea = "Noche " + i + ": RD$ " + tarifaPorNoche;
+                lineas.Add(linea);
+            }
+
+            return lineas;
         }
     }
 }

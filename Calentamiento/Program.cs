@@ -8,6 +8,7 @@ namespace HotelZormat.Tests
     {
         static void Main(string[] args)
         {
+            bool tabla = false;
             var servicio = new ReservaService();
 
             // Aquí llamaremos los métodos de cada reto para probarlos
@@ -32,6 +33,18 @@ namespace HotelZormat.Tests
             {
                 Console.WriteLine("Otoño → excepción: " + ex.Message);
             }
+
+            Console.WriteLine("\n--- RETO 03: GenerarLineasFactura ---");
+            var lineas = servicio.GenerarLineasFactura(3, 4500m);
+            Console.WriteLine("Reserva 3 noches a RD$ 4500:");
+            foreach (var linea in lineas)
+            {
+                Console.WriteLine("  " + linea);
+            }
+
+            Console.WriteLine("\nReserva 0 noches:");
+            var vacia = servicio.GenerarLineasFactura(0, 2000m);
+            Console.WriteLine("  Total líneas: " + vacia.Count);
 
             Console.WriteLine("\n--- Tests finalizados ---");
             Console.ReadKey();
