@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37216.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelZormat.UI", "HotelZormat\HotelZormat.UI.csproj", "{8247AAAD-9053-41F8-AE02-6F7AA1789100}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calentamiento", "Calentamiento\Calentamiento.csproj", "{5D3AD499-3B5B-4E55-BD71-13DC5A1D3702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelZormat.Datos", "HotalZormat.Datos\HotelZormat.Datos.csproj", "{0BF5035B-8C60-468B-802B-7E7DFD00E99E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelZormat.Negocio", "HotelZormat.Negocio\HotelZormat.Negocio.csproj", "{8FD598F0-2F38-4356-8AA8-E55311730D29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8247AAAD-9053-41F8-AE02-6F7AA1789100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8247AAAD-9053-41F8-AE02-6F7AA1789100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8247AAAD-9053-41F8-AE02-6F7AA1789100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8247AAAD-9053-41F8-AE02-6F7AA1789100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3AD499-3B5B-4E55-BD71-13DC5A1D3702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3AD499-3B5B-4E55-BD71-13DC5A1D3702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3AD499-3B5B-4E55-BD71-13DC5A1D3702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3AD499-3B5B-4E55-BD71-13DC5A1D3702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF5035B-8C60-468B-802B-7E7DFD00E99E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF5035B-8C60-468B-802B-7E7DFD00E99E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF5035B-8C60-468B-802B-7E7DFD00E99E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF5035B-8C60-468B-802B-7E7DFD00E99E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD598F0-2F38-4356-8AA8-E55311730D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD598F0-2F38-4356-8AA8-E55311730D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD598F0-2F38-4356-8AA8-E55311730D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD598F0-2F38-4356-8AA8-E55311730D29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9FF751F-83B4-4BAC-B090-A3A72E0253E0}
+	EndGlobalSection
+EndGlobal
