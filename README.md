@@ -31,7 +31,7 @@ HotelZormat.Datos      <- Acceso a SQL Server (repositorios)
 - [ ] Reportes
 
 ## Autor
-Tu Nombre · Matrícula UCE-XXXX
+Robmel Lozano - 2024-2008
 
 ## Licencia
 Uso académico.
