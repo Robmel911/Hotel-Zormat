@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelZormat.Negocio.Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -74,5 +75,35 @@ namespace HotelZormat.Negocio.Servicios
 
             return lineas;
         }
+        /// <summary>
+        /// Encuentra la primera habitación disponible con capacidad mínima.
+        /// Devuelve null si no hay ninguna que cumpla.
+        /// Reto 04 · usa foreach + if + break
+        /// /// </summary>
+        public Habitacion BuscarPrimeraDisponible(
+            List<Habitacion> habitaciones,
+            int capacidadMinima)
+        {
+            if (habitaciones == null)
+            {
+                return null;
+            }
+
+            Habitacion encontrada = null;
+
+            foreach (var hab in habitaciones)
+            {
+                if (hab.EstaDisponible() && hab.Capacidad >= capacidadMinima)
+                {
+                    encontrada = hab;
+                    break;             // ya encontramos una, no seguimos buscando
+                }
+            }
+
+            return encontrada;
+        }
+
+        
     }
+
 }
