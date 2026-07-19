@@ -4,16 +4,20 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration; 
 
 namespace HotalZormat.Datos.Conexion
 {
     public static class ConexionBD
     {
-        private static readonly string _cadena =
-            "Data source=.;Initial Catalog=HotelZormatDB;Integrated Security=true;";
+        private static readonly string connectionString =
+        ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
+
         public static SqlConnection ObtenerConexion()
         {
-            return new SqlConnection(_cadena);
+            return new SqlConnection(connectionString);
         }
     }
 }
+
+
