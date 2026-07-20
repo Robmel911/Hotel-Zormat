@@ -1,6 +1,11 @@
-﻿using System;
-using HotelZormat.Negocio.Servicios;
+﻿using HotalZormat.Datos.Conexion;
 using HotelZormat.Negocio.Modelo;
+using HotelZormat.Negocio.Servicios;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+
+
 
 namespace HotelZormat.Tests
 {
@@ -10,6 +15,7 @@ namespace HotelZormat.Tests
         {
             bool tabla = false;
             var servicio = new ReservaService();
+         
 
             // Aquí llamaremos los métodos de cada reto para probarlos
             Console.WriteLine("--- RETO 01: ValidarTipoHabitacion ---");
@@ -47,7 +53,8 @@ namespace HotelZormat.Tests
             Console.WriteLine("  Total líneas: " + vacia.Count);
 
             Console.WriteLine("\n--- Tests finalizados ---");
-            Console.ReadKey();
+
+           
         }
     }
 }

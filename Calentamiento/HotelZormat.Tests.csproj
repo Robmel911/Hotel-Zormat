@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HotalZormat.Datos\HotelZormat.Datos.csproj" />
     <ProjectReference Include="..\HotelZormat.Negocio\HotelZormat.Negocio.csproj" />
   </ItemGroup>
 
