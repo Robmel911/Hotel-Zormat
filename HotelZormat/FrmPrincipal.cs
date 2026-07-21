@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HotelZormat.Negocio;
+using HotelZormat.Negocio.Servicios;
+using HotelZormat.UI.Formularios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,30 +10,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HotelZormat.Negocio;
 
 namespace HotelZormat
 {
     public partial class FrmPrincipal : Form
     {
-        Pruebas PruebasBD = new Pruebas();
+        FrmLogin Login = new FrmLogin();
         public FrmPrincipal()
         {
+           
             InitializeComponent();
+        }
+        private void FrmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                bool ConexionExitosa = PruebasBD.ProbarBD();
-                if (ConexionExitosa) MessageBox.Show("Conexión Exitosa");
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al conectar: " + ex.Message);
-            }
+         
         }
     }
 }

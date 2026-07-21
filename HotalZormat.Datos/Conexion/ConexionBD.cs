@@ -11,7 +11,7 @@ namespace HotalZormat.Datos.Conexion
     public class ConexionBD
     {
         private static readonly string connectionString =
-        ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
+        ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
 
         public static SqlConnection ObtenerConexion()
         {
