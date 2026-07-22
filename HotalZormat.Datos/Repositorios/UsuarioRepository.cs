@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace HotelZormat.Datos.Usuarios
+namespace HotelZormat.Datos.Repositorios
 {
     public class UsuarioDAL
     {
@@ -18,7 +18,7 @@ namespace HotelZormat.Datos.Usuarios
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 string query = @"SELECT IdUsuario, Nombre, Contrasena, IdTipo, Activo 
-                                  FROM InfoUsuario 
+                                  FROM Usuarios.InfoUsuario 
                                   WHERE Nombre = @Nombre";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -40,7 +40,7 @@ namespace HotelZormat.Datos.Usuarios
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = "SELECT Tipo FROM TipoUsuario WHERE IdTipo = @IdTipo";
+                string query = "SELECT Tipo FROM Usuarios.TipoUsuario WHERE IdTipo = @IdTipo";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@IdTipo", idTipo);
 

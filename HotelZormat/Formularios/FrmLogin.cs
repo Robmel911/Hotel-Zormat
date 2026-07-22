@@ -73,7 +73,9 @@ namespace HotelZormat.UI.Formularios
             }
 
             SesionActual.UsuarioActivo = usuario;
+            new BitacoraService().Registrar("Inicio de sesion");
             AbrirFormPrincipal();
+            
         }
 
         private void LimpiarErrores()
