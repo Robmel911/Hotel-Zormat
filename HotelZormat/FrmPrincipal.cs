@@ -1,7 +1,7 @@
 ﻿using HotelZormat.Negocio;
 using HotelZormat.Negocio.Servicios;
 using HotelZormat.Negocio.Sesion;
-using HotelZormat.Formularios;
+using HotelZormat.UI.Formularios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +28,7 @@ namespace HotelZormat
             if (SesionActual.UsuarioActivo.Rol != "Administrador")
             {
                btnBitacora.Visible = false; // ajusta el nombre real de tu boton/menu
+                btnModificarHabitaciones.Visible = false;
             }
         }
         private void FrmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
@@ -43,6 +44,18 @@ namespace HotelZormat
         private void btnBitacora_Click(object sender, EventArgs e)
         {
             FrmBitacora frm = new FrmBitacora();
+            frm.ShowDialog();
+        }
+
+        private void btnGestion_Click(object sender, EventArgs e)
+        {
+            FrmGestionHabitaciones frm = new FrmGestionHabitaciones();
+            frm.ShowDialog();
+        }
+
+        private void btnModificarHabitaciones_Click(object sender, EventArgs e)
+        {
+            FrmModificarHabitaciones frm = new FrmModificarHabitaciones();
             frm.ShowDialog();
         }
     }

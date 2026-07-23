@@ -2,7 +2,7 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
-using HotelZormat.Datos;
+using HotelZormat.Datos.Repositorios;
 using HotelZormat.Negocio.Modelo;
 using HotelZormat.Negocio.Sesion;
 

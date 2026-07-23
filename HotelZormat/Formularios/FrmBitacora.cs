@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using HotelZormat.Negocio.Servicios;
 using HotelZormat.Negocio.Sesion;
 
-namespace HotelZormat.Formularios
+namespace HotelZormat.UI.Formularios
 {
     public partial class FrmBitacora : Form
     {

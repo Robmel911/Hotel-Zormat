@@ -42,12 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modelo\Bitacora.cs" />
+    <Compile Include="Modelo\EstadoHabitacion.cs" />
+    <Compile Include="Modelo\Habitacion.cs" />
+    <Compile Include="Modelo\TipoHabitacion.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Pruebas.cs" />
-    <Compile Include="Modelo\Habitacion.cs" />
     <Compile Include="Modelo\Huesped.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\BitacoraService.cs" />
+    <Compile Include="Servicios\HabitacionService.cs" />
     <Compile Include="Servicios\ReservaService.cs" />
     <Compile Include="Servicios\UsuarioService.cs" />
     <Compile Include="Sesion\SesionActual.cs" />

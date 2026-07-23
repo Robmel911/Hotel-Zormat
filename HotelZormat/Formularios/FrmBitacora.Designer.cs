@@ -1,4 +1,4 @@
-﻿namespace HotelZormat.Formularios
+﻿namespace HotelZormat.UI.Formularios
 {
     partial class FrmBitacora
     {
