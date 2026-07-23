@@ -75,3 +75,65 @@ FROM Usuarios.Bitacora b
     INNER JOIN Usuarios.TipoUsuario t ON u.IdTipo = t.IdTipo;
 
 select * from Usuarios.VW_Bitacora;
+
+
+--Modulo Habitaciones
+CREATE SCHEMA Habitaciones;
+GO
+
+CREATE TABLE Habitaciones.TipoHabitacion (
+    IdTipo INT IDENTITY(1,1) PRIMARY KEY,
+    Tipo VARCHAR(30) NOT NULL
+        CONSTRAINT UQ_TipoHabitacion_Tipo UNIQUE (Tipo)
+);
+GO
+
+CREATE TABLE Habitaciones.Habitacion (
+    IdHabitacion INT IDENTITY(1,1) PRIMARY KEY,
+    Numero INT NOT NULL
+        CONSTRAINT UQ_Habitacion_Numero UNIQUE (Numero),
+    IdTipo INT NOT NULL,
+    Piso INT NOT NULL,
+    Capacidad INT NOT NULL
+        CONSTRAINT CK_Habitacion_Capacidad CHECK (Capacidad > 0),
+    TarifaBase DECIMAL(10,2) NOT NULL
+        CONSTRAINT CK_Habitacion_TarifaBase CHECK (TarifaBase > 0),
+    Estado VARCHAR(20) NOT NULL
+        CONSTRAINT DF_Habitacion_Estado DEFAULT 'Disponible'
+        CONSTRAINT CK_Habitacion_Estado CHECK (Estado IN ('Disponible', 'Ocupada', 'Reservada', 'Limpieza')),
+    CONSTRAINT FK_Habitacion_TipoHabitacion
+        FOREIGN KEY (IdTipo) REFERENCES Habitaciones.TipoHabitacion(IdTipo)
+);
+GO
+
+CREATE VIEW Habitaciones.VW_Habitacion AS
+SELECT
+    h.IdHabitacion,
+    h.Numero,
+    t.Tipo,
+    h.Piso,
+    h.Capacidad,
+    h.TarifaBase,
+    h.Estado
+FROM Habitaciones.Habitacion h
+    INNER JOIN Habitaciones.TipoHabitacion t ON h.IdTipo = t.IdTipo;
+GO
+
+-- Datos iniciales
+INSERT INTO Habitaciones.TipoHabitacion (Tipo) VALUES ('Individual');
+INSERT INTO Habitaciones.TipoHabitacion (Tipo) VALUES ('Doble');
+INSERT INTO Habitaciones.TipoHabitacion (Tipo) VALUES ('Suite');
+GO
+
+-- Datos de prueba (IdTipo: 1=Individual, 2=Doble, 3=Suite)
+INSERT INTO Habitaciones.Habitacion (Numero, IdTipo, Piso, Capacidad, TarifaBase, Estado) VALUES
+(101, 1, 1, 1, 1500.00, 'Disponible'),
+(102, 2, 1, 2, 2200.00, 'Disponible'),
+(201, 3, 2, 4, 4500.00, 'Limpieza'),
+(202, 2, 2, 2, 2200.00, 'Ocupada');
+GO
+
+select * from Habitaciones.VW_Habitacion;
+select * from Habitaciones.TipoHabitacion;
+go
+
