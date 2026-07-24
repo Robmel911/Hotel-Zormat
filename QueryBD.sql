@@ -137,3 +137,138 @@ select * from Habitaciones.VW_Habitacion;
 select * from Habitaciones.TipoHabitacion;
 go
 
+Use HotelZormat;
+
+-- ============================================
+-- MODULO: HUESPEDES
+-- ============================================
+
+CREATE SCHEMA Huespedes;
+GO
+
+-- Tabla principal de huespedes
+-- TipoDocumento: conjunto cerrado y fijo -> VARCHAR + CHECK en SQL, enum en C#
+--                (mismo criterio usado en Estado de Habitacion)
+CREATE TABLE Huespedes.Huesped (
+    IdHuesped INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL,
+    Apellido VARCHAR(50) NOT NULL,
+    TipoDocumento VARCHAR(20) NOT NULL
+        CONSTRAINT CK_Huesped_TipoDocumento
+        CHECK (TipoDocumento IN ('Cedula', 'Pasaporte', 'LicenciaConducir', 'Otro')),
+    NumeroDocumento VARCHAR(20) NOT NULL,
+    Nacionalidad VARCHAR(50) NOT NULL,
+    Telefono VARCHAR(20) NULL,
+    Email VARCHAR(100) NULL,
+    FechaRegistro DATETIME NOT NULL
+        CONSTRAINT DF_Huesped_FechaRegistro DEFAULT GETDATE(),
+    CONSTRAINT UQ_Huesped_Documento
+        UNIQUE (TipoDocumento, NumeroDocumento)
+);
+GO
+
+-- Huespedes de prueba
+INSERT INTO Huespedes.Huesped (Nombre, Apellido, TipoDocumento, NumeroDocumento, Nacionalidad, Telefono, Email) VALUES
+('Juan', 'Perez', 'Cedula', '001-1234567-8', 'Dominicana', '809-555-0101', 'juan.perez@correo.com'),
+('Maria', 'Gomez', 'Pasaporte', 'A1234567', 'Estados Unidos', '809-555-0102', 'maria.gomez@correo.com'),
+('Carlos', 'Diaz', 'Cedula', '402-9876543-2', 'Dominicana', NULL, NULL);
+GO
+
+select * from Huespedes.Huesped;
+
+-- ============================================
+-- MODULO: RESERVAS
+-- ============================================
+
+CREATE SCHEMA Reservas;
+GO
+
+-- Tabla principal de reservas
+-- Estado: conjunto cerrado y fijo -> igual criterio que TipoDocumento / EstadoHabitacion
+-- Temporada: se selecciona al crear la reserva (no es propiedad fija de la habitacion)
+CREATE TABLE Reservas.Reserva (
+    IdReserva INT IDENTITY(1,1) PRIMARY KEY,
+    IdHabitacion INT NOT NULL
+        CONSTRAINT FK_Reserva_Habitacion
+        REFERENCES Habitaciones.Habitacion(IdHabitacion),
+    IdHuesped INT NOT NULL
+        CONSTRAINT FK_Reserva_Huesped
+        REFERENCES Huespedes.Huesped(IdHuesped),
+    FechaCheckIn DATE NOT NULL,
+    FechaCheckOut DATE NOT NULL,
+    Estado VARCHAR(20) NOT NULL
+        CONSTRAINT DF_Reserva_Estado DEFAULT 'Pendiente'
+        CONSTRAINT CK_Reserva_Estado
+        CHECK (Estado IN ('Pendiente', 'Confirmada', 'Cancelada')),
+    Temporada VARCHAR(10) NOT NULL
+        CONSTRAINT CK_Reserva_Temporada
+        CHECK (Temporada IN ('Alta', 'Media', 'Baja')),
+    CantidadNoches AS DATEDIFF(DAY, FechaCheckIn, FechaCheckOut) PERSISTED,
+    TarifaAplicada DECIMAL(10,2) NOT NULL,
+    MontoTotal DECIMAL(10,2) NOT NULL,
+    FechaCreacion DATETIME NOT NULL
+        CONSTRAINT DF_Reserva_FechaCreacion DEFAULT GETDATE(),
+    CONSTRAINT CK_Reserva_Fechas
+        CHECK (FechaCheckOut > FechaCheckIn)
+);
+GO
+
+-- Reservas de prueba
+INSERT INTO Reservas.Reserva (IdHabitacion, IdHuesped, FechaCheckIn, FechaCheckOut, Estado, Temporada, TarifaAplicada, MontoTotal) VALUES
+(1, 1, '2026-07-25', '2026-07-28', 'Confirmada', 'Alta',  2500.00, 7500.00),
+(2, 2, '2026-07-24', '2026-07-25', 'Pendiente',  'Media', 1800.00, 1620.00),
+(3, 3, '2026-08-01', '2026-08-05', 'Pendiente',  'Baja',  3000.00, 9600.00);
+GO
+
+select * from Reservas.Reserva;
+go
+
+
+-- ============================================
+-- VISTA: Reservas con datos de Habitacion y Huesped
+-- ============================================
+
+CREATE VIEW Reservas.vw_ReservaDetalle AS
+SELECT
+    r.IdReserva,
+    r.IdHabitacion,
+    h.Numero,
+    r.IdHuesped,
+    hu.Nombre + ' ' + hu.Apellido AS NombreHuesped,
+    hu.NumeroDocumento,
+    r.FechaCheckIn,
+    r.FechaCheckOut,
+    r.CantidadNoches,
+    r.Estado,
+    r.Temporada,
+    r.TarifaAplicada,
+    r.MontoTotal,
+    r.FechaCreacion
+FROM Reservas.Reserva r
+INNER JOIN Habitaciones.Habitacion h ON h.IdHabitacion = r.IdHabitacion
+INNER JOIN Huespedes.Huesped hu ON hu.IdHuesped = r.IdHuesped;
+GO
+
+select * from Reservas.vw_ReservaDetalle;
+
+-- ============================================
+-- VISTA: Reservas simplificada (solo nombres, sin IDs)
+-- ============================================
+
+CREATE VIEW Reservas.vw_ReservaSimple AS
+SELECT
+    h.Numero,
+    hu.Nombre + ' ' + hu.Apellido AS NombreHuesped,
+    r.FechaCheckIn,
+    r.FechaCheckOut,
+    r.CantidadNoches,
+    r.Estado,
+    r.Temporada,
+    r.MontoTotal
+FROM Reservas.Reserva r
+INNER JOIN Habitaciones.Habitacion h ON h.IdHabitacion = r.IdHabitacion
+INNER JOIN Huespedes.Huesped hu ON hu.IdHuesped = r.IdHuesped;
+GO
+
+select * from Reservas.vw_ReservaSimple;
+go
