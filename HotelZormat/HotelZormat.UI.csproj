@@ -58,6 +58,12 @@
     <Compile Include="Formularios\FrmGestionHabitaciones.Designer.cs">
       <DependentUpon>FrmGestionHabitaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmGestionHuespedes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmGestionHuespedes.Designer.cs">
+      <DependentUpon>FrmGestionHuespedes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGestionHabitaciones.resx">
       <DependentUpon>FrmGestionHabitaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmGestionHuespedes.resx">
+      <DependentUpon>FrmGestionHuespedes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

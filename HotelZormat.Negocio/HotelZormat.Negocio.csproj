@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +46,7 @@
     <Compile Include="Modelo\Bitacora.cs" />
     <Compile Include="Modelo\EstadoHabitacion.cs" />
     <Compile Include="Modelo\Habitacion.cs" />
+    <Compile Include="Modelo\TipoDocumento.cs" />
     <Compile Include="Modelo\TipoHabitacion.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Pruebas.cs" />
@@ -51,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\BitacoraService.cs" />
     <Compile Include="Servicios\HabitacionService.cs" />
+    <Compile Include="Servicios\HuespedService.cs" />
     <Compile Include="Servicios\ReservaService.cs" />
     <Compile Include="Servicios\UsuarioService.cs" />
     <Compile Include="Sesion\SesionActual.cs" />

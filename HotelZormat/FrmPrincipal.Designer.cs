@@ -32,6 +32,7 @@
             this.btnBitacora = new System.Windows.Forms.Button();
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnModificarHabitaciones = new System.Windows.Forms.Button();
+            this.btnHuespedes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -74,11 +75,22 @@
             this.btnModificarHabitaciones.UseVisualStyleBackColor = true;
             this.btnModificarHabitaciones.Click += new System.EventHandler(this.btnModificarHabitaciones_Click);
             // 
+            // btnHuespedes
+            // 
+            this.btnHuespedes.Location = new System.Drawing.Point(31, 417);
+            this.btnHuespedes.Name = "btnHuespedes";
+            this.btnHuespedes.Size = new System.Drawing.Size(116, 71);
+            this.btnHuespedes.TabIndex = 4;
+            this.btnHuespedes.Text = "Gestionar Huespedes";
+            this.btnHuespedes.UseVisualStyleBackColor = true;
+            this.btnHuespedes.Click += new System.EventHandler(this.btnHuespedes_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1047, 652);
+            this.Controls.Add(this.btnHuespedes);
             this.Controls.Add(this.btnModificarHabitaciones);
             this.Controls.Add(this.btnGestion);
             this.Controls.Add(this.btnBitacora);
@@ -97,5 +109,6 @@
         private System.Windows.Forms.Button btnBitacora;
         private System.Windows.Forms.Button btnGestion;
         private System.Windows.Forms.Button btnModificarHabitaciones;
+        private System.Windows.Forms.Button btnHuespedes;
     }
 }

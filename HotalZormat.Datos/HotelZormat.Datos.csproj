@@ -49,6 +49,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\BitacoraRepository.cs" />
     <Compile Include="Repositorios\HabitacionRepository.cs" />
+    <Compile Include="Repositorios\HuespedRepository.cs" />
+    <Compile Include="Repositorios\ReservaRepository.cs" />
     <Compile Include="Repositorios\UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>
