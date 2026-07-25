@@ -43,9 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exepciones\ReservaFechasInvalidasException.cs" />
+    <Compile Include="Exepciones\ReservaNoDisponibleException.cs" />
     <Compile Include="Modelo\Bitacora.cs" />
     <Compile Include="Modelo\EstadoHabitacion.cs" />
+    <Compile Include="Modelo\EstadoReserva.cs" />
     <Compile Include="Modelo\Habitacion.cs" />
+    <Compile Include="Modelo\Reserva.cs" />
+    <Compile Include="Modelo\Temporada.cs" />
     <Compile Include="Modelo\TipoDocumento.cs" />
     <Compile Include="Modelo\TipoHabitacion.cs" />
     <Compile Include="Modelo\Usuario.cs" />

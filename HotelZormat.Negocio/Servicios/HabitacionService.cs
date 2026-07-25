@@ -82,5 +82,9 @@ namespace HotelZormat.Negocio.Servicios
                 Estado = (EstadoHabitacion)Enum.Parse(typeof(EstadoHabitacion), row["Estado"].ToString())
             };
         }
+        public decimal ObtenerTarifaBase(int idHabitacion)
+        {
+            return dal.ObtenerTarifaBase(idHabitacion);
+        }
     }
 }

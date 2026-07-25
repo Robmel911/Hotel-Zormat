@@ -33,6 +33,7 @@
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnModificarHabitaciones = new System.Windows.Forms.Button();
             this.btnHuespedes = new System.Windows.Forms.Button();
+            this.btnReservas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -85,11 +86,22 @@
             this.btnHuespedes.UseVisualStyleBackColor = true;
             this.btnHuespedes.Click += new System.EventHandler(this.btnHuespedes_Click);
             // 
+            // btnReservas
+            // 
+            this.btnReservas.Location = new System.Drawing.Point(31, 525);
+            this.btnReservas.Name = "btnReservas";
+            this.btnReservas.Size = new System.Drawing.Size(116, 71);
+            this.btnReservas.TabIndex = 5;
+            this.btnReservas.Text = "Gestionar Reservas";
+            this.btnReservas.UseVisualStyleBackColor = true;
+            this.btnReservas.Click += new System.EventHandler(this.btnReservas_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 652);
+            this.Controls.Add(this.btnReservas);
             this.Controls.Add(this.btnHuespedes);
             this.Controls.Add(this.btnModificarHabitaciones);
             this.Controls.Add(this.btnGestion);
@@ -110,5 +122,6 @@
         private System.Windows.Forms.Button btnGestion;
         private System.Windows.Forms.Button btnModificarHabitaciones;
         private System.Windows.Forms.Button btnHuespedes;
+        private System.Windows.Forms.Button btnReservas;
     }
 }

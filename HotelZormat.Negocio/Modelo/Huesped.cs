@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 // Cedula: 402-1035106-6
 namespace HotelZormat.Negocio.Modelo
 {

@@ -14,5 +14,9 @@
         {
             return Estado == EstadoHabitacion.Disponible;
         }
+        public override string ToString()
+        {
+            return "Hab. " + Numero.ToString();
+        }
     }
 }

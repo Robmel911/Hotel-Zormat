@@ -105,5 +105,38 @@ namespace HotelZormat.Datos.Repositorios
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public string ObtenerEstado(int idHabitacion)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                string query = @"SELECT Estado
+                          FROM Habitaciones.Habitacion
+                          WHERE IdHabitacion = @IdHabitacion";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@IdHabitacion", idHabitacion);
+
+                conn.Open();
+                object resultado = cmd.ExecuteScalar();
+
+                return resultado != null ? resultado.ToString() : null;
+            }
+        }
+        public decimal ObtenerTarifaBase(int idHabitacion)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                string query = @"SELECT TarifaBase
+                          FROM Habitaciones.Habitacion
+                          WHERE IdHabitacion = @IdHabitacion";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@IdHabitacion", idHabitacion);
+
+                conn.Open();
+                object resultado = cmd.ExecuteScalar();
+
+                return resultado != null ? (decimal)resultado : 0m;
+            }
+        }
     }
 }

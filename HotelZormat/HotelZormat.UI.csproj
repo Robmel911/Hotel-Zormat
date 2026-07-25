@@ -64,6 +64,12 @@
     <Compile Include="Formularios\FrmGestionHuespedes.Designer.cs">
       <DependentUpon>FrmGestionHuespedes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmGestionReservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmGestionReservas.Designer.cs">
+      <DependentUpon>FrmGestionReservas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,12 @@
     </Compile>
     <Compile Include="Formularios\FrmModificarHabitaciones.Designer.cs">
       <DependentUpon>FrmModificarHabitaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmCrearReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCrearReserva.Designer.cs">
+      <DependentUpon>FrmCrearReserva.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -93,11 +105,17 @@
     <EmbeddedResource Include="Formularios\FrmGestionHuespedes.resx">
       <DependentUpon>FrmGestionHuespedes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmGestionReservas.resx">
+      <DependentUpon>FrmGestionReservas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmModificarHabitaciones.resx">
       <DependentUpon>FrmModificarHabitaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCrearReserva.resx">
+      <DependentUpon>FrmCrearReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
