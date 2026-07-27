@@ -268,6 +268,206 @@ SELECT
 FROM Reservas.Reserva r
 INNER JOIN Habitaciones.Habitacion h ON h.IdHabitacion = r.IdHabitacion
 INNER JOIN Huespedes.Huesped hu ON hu.IdHuesped = r.IdHuesped;
+
+
+-- Ajuste al CHECK existente en Reservas.Reserva
+ALTER TABLE Reservas.Reserva DROP CONSTRAINT CK_Reserva_Estado;
+GO
+ALTER TABLE Reservas.Reserva ADD CONSTRAINT CK_Reserva_Estado
+    CHECK (Estado IN ('Pendiente', 'Confirmada', 'Cancelada', 'Completada'));
+GO
+-- Agregar la columna
+ALTER TABLE Usuarios.Bitacora
+ADD Descripcion VARCHAR(300) NULL;
+
+-- Rellenar los registros de login que ya existen
+UPDATE b
+SET b.Descripcion = u.Nombre + ' inicio sesion'
+FROM Usuarios.Bitacora b
+    INNER JOIN Usuarios.InfoUsuario u ON b.IdUsuario = u.IdUsuario
+WHERE b.Accion = 'Inicio de sesion';
+ALTER VIEW Usuarios.VW_Bitacora AS
+SELECT 
+    b.IdBitacora,
+    u.Nombre AS Usuario,
+    t.Tipo AS Rol,
+    b.Accion,
+    b.Descripcion,
+    b.Fecha
+FROM Usuarios.Bitacora b
+    INNER JOIN Usuarios.InfoUsuario u ON b.IdUsuario = u.IdUsuario
+    INNER JOIN Usuarios.TipoUsuario t ON u.IdTipo = t.IdTipo;
+
+    -- Crear el nuevo schema
+CREATE SCHEMA Auditoria;
+GO
+
+-- Transferir la tabla (mantiene datos, PK, FK, todo)
+ALTER SCHEMA Auditoria TRANSFER Usuarios.Bitacora;
+GO
+
+-- La vista vieja quedó huérfana, hay que recrearla en el nuevo schema
+DROP VIEW Usuarios.VW_Bitacora;
+GO
+
+CREATE VIEW Auditoria.VW_Bitacora AS
+SELECT 
+    b.IdBitacora,
+    u.Nombre AS Usuario,
+    t.Tipo AS Rol,
+    b.Accion,
+    b.Descripcion,
+    b.Fecha
+FROM Auditoria.Bitacora b
+    INNER JOIN Usuarios.InfoUsuario u ON b.IdUsuario = u.IdUsuario
+    INNER JOIN Usuarios.TipoUsuario t ON u.IdTipo = t.IdTipo;
+GO
+
+    -- ============================================
+-- MODULO: FACTURACION
+-- ============================================
+
+CREATE SCHEMA Facturacion;
+GO
+
+-- ============================================
+-- TABLA: Factura
+-- ============================================
+CREATE TABLE Facturacion.Factura (
+    IdFactura INT IDENTITY(1,1) PRIMARY KEY,
+    IdReserva INT NOT NULL
+        CONSTRAINT FK_Factura_Reserva
+        REFERENCES Reservas.Reserva(IdReserva),
+
+    -- NCF tipo Consumo Final (B02), simplificado: secuencial atado a IdFactura.
+    -- Nota para defensa: un NCF real se administra con rango autorizado por DGII,
+    -- independiente del PK interno. Aqui se simplifica por alcance academico.
+    NumeroNCF AS ('B02' + RIGHT('00000000' + CAST(IdFactura AS VARCHAR(8)), 8)) PERSISTED,
+
+    FechaEmision DATETIME NOT NULL
+        CONSTRAINT DF_Factura_FechaEmision DEFAULT GETDATE(),
+
+    -- Subtotal = snapshot de Reserva.MontoTotal (noches x tarifa), SIN impuestos.
+    -- Es el UNICO monto que se inserta a mano; todo lo demas se deriva de aqui.
+    Subtotal DECIMAL(10,2) NOT NULL
+        CONSTRAINT CK_Factura_SubtotalPositivo CHECK (Subtotal >= 0),
+
+    -- ITBIS = 18% del Subtotal, calculada -> imposible insertar un valor inconsistente
+    ITBIS AS (Subtotal * 0.18) PERSISTED,
+
+    -- PropinaLegal = 10% del Subtotal, calculada, mismo motivo
+    PropinaLegal AS (Subtotal * 0.10) PERSISTED,
+
+    -- MontoTotal = Subtotal + ITBIS + PropinaLegal.
+    -- Distinto de Reserva.MontoTotal (ese NO incluye impuestos/propina).
+    -- Se repite la formula en vez de sumar ITBIS+PropinaLegal porque SQL Server
+    -- no permite referenciar una columna calculada dentro de otra en todas las versiones.
+    MontoTotal AS (Subtotal + (Subtotal * 0.18) + (Subtotal * 0.10)) PERSISTED,
+
+    MetodoPago VARCHAR(20) NOT NULL
+        CONSTRAINT CK_Factura_MetodoPago
+        CHECK (MetodoPago IN ('Efectivo', 'Tarjeta', 'Transferencia')),
+
+    Estado VARCHAR(20) NOT NULL
+        CONSTRAINT DF_Factura_Estado DEFAULT 'Emitida'
+        CONSTRAINT CK_Factura_Estado
+        CHECK (Estado IN ('Emitida', 'Anulada')),
+
+    CONSTRAINT UQ_Factura_Reserva UNIQUE (IdReserva) -- 1 a 1: una reserva -> una factura
+);
+GO
+
+-- ============================================
+-- RENOMBRAR MetodoPago -> FormaPago en Facturacion.Factura
+-- ============================================
+
+-- 1. Renombrar la columna
+ALTER TABLE Facturacion.Factura DROP CONSTRAINT CK_Factura_MetodoPago;
+GO
+
+-- 2. Ahora si se puede renombrar la columna sin la dependencia enforced
+EXEC sp_rename 'Facturacion.Factura.MetodoPago', 'FormaPago', 'COLUMN';
+GO
+
+-- 3. Recrear el constraint ya apuntando a la columna con su nombre nuevo
+ALTER TABLE Facturacion.Factura ADD CONSTRAINT CK_Factura_FormaPago
+    CHECK (FormaPago IN ('Efectivo', 'Tarjeta', 'Transferencia'));
+GO
+
+-- ============================================
+-- RECREAR VISTA con el nombre nuevo
+-- ============================================
+CREATE OR ALTER VIEW Facturacion.vw_FacturaDetalle AS
+SELECT
+    f.IdFactura,
+    f.NumeroNCF,
+    f.IdReserva,
+    h.Numero,
+    hu.Nombre + ' ' + hu.Apellido AS NombreHuesped,
+    hu.NumeroDocumento,
+    r.FechaCheckIn,
+    r.FechaCheckOut,
+    r.CantidadNoches,
+    f.FechaEmision,
+    f.Subtotal,
+    f.ITBIS,
+    f.PropinaLegal,
+    f.MontoTotal,
+    f.FormaPago,
+    f.Estado
+FROM Facturacion.Factura f
+INNER JOIN Reservas.Reserva r ON r.IdReserva = f.IdReserva
+INNER JOIN Habitaciones.Habitacion h ON h.IdHabitacion = r.IdHabitacion
+INNER JOIN Huespedes.Huesped hu ON hu.IdHuesped = r.IdHuesped;
+GO
+
+-- ============================================
+-- RECREAR STORED PROCEDURE con el parametro renombrado
+-- ============================================
+CREATE OR ALTER PROCEDURE Facturacion.sp_GenerarFactura
+    @IdReserva INT,
+    @IdHabitacion INT,
+    @Subtotal DECIMAL(10,2),
+    @FormaPago VARCHAR(20)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SET XACT_ABORT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        IF NOT EXISTS (SELECT 1 FROM Reservas.Reserva WHERE IdReserva = @IdReserva)
+            THROW 51000, 'La reserva especificada no existe.', 1;
+
+        IF EXISTS (SELECT 1 FROM Facturacion.Factura WHERE IdReserva = @IdReserva)
+            THROW 51002, 'Esta reserva ya tiene una factura generada.', 1;
+
+        INSERT INTO Facturacion.Factura (IdReserva, Subtotal, FormaPago)
+        VALUES (@IdReserva, @Subtotal, @FormaPago);
+
+        UPDATE Habitaciones.Habitacion
+        SET Estado = 'Disponible'
+        WHERE IdHabitacion = @IdHabitacion
+          AND Estado = 'Ocupada';
+        IF @@ROWCOUNT = 0
+            THROW 51003, 'La habitación no estaba en estado Ocupada.', 1;
+
+        UPDATE Reservas.Reserva
+        SET Estado = 'Completada'
+        WHERE IdReserva = @IdReserva
+          AND Estado = 'Confirmada';
+        IF @@ROWCOUNT = 0
+            THROW 51004, 'La reserva no estaba en estado Confirmada.', 1;
+
+        COMMIT TRANSACTION;
+        SELECT SCOPE_IDENTITY() AS IdFactura;
+    END TRY
+    BEGIN CATCH
+        IF XACT_STATE() <> 0 ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END
+GO
 GO
 
 select * from Reservas.vw_ReservaSimple;
