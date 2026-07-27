@@ -446,7 +446,7 @@ BEGIN
         VALUES (@IdReserva, @Subtotal, @FormaPago);
 
         UPDATE Habitaciones.Habitacion
-        SET Estado = 'Disponible'
+        SET Estado = 'Limpieza'
         WHERE IdHabitacion = @IdHabitacion
           AND Estado = 'Ocupada';
         IF @@ROWCOUNT = 0
