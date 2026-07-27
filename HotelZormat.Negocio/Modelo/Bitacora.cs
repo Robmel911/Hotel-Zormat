@@ -10,5 +10,6 @@ namespace HotelZormat.Negocio.Modelo
         public string Rol { get; set; }
         public string Accion { get; set; }
         public DateTime Fecha { get; set; }
+        public string Descripcion { get; set; }
     }
 }

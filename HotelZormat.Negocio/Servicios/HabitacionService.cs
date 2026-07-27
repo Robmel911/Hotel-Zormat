@@ -86,5 +86,14 @@ namespace HotelZormat.Negocio.Servicios
         {
             return dal.ObtenerTarifaBase(idHabitacion);
         }
+        public Habitacion ObtenerPorId(int idHabitacion)
+        {
+            DataTable dt = dal.ObtenerPorId(idHabitacion);
+
+            if (dt.Rows.Count == 0)
+                return null;
+
+            return MapearHabitacion(dt.Rows[0]);
+        }
     }
 }

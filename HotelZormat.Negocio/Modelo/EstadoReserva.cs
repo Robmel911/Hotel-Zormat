@@ -5,6 +5,7 @@ namespace HotelZormat.Negocio.Modelo
     {
         Pendiente,
         Confirmada,
-        Cancelada
+        Cancelada,
+        Completada
     }
 }

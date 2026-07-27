@@ -2,16 +2,20 @@
 using HotelZormat.Datos;
 using HotelZormat.Datos.Repositorios;
 using HotelZormat.Negocio.Modelo;
+using HotelZormat.Negocio.Sesion;
 using System;
 using System.Data;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelZormat.Negocio.Servicios
 {
     public class UsuarioService
     {
         private UsuarioDAL dal = new UsuarioDAL();
+        private BitacoraService bitacoraService = new BitacoraService();
+
 
         public string HashearContrasena(string textoPlano)
         {
@@ -55,5 +59,39 @@ namespace HotelZormat.Negocio.Servicios
                 Rol = rol
             };
         }
+
+       
+        // Metodo nuevo: envuelve ValidarLogin, agrega sesion + bitacora.
+        // ValidarLogin se queda intacto, sigue siendo reusable sin efectos secundarios.
+        public Usuario IniciarSesion(string nombre, string contrasenaPlano)
+        {
+            Usuario usuario = ValidarLogin(nombre, contrasenaPlano);
+
+            if (usuario == null)
+                return null;
+
+            SesionActual.UsuarioActivo = usuario;
+
+            // Fire-and-forget: si bitacora tarda o falla, no bloquea ni tumba el login
+            RegistrarLoginEnBitacora(usuario.Nombre);
+
+            return usuario;
+        }
+
+        private void RegistrarLoginEnBitacora(string nombreUsuario)
+        {
+            Task.Run(() =>
+            {
+                try
+                {
+                    bitacoraService.Registrar("Inicio de sesion", nombreUsuario + " inicio sesion");
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error al registrar bitacora: " + ex.Message);
+                }
+            });
+        }
     }
+    
 }

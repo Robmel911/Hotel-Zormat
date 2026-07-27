@@ -60,7 +60,7 @@ namespace HotelZormat.UI.Formularios
 
             if (hayError) return;
 
-            Usuario usuario = usuarioService.ValidarLogin(nombre, contrasena);
+            Usuario usuario = usuarioService.IniciarSesion(nombre, contrasena);
 
             if (usuario == null)
             {
@@ -72,10 +72,7 @@ namespace HotelZormat.UI.Formularios
                 return;
             }
 
-            SesionActual.UsuarioActivo = usuario;
-            new BitacoraService().Registrar("Inicio de sesion");
             AbrirFormPrincipal();
-            
         }
 
         private void LimpiarErrores()

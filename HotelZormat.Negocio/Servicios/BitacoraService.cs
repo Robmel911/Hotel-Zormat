@@ -13,13 +13,13 @@ namespace HotelZormat.Negocio.Servicios
         private BitacoraDAL dal = new BitacoraDAL();
 
         // Registra una accion usando el usuario actualmente logueado
-        public void Registrar(string accion)
+        public void Registrar(string accion, string descripcion)
         {
             if (!SesionActual.HayUsuarioLogueado())
                 return;
 
             int idUsuario = SesionActual.UsuarioActivo.IdUsuario;
-            dal.RegistrarAccion(idUsuario, accion);
+            dal.RegistrarAccion(idUsuario, accion, descripcion);
         }
 
         public List<Bitacora> ObtenerBitacora()
@@ -47,7 +47,8 @@ namespace HotelZormat.Negocio.Servicios
                     Usuario = fila["Usuario"].ToString(),
                     Rol = fila["Rol"].ToString(),
                     Accion = fila["Accion"].ToString(),
-                    Fecha = Convert.ToDateTime(fila["Fecha"])
+                    Fecha = Convert.ToDateTime(fila["Fecha"]),
+                    Descripcion = fila["Descripcion"] == DBNull.Value ? "" : fila["Descripcion"].ToString(),
                 });
             }
 

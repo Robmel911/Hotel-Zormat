@@ -1,5 +1,6 @@
 ﻿using HotelZormat.Negocio;
 using HotelZormat.Negocio.Modelo;
+using HotelZormat.Negocio.Servicios;
 using HotelZormat.UI.Formularios;
 using System;
 using System.Windows.Forms;
@@ -9,6 +10,7 @@ namespace HotelZormat.UI.Formularios
     public partial class FrmGestionReservas : Form
     {
         private ReservaService reservaService = new ReservaService();
+        private HabitacionService habitacionService = new HabitacionService();
 
         public FrmGestionReservas()
         {
@@ -135,10 +137,20 @@ namespace HotelZormat.UI.Formularios
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-            Reserva reserva = ObtenerReservaSeleccionada();
-            reservaService.RealizarCheckOut(reserva.IdHabitacion);
-            MessageBox.Show("Check-out realizado.");
-            CargarGrid();
+            try
+            {
+                Reserva reserva = ObtenerReservaSeleccionada();
+                Habitacion habitacion = habitacionService.ObtenerPorId(reserva.IdHabitacion);
+                FrmGenerarFactura frm = new FrmGenerarFactura(
+                    reserva.IdReserva,reserva.IdHabitacion,
+                    reserva.TarifaAplicada, Convert.ToString(habitacion.Numero) ,reserva.NombreHuesped
+                    , reserva.FechaCheckIn, reserva.FechaCheckOut, reserva.CantidadNoches);
+                frm.ShowDialog();
+            }
+            catch (ReservaNoDisponibleException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // ================= FILTROS =================

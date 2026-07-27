@@ -52,6 +52,18 @@
     <Compile Include="Formularios\FrmBitacora.Designer.cs">
       <DependentUpon>FrmBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmGenerarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmGenerarFactura.Designer.cs">
+      <DependentUpon>FrmGenerarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmGestionFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmGestionFacturas.Designer.cs">
+      <DependentUpon>FrmGestionFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmGestionHabitaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,12 @@
     <Compile Include="Formularios\FrmCrearReserva.Designer.cs">
       <DependentUpon>FrmCrearReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmVerFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmVerFactura.Designer.cs">
+      <DependentUpon>FrmVerFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmCrearReserva.resx">
       <DependentUpon>FrmCrearReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmVerFactura.resx">
+      <DependentUpon>FrmVerFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

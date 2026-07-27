@@ -30,6 +30,7 @@ namespace HotelZormat
                btnBitacora.Visible = false; // ajusta el nombre real de tu boton/menu
                 btnModificarHabitaciones.Visible = false;
             }
+            
         }
         private void FrmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -68,6 +69,12 @@ namespace HotelZormat
         private void btnReservas_Click(object sender, EventArgs e)
         {
             FrmGestionReservas frm = new FrmGestionReservas();
+            frm.ShowDialog();
+        }
+
+        private void btnFacturas_Click(object sender, EventArgs e)
+        {
+            FrmGestionFacturas frm = new FrmGestionFacturas();
             frm.ShowDialog();
         }
     }

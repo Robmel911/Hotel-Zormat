@@ -12,16 +12,18 @@ namespace HotelZormat.Datos.Repositorios
             .ConnectionStrings["Conexion"].ConnectionString;
 
         // Inserta un nuevo registro de accion en la bitacora
-        public void RegistrarAccion(int idUsuario, string accion)
+        public void RegistrarAccion(int idUsuario, string accion, string descripcion)
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = @"INSERT INTO Usuarios.Bitacora (IdUsuario, Accion) 
-                                  VALUES (@IdUsuario, @Accion)";
+               
+                string query = @"INSERT INTO Auditoria.Bitacora (IdUsuario, Accion, Descripcion) 
+                  VALUES (@IdUsuario, @Accion, @Descripcion)";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
                 cmd.Parameters.AddWithValue("@Accion", accion);
+                cmd.Parameters.AddWithValue("@Descripcion", (object)descripcion ?? DBNull.Value);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -34,9 +36,9 @@ namespace HotelZormat.Datos.Repositorios
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = @"SELECT IdBitacora, Usuario, Rol, Accion, Fecha 
-                                  FROM Usuarios.VW_Bitacora 
-                                  ORDER BY Fecha DESC";
+                string query = @"SELECT IdBitacora, Usuario, Rol, Accion, Descripcion, Fecha 
+                  FROM Auditoria.VW_Bitacora 
+                  ORDER BY Fecha DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -52,8 +54,8 @@ namespace HotelZormat.Datos.Repositorios
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = @"SELECT IdBitacora, Usuario, Rol, Accion, Fecha 
-                                  FROM Usuarios.VW_Bitacora 
+                string query = @"SELECT IdBitacora, Usuario, Rol, Accion, Descripcion, Fecha 
+                                  FROM Auditoria.VW_Bitacora 
                                   WHERE Fecha BETWEEN @Desde AND @Hasta
                                   ORDER BY Fecha DESC";
 

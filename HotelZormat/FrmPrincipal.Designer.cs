@@ -34,6 +34,7 @@
             this.btnModificarHabitaciones = new System.Windows.Forms.Button();
             this.btnHuespedes = new System.Windows.Forms.Button();
             this.btnReservas = new System.Windows.Forms.Button();
+            this.btnFacturas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -48,7 +49,7 @@
             // 
             // btnBitacora
             // 
-            this.btnBitacora.Location = new System.Drawing.Point(31, 158);
+            this.btnBitacora.Location = new System.Drawing.Point(31, 122);
             this.btnBitacora.Name = "btnBitacora";
             this.btnBitacora.Size = new System.Drawing.Size(97, 40);
             this.btnBitacora.TabIndex = 1;
@@ -58,7 +59,7 @@
             // 
             // btnGestion
             // 
-            this.btnGestion.Location = new System.Drawing.Point(31, 225);
+            this.btnGestion.Location = new System.Drawing.Point(31, 189);
             this.btnGestion.Name = "btnGestion";
             this.btnGestion.Size = new System.Drawing.Size(116, 71);
             this.btnGestion.TabIndex = 2;
@@ -68,7 +69,7 @@
             // 
             // btnModificarHabitaciones
             // 
-            this.btnModificarHabitaciones.Location = new System.Drawing.Point(31, 311);
+            this.btnModificarHabitaciones.Location = new System.Drawing.Point(31, 275);
             this.btnModificarHabitaciones.Name = "btnModificarHabitaciones";
             this.btnModificarHabitaciones.Size = new System.Drawing.Size(116, 71);
             this.btnModificarHabitaciones.TabIndex = 3;
@@ -78,7 +79,7 @@
             // 
             // btnHuespedes
             // 
-            this.btnHuespedes.Location = new System.Drawing.Point(31, 417);
+            this.btnHuespedes.Location = new System.Drawing.Point(31, 381);
             this.btnHuespedes.Name = "btnHuespedes";
             this.btnHuespedes.Size = new System.Drawing.Size(116, 71);
             this.btnHuespedes.TabIndex = 4;
@@ -88,7 +89,7 @@
             // 
             // btnReservas
             // 
-            this.btnReservas.Location = new System.Drawing.Point(31, 525);
+            this.btnReservas.Location = new System.Drawing.Point(31, 489);
             this.btnReservas.Name = "btnReservas";
             this.btnReservas.Size = new System.Drawing.Size(116, 71);
             this.btnReservas.TabIndex = 5;
@@ -96,11 +97,22 @@
             this.btnReservas.UseVisualStyleBackColor = true;
             this.btnReservas.Click += new System.EventHandler(this.btnReservas_Click);
             // 
+            // btnFacturas
+            // 
+            this.btnFacturas.Location = new System.Drawing.Point(31, 578);
+            this.btnFacturas.Name = "btnFacturas";
+            this.btnFacturas.Size = new System.Drawing.Size(116, 71);
+            this.btnFacturas.TabIndex = 6;
+            this.btnFacturas.Text = "Gestionar Facturas";
+            this.btnFacturas.UseVisualStyleBackColor = true;
+            this.btnFacturas.Click += new System.EventHandler(this.btnFacturas_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 652);
+            this.Controls.Add(this.btnFacturas);
             this.Controls.Add(this.btnReservas);
             this.Controls.Add(this.btnHuespedes);
             this.Controls.Add(this.btnModificarHabitaciones);
@@ -123,5 +135,6 @@
         private System.Windows.Forms.Button btnModificarHabitaciones;
         private System.Windows.Forms.Button btnHuespedes;
         private System.Windows.Forms.Button btnReservas;
+        private System.Windows.Forms.Button btnFacturas;
     }
 }
