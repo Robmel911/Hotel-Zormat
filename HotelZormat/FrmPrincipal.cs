@@ -3,79 +3,177 @@ using HotelZormat.Negocio.Servicios;
 using HotelZormat.Negocio.Sesion;
 using HotelZormat.UI.Formularios;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelZormat
 {
     public partial class FrmPrincipal : Form
     {
-        
+        // Formulario actualmente cargado dentro de pnlContenedor
+        private Form frmActivo = null;
 
         public FrmPrincipal()
         {
-           
             InitializeComponent();
         }
+
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             if (SesionActual.UsuarioActivo.Rol != "Administrador")
             {
-               btnBitacora.Visible = false; // ajusta el nombre real de tu boton/menu
+                btnBitacora.Visible = false;
                 btnModificarHabitaciones.Visible = false;
             }
-            
+
+            MostrarInicio();
         }
+
         private void FrmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // ---------------------------------------------------------------
+        // Carga de formularios dentro del panel de contenido
+        // ---------------------------------------------------------------
+        private void CargarFormularioEnPanel(Form frmHijo)
         {
-         
+            if (frmActivo != null)
+            {
+                frmActivo.Close();
+                frmActivo.Dispose();
+                frmActivo = null;
+            }
+
+            frmHijo.TopLevel = false;
+            frmHijo.FormBorderStyle = FormBorderStyle.None;
+            frmHijo.Dock = DockStyle.Fill;
+
+            pnlContenedor.Controls.Clear();
+            pnlContenedor.Controls.Add(frmHijo);
+            frmHijo.Show();
+
+            frmActivo = frmHijo;
         }
 
-        private void btnBitacora_Click(object sender, EventArgs e)
+        // ---------------------------------------------------------------
+        // Home / Inicio
+        // ---------------------------------------------------------------
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            FrmBitacora frm = new FrmBitacora();
-            frm.ShowDialog();
+            MostrarInicio();
         }
 
+        private void MostrarInicio()
+        {
+            CerrarTodosLosSubmenus();
+
+            if (frmActivo != null)
+            {
+                frmActivo.Close();
+                frmActivo.Dispose();
+                frmActivo = null;
+            }
+
+            pnlContenedor.Controls.Clear();
+
+            Label lblBienvenida = new Label
+            {
+                Text = "Bienvenido a Hotel Arrecife",
+                Font = new Font("Segoe UI", 20F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(13, 27, 42),
+                AutoSize = false,
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+
+            pnlContenedor.Controls.Add(lblBienvenida);
+        }
+
+        // ---------------------------------------------------------------
+        // Submenús estilo acordeón: solo uno abierto a la vez
+        // ---------------------------------------------------------------
+        private void CerrarTodosLosSubmenus()
+        {
+            pnSubmenuHabitaciones.Visible = false;
+            pnSubmenuHuespedes.Visible = false;
+            pnSubmenuReservas.Visible = false;
+        }
+
+        private void btnMenuHabitaciones_Click(object sender, EventArgs e)
+        {
+            bool estabaAbierto = pnSubmenuHabitaciones.Visible;
+            CerrarTodosLosSubmenus();
+            pnSubmenuHabitaciones.Visible = !estabaAbierto;
+        }
+
+        private void btnMenuHuespedes_Click(object sender, EventArgs e)
+        {
+            bool estabaAbierto = pnSubmenuHuespedes.Visible;
+            CerrarTodosLosSubmenus();
+            pnSubmenuHuespedes.Visible = !estabaAbierto;
+        }
+
+        private void btnMenuReservas_Click(object sender, EventArgs e)
+        {
+            bool estabaAbierto = pnSubmenuReservas.Visible;
+            CerrarTodosLosSubmenus();
+            pnSubmenuReservas.Visible = !estabaAbierto;
+        }
+
+        // ---------------------------------------------------------------
+        // Habitaciones
+        // ---------------------------------------------------------------
         private void btnGestion_Click(object sender, EventArgs e)
         {
-            FrmGestionHabitaciones frm = new FrmGestionHabitaciones();
-            frm.ShowDialog();
+            CargarFormularioEnPanel(new FrmGestionHabitaciones());
         }
 
         private void btnModificarHabitaciones_Click(object sender, EventArgs e)
         {
-            FrmModificarHabitaciones frm = new FrmModificarHabitaciones();
-            frm.ShowDialog();
+            CargarFormularioEnPanel(new FrmModificarHabitaciones());
         }
 
-        private void btnHuespedes_Click(object sender, EventArgs e)
+        // ---------------------------------------------------------------
+        // Huéspedes
+        // ---------------------------------------------------------------
+        private void btnGestionHuespedes_Click(object sender, EventArgs e)
         {
-            FrmGestionHuespedes frm = new FrmGestionHuespedes();
-            frm.ShowDialog();
+            CargarFormularioEnPanel(new FrmGestionHuespedes());
         }
 
-        private void btnReservas_Click(object sender, EventArgs e)
+        private void btnBuscarHuesped_Click(object sender, EventArgs e)
         {
-            FrmGestionReservas frm = new FrmGestionReservas();
-            frm.ShowDialog();
+            // TODO: reemplazar por el nombre real de tu formulario de búsqueda de huésped
+            //CargarFormularioEnPanel(new FrmBuscarHuesped());
         }
 
+        // ---------------------------------------------------------------
+        // Reservas
+        // ---------------------------------------------------------------
+        private void btnGestionReservas_Click(object sender, EventArgs e)
+        {
+            CargarFormularioEnPanel(new FrmGestionReservas());
+        }
+
+        private void btnNuevaReserva_Click(object sender, EventArgs e)
+        {
+            // TODO: reemplazar por el nombre real de tu formulario de nueva reserva
+            //CargarFormularioEnPanel(new FrmNuevaReserva());
+        }
+
+        // ---------------------------------------------------------------
+        // Facturas y Bitácora
+        // ---------------------------------------------------------------
         private void btnFacturas_Click(object sender, EventArgs e)
         {
-            FrmGestionFacturas frm = new FrmGestionFacturas();
-            frm.ShowDialog();
+            CargarFormularioEnPanel(new FrmGestionFacturas());
+        }
+
+        private void btnBitacora_Click(object sender, EventArgs e)
+        {
+            CargarFormularioEnPanel(new FrmBitacora());
         }
     }
 }

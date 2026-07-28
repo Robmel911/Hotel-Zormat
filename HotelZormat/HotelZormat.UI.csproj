@@ -149,6 +149,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -168,6 +169,15 @@
       <Project>{8fd598f0-2f38-4356-8aa8-e55311730d29}</Project>
       <Name>HotelZormat.Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo_Claro_transparente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo_oscuro_transparente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HotelArrecife.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
