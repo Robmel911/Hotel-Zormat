@@ -52,6 +52,12 @@
     <Compile Include="Formularios\FrmBitacora.Designer.cs">
       <DependentUpon>FrmBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmCrearHuesped.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCrearHuesped.Designer.cs">
+      <DependentUpon>FrmCrearHuesped.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmGenerarFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <EmbeddedResource Include="Formularios\FrmBitacora.resx">
       <DependentUpon>FrmBitacora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCrearHuesped.resx">
+      <DependentUpon>FrmCrearHuesped.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGestionHabitaciones.resx">
       <DependentUpon>FrmGestionHabitaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\HotelArrecife.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo_Solo_Edificio.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

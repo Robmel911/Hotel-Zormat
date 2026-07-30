@@ -1,10 +1,9 @@
-﻿// Cedula: [tu cedula aqui]
-using HotelZormat.Datos;
-using HotelZormat.Datos.Repositorios;
-using HotelZormat.Negocio.Modelo;
+﻿// Cedula: 402-1035106-6
 using System;
 using System.Collections.Generic;
 using System.Data;
+using HotelZormat.Datos;
+using HotelZormat.Negocio.Modelo;
 
 namespace HotelZormat.Negocio.Servicios
 {
@@ -34,18 +33,35 @@ namespace HotelZormat.Negocio.Servicios
             return MapearLista(tabla);
         }
 
-        public void Insertar(string nombre, string apellido, TipoDocumento tipoDocumento,
-            string numeroDocumento, string nacionalidad, string telefono, string email)
+        public List<Nacionalidad> ObtenerNacionalidades()
         {
-            huespedDAL.Insertar(nombre, apellido, tipoDocumento.ToString(),
-                numeroDocumento, nacionalidad, telefono, email);
+            DataTable tabla = huespedDAL.ObtenerNacionalidades();
+            List<Nacionalidad> lista = new List<Nacionalidad>();
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                lista.Add(new Nacionalidad
+                {
+                    IdNacionalidad = Convert.ToInt32(fila["IdNacionalidad"]),
+                    Nombre = fila["Nombre"].ToString()
+                });
+            }
+
+            return lista;
         }
 
-        public void Actualizar(int idHuesped, string nombre, string apellido, TipoDocumento tipoDocumento,
-            string numeroDocumento, string nacionalidad, string telefono, string email)
+        public void Insertar(string nombre, string apellido, TipoDocumento tipoDocumento, string numeroDocumento,
+            int idNacionalidad, string nacionalidadEspecifica, string telefono, string email)
         {
-            huespedDAL.Actualizar(idHuesped, nombre, apellido, tipoDocumento.ToString(),
-                numeroDocumento, nacionalidad, telefono, email);
+            huespedDAL.Insertar(nombre, apellido, tipoDocumento.ToString(), numeroDocumento,
+                idNacionalidad, nacionalidadEspecifica, telefono, email);
+        }
+
+        public void Actualizar(int idHuesped, string nombre, string apellido, TipoDocumento tipoDocumento, string numeroDocumento,
+            int idNacionalidad, string nacionalidadEspecifica, string telefono, string email)
+        {
+            huespedDAL.Actualizar(idHuesped, nombre, apellido, tipoDocumento.ToString(), numeroDocumento,
+                idNacionalidad, nacionalidadEspecifica, telefono, email);
         }
 
         private List<Huesped> MapearLista(DataTable tabla)
@@ -59,7 +75,10 @@ namespace HotelZormat.Negocio.Servicios
 
             return huespedes;
         }
-
+        public void Eliminar(int idHuesped)
+        {
+            huespedDAL.Eliminar(idHuesped);
+        }
         private Huesped MapearHuesped(DataRow fila)
         {
             return new Huesped
@@ -69,7 +88,9 @@ namespace HotelZormat.Negocio.Servicios
                 Apellido = fila["Apellido"].ToString(),
                 TipoDocumento = (TipoDocumento)Enum.Parse(typeof(TipoDocumento), fila["TipoDocumento"].ToString()),
                 NumeroDocumento = fila["NumeroDocumento"].ToString(),
-                Nacionalidad = fila["Nacionalidad"].ToString(),
+                IdNacionalidad = Convert.ToInt32(fila["IdNacionalidad"]),
+                NacionalidadEspecifica = fila["NacionalidadEspecifica"] == DBNull.Value ? null : fila["NacionalidadEspecifica"].ToString(),
+                NombreNacionalidad = fila["NombreNacionalidad"].ToString(),
                 Telefono = fila["Telefono"] == DBNull.Value ? null : fila["Telefono"].ToString(),
                 Email = fila["Email"] == DBNull.Value ? null : fila["Email"].ToString()
             };

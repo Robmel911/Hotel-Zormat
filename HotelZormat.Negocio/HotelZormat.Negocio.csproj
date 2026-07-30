@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exepciones\EmailInvalidoException.cs" />
     <Compile Include="Exepciones\FacturaNoGeneradaException.cs" />
+    <Compile Include="Exepciones\NombreInvalidoException.cs" />
     <Compile Include="Exepciones\ReservaFechasInvalidasException.cs" />
     <Compile Include="Exepciones\ReservaNoDisponibleException.cs" />
+    <Compile Include="Exepciones\TelefonoInvalidoException.cs" />
     <Compile Include="Modelo\Bitacora.cs" />
     <Compile Include="Modelo\EstadoFactura.cs" />
     <Compile Include="Modelo\EstadoHabitacion.cs" />
@@ -53,6 +56,7 @@
     <Compile Include="Modelo\Factura.cs" />
     <Compile Include="Modelo\Habitacion.cs" />
     <Compile Include="Modelo\FormaPago.cs" />
+    <Compile Include="Modelo\Nacionalidad.cs" />
     <Compile Include="Modelo\Reserva.cs" />
     <Compile Include="Modelo\Temporada.cs" />
     <Compile Include="Modelo\TipoDocumento.cs" />
@@ -68,6 +72,7 @@
     <Compile Include="Servicios\ReservaService.cs" />
     <Compile Include="Servicios\UsuarioService.cs" />
     <Compile Include="Sesion\SesionActual.cs" />
+    <Compile Include="Validaciones\Validaciones.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HotalZormat.Datos\HotelZormat.Datos.csproj">
