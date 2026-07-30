@@ -535,4 +535,73 @@ ALTER TABLE Huespedes.Huesped
     DROP COLUMN Nacionalidad;
 GO
 
+-- ============================================
+-- MODULO: ESTADIAS
+-- ============================================
+
+CREATE SCHEMA Estadias;
+GO
+
+-- Catalogo de servicios del hotel (sin dependencias, va primero)
+CREATE TABLE Estadias.Servicio (
+    IdServicio INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Precio DECIMAL(10,2) NOT NULL,
+    Activo BIT NOT NULL
+        CONSTRAINT DF_Servicio_Activo DEFAULT 1
+);
+GO
+
+-- Segmento de ocupacion fisica real. Una reserva puede tener varias
+-- (ej: check-in en Hab. 101, transferencia a Hab. 205 por mantenimiento)
+CREATE TABLE Estadias.Estadia (
+    IdEstadia INT IDENTITY(1,1) PRIMARY KEY,
+    IdReserva INT NOT NULL
+        CONSTRAINT FK_Estadia_Reserva
+        REFERENCES Reservas.Reserva(IdReserva),
+    IdHabitacion INT NOT NULL
+        CONSTRAINT FK_Estadia_Habitacion
+        REFERENCES Habitaciones.Habitacion(IdHabitacion),
+    FechaInicio DATETIME NOT NULL
+        CONSTRAINT DF_Estadia_FechaInicio DEFAULT GETDATE(),
+    FechaFin DATETIME NULL,  -- NULL mientras el segmento sigue activo
+    Motivo VARCHAR(200) NULL  -- ej. 'Check-in inicial', 'Transferencia por mantenimiento'
+);
+GO
+
+CREATE INDEX IX_Estadia_IdReserva ON Estadias.Estadia(IdReserva);
+GO
+
+-- Consumo real de un servicio durante una estadia (precio como snapshot)
+CREATE TABLE Estadias.EstadiaServicio (
+    IdEstadiaServicio INT IDENTITY(1,1) PRIMARY KEY,
+    IdEstadia INT NOT NULL
+        CONSTRAINT FK_EstadiaServicio_Estadia
+        REFERENCES Estadias.Estadia(IdEstadia),
+    IdServicio INT NOT NULL
+        CONSTRAINT FK_EstadiaServicio_Servicio
+        REFERENCES Estadias.Servicio(IdServicio),
+    Cantidad INT NOT NULL
+        CONSTRAINT DF_EstadiaServicio_Cantidad DEFAULT 1
+        CONSTRAINT CK_EstadiaServicio_Cantidad CHECK (Cantidad > 0),
+    PrecioUnitario DECIMAL(10,2) NOT NULL,
+    FechaConsumo DATETIME NOT NULL
+        CONSTRAINT DF_EstadiaServicio_Fecha DEFAULT GETDATE()
+);
+GO
+
+CREATE INDEX IX_EstadiaServicio_IdEstadia ON Estadias.EstadiaServicio(IdEstadia);
+GO
+
+-- Servicios de prueba
+INSERT INTO Estadias.Servicio (Nombre, Precio) VALUES
+('Room Service', 350.00),
+('Lavanderia', 250.00),
+('Desayuno buffet', 500.00),
+('Uso de spa', 800.00),
+('Minibar', 150.00);
+GO
+
+select * from Estadias.Servicio;
+
 
