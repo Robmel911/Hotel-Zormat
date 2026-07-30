@@ -472,3 +472,67 @@ GO
 
 select * from Reservas.vw_ReservaSimple;
 go
+-- ============================================
+-- MODULO: HUESPEDES - NACIONALIDAD (normalizacion)
+-- ============================================
+
+CREATE TABLE Huespedes.Nacionalidad (
+    IdNacionalidad INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL UNIQUE
+);
+GO
+
+-- Se inserta en orden fijo: los IDs quedan 1-22 en este mismo orden
+-- IMPORTANTE: "Otros" debe quedar en IdNacionalidad = 22 (ultima fila)
+INSERT INTO Huespedes.Nacionalidad (Nombre) VALUES
+('Estados Unidos'),
+('Canada'),
+('Argentina'),
+('Colombia'),
+('Puerto Rico'),
+('Mexico'),
+('Peru'),
+('Brasil'),
+('Cuba'),
+('Costa Rica'),
+('Italia'),
+('Reino Unido'),
+('Espana'),
+('Suecia'),
+('Chile'),
+('Alemania'),
+('Francia'),
+('Ecuador'),
+('Venezuela'),
+('Panama'),
+('Republica Dominicana'),
+('Otros');
+GO
+
+-- Ajuste de la tabla Huesped: reemplaza la columna Nacionalidad libre
+ALTER TABLE Huespedes.Huesped
+    ADD IdNacionalidad INT NULL,
+        NacionalidadEspecifica VARCHAR(50) NULL;
+GO
+
+-- Migracion de datos existentes: todo lo que ya estaba en Nacionalidad
+-- (texto libre) se manda a "Otros" con el texto guardado en la columna nueva
+UPDATE Huespedes.Huesped
+SET IdNacionalidad = 22,
+    NacionalidadEspecifica = Nacionalidad;
+GO
+
+ALTER TABLE Huespedes.Huesped
+    ALTER COLUMN IdNacionalidad INT NOT NULL;
+GO
+
+ALTER TABLE Huespedes.Huesped
+    ADD CONSTRAINT FK_Huesped_Nacionalidad
+        FOREIGN KEY (IdNacionalidad) REFERENCES Huespedes.Nacionalidad(IdNacionalidad);
+GO
+
+ALTER TABLE Huespedes.Huesped
+    DROP COLUMN Nacionalidad;
+GO
+
+
