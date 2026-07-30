@@ -1,6 +1,8 @@
 ﻿// Cedula: [tu cedula aqui]
 using System.Text.RegularExpressions;
 using HotelZormat.Negocio.Excepciones;
+using HotalZormat.Datos.Conexion;
+using HotelZormat.Negocio.Exepciones;
 
 namespace HotelZormat.Negocio.Validaciones
 {
@@ -42,6 +44,15 @@ namespace HotelZormat.Negocio.Validaciones
             {
                 throw new EmailInvalidoException(
                     "El email debe tener el formato correcto, ej: nombre@dominio.com");
+            }
+        }
+
+        public static void ProbarConexionBD()
+        {
+            ConexionBD conexionBD = new ConexionBD();
+            if (!conexionBD.ProbarConexion())
+            {
+                throw new NoConexionBdException("No se pudo conectar a la Base de Datos");
             }
         }
     }

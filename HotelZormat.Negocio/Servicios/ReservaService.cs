@@ -89,12 +89,6 @@ namespace HotelZormat.Negocio
             habitacionDAL.ActualizarEstado(idHabitacion, "Ocupada");
         }
 
-        // Check-out: libera la habitacion
-        public void RealizarCheckOut(int idHabitacion)
-        {
-            habitacionDAL.ActualizarEstado(idHabitacion, "Disponible");
-        }
-
         private decimal ObtenerFactorTemporada(Temporada temporada)
         {
             switch (temporada)

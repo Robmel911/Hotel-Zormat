@@ -3,13 +3,13 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using HotalZormat.Datos.Conexion;
 
 namespace HotelZormat.Datos.Repositorios
 {
     public class BitacoraDAL
     {
-        private string connString = ConfigurationManager
-            .ConnectionStrings["Conexion"].ConnectionString;
+        private string connString = ConexionBD.ObtenerConnectionString();
 
         // Inserta un nuevo registro de accion en la bitacora
         public void RegistrarAccion(int idUsuario, string accion, string descripcion)

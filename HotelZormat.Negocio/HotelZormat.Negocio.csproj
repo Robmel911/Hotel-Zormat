@@ -45,11 +45,14 @@
   <ItemGroup>
     <Compile Include="Exepciones\EmailInvalidoException.cs" />
     <Compile Include="Exepciones\FacturaNoGeneradaException.cs" />
+    <Compile Include="Exepciones\NoConexionBdException.cs" />
     <Compile Include="Exepciones\NombreInvalidoException.cs" />
     <Compile Include="Exepciones\ReservaFechasInvalidasException.cs" />
     <Compile Include="Exepciones\ReservaNoDisponibleException.cs" />
     <Compile Include="Exepciones\TelefonoInvalidoException.cs" />
     <Compile Include="Modelo\Bitacora.cs" />
+    <Compile Include="Modelo\Estadia.cs" />
+    <Compile Include="Modelo\EstadiaServicio.cs" />
     <Compile Include="Modelo\EstadoFactura.cs" />
     <Compile Include="Modelo\EstadoHabitacion.cs" />
     <Compile Include="Modelo\EstadoReserva.cs" />
@@ -58,6 +61,7 @@
     <Compile Include="Modelo\FormaPago.cs" />
     <Compile Include="Modelo\Nacionalidad.cs" />
     <Compile Include="Modelo\Reserva.cs" />
+    <Compile Include="Modelo\Servicio.cs" />
     <Compile Include="Modelo\Temporada.cs" />
     <Compile Include="Modelo\TipoDocumento.cs" />
     <Compile Include="Modelo\TipoHabitacion.cs" />
@@ -66,6 +70,7 @@
     <Compile Include="Modelo\Huesped.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\BitacoraService.cs" />
+    <Compile Include="Servicios\EstadiaService.cs" />
     <Compile Include="Servicios\FacturaService.cs" />
     <Compile Include="Servicios\HabitacionService.cs" />
     <Compile Include="Servicios\HuespedService.cs" />

@@ -26,6 +26,10 @@ namespace HotalZormat.Datos.Conexion
                 return con.State == System.Data.ConnectionState.Open;
             }
         }
+        public static string ObtenerConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
+        }
     }
 }
 
