@@ -1,35 +1,30 @@
-﻿// [tu cedula aqui]
-// FacturaService.cs
-// Capa de Negocio - Modulo Facturacion
-// Regla de arquitectura del proyecto: Service nunca toca SqlConnection/SqlTransaction
-// directamente, eso es responsabilidad exclusiva del DAL. Aqui solo se llama al DAL,
-// se mapea DataTable -> Factura, y se traducen errores de BD a excepciones de negocio.
+﻿//Cedula 402-1035106-6
 
+using HotelZormat.Datos;
+using HotelZormat.Negocio.Excepciones;
+using HotelZormat.Negocio.Modelo;
+using HotelZormat.Negocio.Sesion;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using HotelZormat.Datos;
-using HotelZormat.Negocio.Excepciones;
-using HotelZormat.Negocio.Modelo;
 
 namespace HotelZormat.Negocio.Servicios
 {
     public class FacturaService
     {
-        private FacturaDAL facturaDAL = new FacturaDAL();
+        private FacturaRepository facturaDAL = new FacturaRepository();
         private BitacoraService bitacoraService = new BitacoraService();
 
         // Factores de ITBIS y PropinaLegal, mismos porcentajes que las columnas
         // calculadas en SQL (0.18 / 0.10). Se repiten aqui SOLO para la vista previa
         // en pantalla antes de guardar -- el valor que realmente queda en BD lo calcula
-        // SQL Server, no este metodo. Mismo espiritu que CalcularMonto en ReservaService.
+        // el stored procedure, no este metodo.
         private const decimal FACTOR_ITBIS = 0.18m;
         private const decimal FACTOR_PROPINA_LEGAL = 0.10m;
 
         /// <summary>
-        /// Calcula el desglose de una factura ANTES de guardarla, para mostrarlo en pantalla
-        /// (FrmGenerarFactura). No inserta nada -- es solo para la vista previa.
+        /// Calcula ITBIS/PropinaLegal/MontoTotal a partir de un Subtotal ya conocido.
         /// </summary>
         public void CalcularDesglose(decimal subtotal, out decimal itbis, out decimal propinaLegal, out decimal montoTotal)
         {
@@ -39,27 +34,53 @@ namespace HotelZormat.Negocio.Servicios
         }
 
         /// <summary>
-        /// Genera la factura (SP hace: insertar factura + liberar habitacion + completar
-        /// reserva, todo en una sola transaccion). Si el SP revierte por cualquier motivo,
-        /// se traduce el error a FacturaNoGeneradaException para que la UI lo muestre claro.
+        /// Arma el desglose completo ANTES de guardar, para FrmGenerarFactura.
+        /// Trae CostoReserva + ConsumoServicios del DAL y les aplica CalcularDesglose.
         /// </summary>
-        public int GenerarFactura(int idReserva, int idHabitacion, decimal subtotal, FormaPago formaPago)
+        public DesgloseFactura ObtenerDesglosePrevio(int idReserva)
+        {
+            DataTable tabla = facturaDAL.ObtenerSubtotalParaFacturar(idReserva);
+            if (tabla.Rows.Count == 0)
+            {
+                throw new FacturaNoGeneradaException("No se encontró información de la reserva para facturar.");
+            }
+
+            DataRow fila = tabla.Rows[0];
+            decimal subtotal = Convert.ToDecimal(fila["Subtotal"]);
+
+            decimal itbis, propinaLegal, montoTotal;
+            CalcularDesglose(subtotal, out itbis, out propinaLegal, out montoTotal);
+
+            return new DesgloseFactura
+            {
+                CostoReserva = Convert.ToDecimal(fila["CostoReserva"]),
+                ConsumoServicios = Convert.ToDecimal(fila["ConsumoServicios"]),
+                Subtotal = subtotal,
+                ITBIS = itbis,
+                PropinaLegal = propinaLegal,
+                MontoTotal = montoTotal
+            };
+        }
+
+        /// <summary>
+        /// Genera la factura. El SP hace: calcular Subtotal + insertar factura +
+        /// pasar habitacion a Limpieza + completar reserva + cerrar estadia activa,
+        /// todo en una sola transaccion atomica.
+        /// </summary>
+        public int GenerarFactura(int idReserva, int idHabitacion, FormaPago formaPago)
         {
             int idFactura;
             try
             {
-                idFactura = facturaDAL.GenerarFactura(idReserva, idHabitacion, subtotal, formaPago.ToString());
+                idFactura = facturaDAL.GenerarFactura(idReserva, idHabitacion, formaPago.ToString());
             }
             catch (SqlException ex)
             {
-                // el SP ya hizo ROLLBACK internamente (XACT_ABORT ON); nada quedo a medias
                 throw new FacturaNoGeneradaException("No se pudo generar la factura: " + ex.Message, ex);
             }
 
-            // Registro en Bitacora FUERA de la transaccion SQL, decision ya tomada:
-            // es auditoria, no debe poder tumbar una operacion de negocio ya confirmada.
             bitacoraService.Registrar( "GenerarFactura",
-                $"Factura #{idFactura} generada para Reserva #{idReserva}, Habitacion #{idHabitacion} liberada.");
+                $"Factura #{idFactura} generada para Reserva #{idReserva}, Habitacion #{idHabitacion} enviada a Limpieza.");
 
             return idFactura;
         }

@@ -13,7 +13,7 @@ namespace HotelZormat.Negocio.Servicios
 {
     public class UsuarioService
     {
-        private UsuarioDAL dal = new UsuarioDAL();
+        private UsuarioRepository usuarioRepository = new UsuarioRepository();
         private BitacoraService bitacoraService = new BitacoraService();
 
 
@@ -34,7 +34,7 @@ namespace HotelZormat.Negocio.Servicios
 
         public Usuario ValidarLogin(string nombre, string contrasenaPlano)
         {
-            DataRow fila = dal.ObtenerUsuarioPorNombre(nombre);
+            DataRow fila = usuarioRepository.ObtenerUsuarioPorNombre(nombre);
 
             if (fila == null)
                 return null;
@@ -50,7 +50,7 @@ namespace HotelZormat.Negocio.Servicios
                 return null;
 
             int idTipo = Convert.ToInt32(fila["IdTipo"]);
-            string rol = dal.ObtenerNombreTipo(idTipo);
+            string rol = usuarioRepository.ObtenerNombreTipo(idTipo);
 
             return new Usuario
             {

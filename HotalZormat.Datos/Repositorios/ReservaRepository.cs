@@ -7,10 +7,9 @@ using System.Data.SqlClient;
 
 namespace HotelZormat.Datos.Repositorios
 {
-    public class ReservaDAL
+    public class ReservaRepository
     {
-        private string connectionString = ConfigurationManager
-            .ConnectionStrings["Conexion"].ConnectionString;
+        private string connectionString = ConexionBD.ObtenerConnectionString();
 
         // Listado completo con detalle (para DataGridView, reportes)
         public DataTable ObtenerTodos()
@@ -134,5 +133,6 @@ namespace HotelZormat.Datos.Repositorios
                 return filasAfectadas > 0;
             }
         }
+       
     }
 }

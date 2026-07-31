@@ -3,20 +3,22 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using HotalZormat.Datos.Conexion;
 
 namespace HotelZormat.Datos
 {
-    public class FacturaDAL
+    public class FacturaRepository
     {
         private string connectionString =
-            ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
+            ConexionBD.ObtenerConnectionString();
 
         /// <summary>
-        /// Genera la factura y, en la misma transaccion (dentro del SP),
-        /// libera la habitacion y marca la reserva como Completada.
-        /// Devuelve el IdFactura generado.
+        /// Genera la factura. El SP hace todo internamente en una sola transaccion:
+        /// calcula el Subtotal (Reserva.MontoTotal + consumo de servicios de todas
+        /// sus estadias), inserta la factura, pasa la habitacion a Limpieza,
+        /// completa la reserva y cierra la estadia activa. Devuelve el IdFactura.
         /// </summary>
-        public int GenerarFactura(int idReserva, int idHabitacion, decimal subtotal, string FormaPago)
+        public int GenerarFactura(int idReserva, int idHabitacion, string formaPago)
         {
             int idFactura;
             using (SqlConnection conexion = new SqlConnection(connectionString))
@@ -25,14 +27,42 @@ namespace HotelZormat.Datos
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("@IdReserva", idReserva);
                 comando.Parameters.AddWithValue("@IdHabitacion", idHabitacion);
-                comando.Parameters.AddWithValue("@Subtotal", subtotal);
-                comando.Parameters.AddWithValue("@FormaPago", FormaPago);
+                comando.Parameters.AddWithValue("@FormaPago", formaPago);
 
                 conexion.Open();
-                idFactura = Convert.ToInt32(comando.ExecuteScalar()); 
-                // el SP hace SELECT SCOPE_IDENTITY() al final
+                idFactura = Convert.ToInt32(comando.ExecuteScalar());
             }
             return idFactura;
+        }
+
+        /// <summary>
+        /// Consulta de SOLO LECTURA que replica el mismo calculo que hace el SP
+        /// internamente (Reserva.MontoTotal + consumo de servicios de todas sus
+        /// estadias). Se usa unicamente para la vista previa antes de confirmar --
+        /// no inserta nada.
+        /// </summary>
+        public DataTable ObtenerSubtotalParaFacturar(int idReserva)
+        {
+            DataTable tabla = new DataTable();
+            string query = @"
+                SELECT
+                    r.MontoTotal AS CostoReserva,
+                    ISNULL(SUM(vc.TotalServicios), 0) AS ConsumoServicios,
+                    r.MontoTotal + ISNULL(SUM(vc.TotalServicios), 0) AS Subtotal
+                FROM Reservas.Reserva r
+                LEFT JOIN Estadias.Estadia e ON e.IdReserva = r.IdReserva
+                LEFT JOIN Estadias.vw_ConsumoPorEstadia vc ON vc.IdEstadia = e.IdEstadia
+                WHERE r.IdReserva = @IdReserva
+                GROUP BY r.MontoTotal";
+
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlCommand comando = new SqlCommand(query, conexion))
+            using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
+            {
+                comando.Parameters.AddWithValue("@IdReserva", idReserva);
+                adaptador.Fill(tabla);
+            }
+            return tabla;
         }
 
         /// <summary>
@@ -109,8 +139,7 @@ namespace HotelZormat.Datos
         /// </summary>
         public void Anular(int idFactura)
         {
-            string query =
-                "UPDATE Facturacion.Factura SET Estado = 'Anulada' WHERE IdFactura = @IdFactura";
+            string query = "UPDATE Facturacion.Factura SET Estado = 'Anulada' WHERE IdFactura = @IdFactura";
             using (SqlConnection conexion = new SqlConnection(connectionString))
             using (SqlCommand comando = new SqlCommand(query, conexion))
             {

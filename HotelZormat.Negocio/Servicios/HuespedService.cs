@@ -9,7 +9,7 @@ namespace HotelZormat.Negocio.Servicios
 {
     public class HuespedService
     {
-        private HuespedDAL huespedDAL = new HuespedDAL();
+        private HuespedRepository huespedDAL = new HuespedRepository();
 
         public List<Huesped> ObtenerTodos()
         {

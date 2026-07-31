@@ -51,7 +51,9 @@
     <Compile Include="Exepciones\ReservaNoDisponibleException.cs" />
     <Compile Include="Exepciones\TelefonoInvalidoException.cs" />
     <Compile Include="Modelo\Bitacora.cs" />
+    <Compile Include="Modelo\DesgloseFactura.cs" />
     <Compile Include="Modelo\Estadia.cs" />
+    <Compile Include="Modelo\EstadiaHistorial.cs" />
     <Compile Include="Modelo\EstadiaServicio.cs" />
     <Compile Include="Modelo\EstadoFactura.cs" />
     <Compile Include="Modelo\EstadoHabitacion.cs" />

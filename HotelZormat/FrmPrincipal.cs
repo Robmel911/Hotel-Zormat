@@ -23,7 +23,7 @@ namespace HotelZormat
             if (SesionActual.UsuarioActivo.Rol != "Administrador")
             {
                 btnBitacora.Visible = false;
-                btnModificarHabitaciones.Visible = false;
+                btnAdministarHabitaciones.Visible = false;
             }
 
             MostrarInicio();
@@ -130,9 +130,9 @@ namespace HotelZormat
             CargarFormularioEnPanel(new FrmGestionHabitaciones());
         }
 
-        private void btnModificarHabitaciones_Click(object sender, EventArgs e)
+        private void btnAdministrarHabitaciones_Click(object sender, EventArgs e)
         {
-            CargarFormularioEnPanel(new FrmModificarHabitaciones());
+            CargarFormularioEnPanel(new FrmAdministrarHabitaciones());
         }
 
         // ---------------------------------------------------------------
@@ -174,6 +174,11 @@ namespace HotelZormat
         private void btnBitacora_Click(object sender, EventArgs e)
         {
             CargarFormularioEnPanel(new FrmBitacora());
+        }
+
+        private void btnEstadias_Click(object sender, EventArgs e)
+        {
+            CargarFormularioEnPanel(new FrmGestionEstadias());
         }
     }
 }

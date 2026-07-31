@@ -9,7 +9,7 @@ namespace HotelZormat.Negocio.Servicios
 {
     public class HabitacionService
     {
-        private HabitacionDAL dal = new HabitacionDAL();
+        private HabitacionRepository dal = new HabitacionRepository();
 
         public List<Habitacion> ObtenerTodas()
         {

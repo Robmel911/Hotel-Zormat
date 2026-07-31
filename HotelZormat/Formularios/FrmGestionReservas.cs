@@ -11,6 +11,7 @@ namespace HotelZormat.UI.Formularios
     {
         private ReservaService reservaService = new ReservaService();
         private HabitacionService habitacionService = new HabitacionService();
+        private EstadiaService estadiaService = new EstadiaService();
 
         public FrmGestionReservas()
         {
@@ -141,9 +142,10 @@ namespace HotelZormat.UI.Formularios
             {
                 Reserva reserva = ObtenerReservaSeleccionada();
                 Habitacion habitacion = habitacionService.ObtenerPorId(reserva.IdHabitacion);
+                Estadia estadia = estadiaService.ObtenerActivaPorReserva(reserva.IdReserva);
                 FrmGenerarFactura frm = new FrmGenerarFactura(
-                    reserva.IdReserva,reserva.IdHabitacion,
-                    reserva.TarifaAplicada, Convert.ToString(habitacion.Numero) ,reserva.NombreHuesped
+                    reserva.IdReserva,reserva.IdHabitacion,estadia.IdEstadia
+                    , Convert.ToString(habitacion.Numero) ,reserva.NombreHuesped
                     , reserva.FechaCheckIn, reserva.FechaCheckOut, reserva.CantidadNoches);
                 frm.ShowDialog();
             }

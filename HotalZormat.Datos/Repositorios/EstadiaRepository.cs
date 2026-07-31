@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace HotelZormat.Datos
 {
-    public class EstadiaDAL
+    public class EstadiaRepository
     {
         private string connectionString = ConexionBD.ObtenerConnectionString();
 
@@ -128,6 +128,30 @@ namespace HotelZormat.Datos
             }
 
             return tabla;
+        }
+        public DataTable ObtenerHistorialPorHuesped(int idHuesped)
+        {
+            DataTable tabla = new DataTable();
+            string query = @"SELECT e.IdEstadia, e.IdReserva, e.IdHabitacion, h.Numero,
+                             e.FechaInicio, e.FechaFin, e.Motivo,
+                             ISNULL(cs.TotalServicios, 0) AS TotalServicios
+                      FROM Estadias.Estadia e
+                      INNER JOIN Reservas.Reserva r ON r.IdReserva = e.IdReserva
+                      INNER JOIN Habitaciones.Habitacion h ON h.IdHabitacion = e.IdHabitacion
+                      LEFT JOIN Estadias.vw_ConsumoPorEstadia cs ON cs.IdEstadia = e.IdEstadia
+                      WHERE r.IdHuesped = @IdHuesped
+                      ORDER BY e.FechaInicio DESC";
+
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlCommand comando = new SqlCommand(query, conexion))
+            {
+                comando.Parameters.AddWithValue("@IdHuesped", idHuesped);
+                using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
+                {
+                    adaptador.Fill(tabla);
+                    return tabla;
+                }
+            }
         }
     }
 }

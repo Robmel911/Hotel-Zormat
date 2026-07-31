@@ -22,7 +22,7 @@
             this.btnHome = new System.Windows.Forms.Button();
             this.btnMenuHabitaciones = new System.Windows.Forms.Button();
             this.pnSubmenuHabitaciones = new System.Windows.Forms.Panel();
-            this.btnModificarHabitaciones = new System.Windows.Forms.Button();
+            this.btnAdministarHabitaciones = new System.Windows.Forms.Button();
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnMenuHuespedes = new System.Windows.Forms.Button();
             this.pnSubmenuHuespedes = new System.Windows.Forms.Panel();
@@ -30,12 +30,12 @@
             this.btnGestionHuespedes = new System.Windows.Forms.Button();
             this.btnMenuReservas = new System.Windows.Forms.Button();
             this.pnSubmenuReservas = new System.Windows.Forms.Panel();
-            this.btnNuevaReserva = new System.Windows.Forms.Button();
             this.btnGestionReservas = new System.Windows.Forms.Button();
             this.btnFacturas = new System.Windows.Forms.Button();
             this.btnBitacora = new System.Windows.Forms.Button();
             this.pnBarraLateral = new System.Windows.Forms.Panel();
             this.pnlContenedor = new System.Windows.Forms.Panel();
+            this.btnEstadias = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.pnSubmenuHabitaciones.SuspendLayout();
             this.pnSubmenuHuespedes.SuspendLayout();
@@ -96,7 +96,7 @@
             // pnSubmenuHabitaciones
             // 
             this.pnSubmenuHabitaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.pnSubmenuHabitaciones.Controls.Add(this.btnModificarHabitaciones);
+            this.pnSubmenuHabitaciones.Controls.Add(this.btnAdministarHabitaciones);
             this.pnSubmenuHabitaciones.Controls.Add(this.btnGestion);
             this.pnSubmenuHabitaciones.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnSubmenuHabitaciones.Location = new System.Drawing.Point(0, 255);
@@ -105,24 +105,24 @@
             this.pnSubmenuHabitaciones.TabIndex = 3;
             this.pnSubmenuHabitaciones.Visible = false;
             // 
-            // btnModificarHabitaciones
+            // btnAdministarHabitaciones
             // 
-            this.btnModificarHabitaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(38)))), ((int)(((byte)(58)))));
-            this.btnModificarHabitaciones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnModificarHabitaciones.FlatAppearance.BorderSize = 0;
-            this.btnModificarHabitaciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.btnModificarHabitaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificarHabitaciones.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnModificarHabitaciones.ForeColor = System.Drawing.Color.White;
-            this.btnModificarHabitaciones.Location = new System.Drawing.Point(0, 50);
-            this.btnModificarHabitaciones.Name = "btnModificarHabitaciones";
-            this.btnModificarHabitaciones.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnModificarHabitaciones.Size = new System.Drawing.Size(250, 50);
-            this.btnModificarHabitaciones.TabIndex = 1;
-            this.btnModificarHabitaciones.Text = "Modificar Habitaciones";
-            this.btnModificarHabitaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificarHabitaciones.UseVisualStyleBackColor = false;
-            this.btnModificarHabitaciones.Click += new System.EventHandler(this.btnModificarHabitaciones_Click);
+            this.btnAdministarHabitaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(38)))), ((int)(((byte)(58)))));
+            this.btnAdministarHabitaciones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdministarHabitaciones.FlatAppearance.BorderSize = 0;
+            this.btnAdministarHabitaciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnAdministarHabitaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdministarHabitaciones.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAdministarHabitaciones.ForeColor = System.Drawing.Color.White;
+            this.btnAdministarHabitaciones.Location = new System.Drawing.Point(0, 50);
+            this.btnAdministarHabitaciones.Name = "btnAdministarHabitaciones";
+            this.btnAdministarHabitaciones.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnAdministarHabitaciones.Size = new System.Drawing.Size(250, 50);
+            this.btnAdministarHabitaciones.TabIndex = 1;
+            this.btnAdministarHabitaciones.Text = "Administar Habitaciones";
+            this.btnAdministarHabitaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdministarHabitaciones.UseVisualStyleBackColor = false;
+            this.btnAdministarHabitaciones.Click += new System.EventHandler(this.btnAdministrarHabitaciones_Click);
             // 
             // btnGestion
             // 
@@ -234,33 +234,13 @@
             // pnSubmenuReservas
             // 
             this.pnSubmenuReservas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.pnSubmenuReservas.Controls.Add(this.btnNuevaReserva);
             this.pnSubmenuReservas.Controls.Add(this.btnGestionReservas);
             this.pnSubmenuReservas.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnSubmenuReservas.Location = new System.Drawing.Point(0, 575);
             this.pnSubmenuReservas.Name = "pnSubmenuReservas";
-            this.pnSubmenuReservas.Size = new System.Drawing.Size(250, 100);
+            this.pnSubmenuReservas.Size = new System.Drawing.Size(250, 56);
             this.pnSubmenuReservas.TabIndex = 7;
             this.pnSubmenuReservas.Visible = false;
-            // 
-            // btnNuevaReserva
-            // 
-            this.btnNuevaReserva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(38)))), ((int)(((byte)(58)))));
-            this.btnNuevaReserva.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNuevaReserva.FlatAppearance.BorderSize = 0;
-            this.btnNuevaReserva.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.btnNuevaReserva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevaReserva.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnNuevaReserva.ForeColor = System.Drawing.Color.White;
-            this.btnNuevaReserva.Location = new System.Drawing.Point(0, 50);
-            this.btnNuevaReserva.Name = "btnNuevaReserva";
-            this.btnNuevaReserva.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnNuevaReserva.Size = new System.Drawing.Size(250, 50);
-            this.btnNuevaReserva.TabIndex = 1;
-            this.btnNuevaReserva.Text = "Nueva Reserva";
-            this.btnNuevaReserva.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevaReserva.UseVisualStyleBackColor = false;
-            this.btnNuevaReserva.Click += new System.EventHandler(this.btnNuevaReserva_Click);
             // 
             // btnGestionReservas
             // 
@@ -290,7 +270,7 @@
             this.btnFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFacturas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnFacturas.ForeColor = System.Drawing.Color.White;
-            this.btnFacturas.Location = new System.Drawing.Point(0, 675);
+            this.btnFacturas.Location = new System.Drawing.Point(0, 631);
             this.btnFacturas.Name = "btnFacturas";
             this.btnFacturas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnFacturas.Size = new System.Drawing.Size(250, 60);
@@ -322,6 +302,7 @@
             // pnBarraLateral
             // 
             this.pnBarraLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.pnBarraLateral.Controls.Add(this.btnEstadias);
             this.pnBarraLateral.Controls.Add(this.btnFacturas);
             this.pnBarraLateral.Controls.Add(this.pnSubmenuReservas);
             this.pnBarraLateral.Controls.Add(this.btnMenuReservas);
@@ -346,6 +327,25 @@
             this.pnlContenedor.Name = "pnlContenedor";
             this.pnlContenedor.Size = new System.Drawing.Size(1648, 1024);
             this.pnlContenedor.TabIndex = 11;
+            // 
+            // btnEstadias
+            // 
+            this.btnEstadias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.btnEstadias.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEstadias.FlatAppearance.BorderSize = 0;
+            this.btnEstadias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnEstadias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstadias.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnEstadias.ForeColor = System.Drawing.Color.White;
+            this.btnEstadias.Location = new System.Drawing.Point(0, 691);
+            this.btnEstadias.Name = "btnEstadias";
+            this.btnEstadias.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnEstadias.Size = new System.Drawing.Size(250, 60);
+            this.btnEstadias.TabIndex = 10;
+            this.btnEstadias.Text = "Estadias";
+            this.btnEstadias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEstadias.UseVisualStyleBackColor = false;
+            this.btnEstadias.Click += new System.EventHandler(this.btnEstadias_Click);
             // 
             // FrmPrincipal
             // 
@@ -379,7 +379,7 @@
         private System.Windows.Forms.Button btnMenuHabitaciones;
         private System.Windows.Forms.Panel pnSubmenuHabitaciones;
         private System.Windows.Forms.Button btnGestion;
-        private System.Windows.Forms.Button btnModificarHabitaciones;
+        private System.Windows.Forms.Button btnAdministarHabitaciones;
 
         private System.Windows.Forms.Button btnMenuHuespedes;
         private System.Windows.Forms.Panel pnSubmenuHuespedes;
@@ -389,12 +389,12 @@
         private System.Windows.Forms.Button btnMenuReservas;
         private System.Windows.Forms.Panel pnSubmenuReservas;
         private System.Windows.Forms.Button btnGestionReservas;
-        private System.Windows.Forms.Button btnNuevaReserva;
 
         private System.Windows.Forms.Button btnFacturas;
         private System.Windows.Forms.Button btnBitacora;
 
         private System.Windows.Forms.Panel pnBarraLateral;
         private System.Windows.Forms.Panel pnlContenedor;
+        private System.Windows.Forms.Button btnEstadias;
     }
 }

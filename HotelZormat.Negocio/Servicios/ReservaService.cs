@@ -9,8 +9,9 @@ namespace HotelZormat.Negocio
 {
     public class ReservaService
     {
-        private ReservaDAL reservaDAL = new ReservaDAL();
-        private HabitacionDAL habitacionDAL = new HabitacionDAL();
+        private ReservaRepository reservaDAL = new ReservaRepository();
+        private HabitacionRepository habitacionDAL = new HabitacionRepository();
+        private EstadiaService estadiaService = new EstadiaService();
 
         public List<Reserva> ObtenerTodos()
         {
@@ -76,7 +77,7 @@ namespace HotelZormat.Negocio
         }
 
         // Check-in real: solo si la habitacion esta Disponible
-        public void RealizarCheckIn(int idReserva, int idHabitacion)
+        public int RealizarCheckIn(int idReserva, int idHabitacion)
         {
             string estadoHabitacion = habitacionDAL.ObtenerEstado(idHabitacion);
 
@@ -87,6 +88,10 @@ namespace HotelZormat.Negocio
             }
 
             habitacionDAL.ActualizarEstado(idHabitacion, "Ocupada");
+
+            int idEstadia = estadiaService.CrearEstadia(idReserva, idHabitacion, "Check-in inicial");
+
+            return idEstadia;
         }
 
         private decimal ObtenerFactorTemporada(Temporada temporada)
@@ -133,5 +138,6 @@ namespace HotelZormat.Negocio
             reserva.FechaCreacion = Convert.ToDateTime(fila["FechaCreacion"]);
             return reserva;
         }
+    
     }
 }

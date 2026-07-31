@@ -10,7 +10,7 @@ namespace HotelZormat.Negocio.Servicios
 {
     public class BitacoraService
     {
-        private BitacoraDAL dal = new BitacoraDAL();
+        private BitacoraRepository bitacoraRepository = new BitacoraRepository();
 
         // Registra una accion usando el usuario actualmente logueado
         public void Registrar(string accion, string descripcion)
@@ -19,18 +19,18 @@ namespace HotelZormat.Negocio.Servicios
                 return;
 
             int idUsuario = SesionActual.UsuarioActivo.IdUsuario;
-            dal.RegistrarAccion(idUsuario, accion, descripcion);
+            bitacoraRepository.RegistrarAccion(idUsuario, accion, descripcion);
         }
 
         public List<Bitacora> ObtenerBitacora()
         {
-            DataTable tabla = dal.ObtenerBitacora();
+            DataTable tabla = bitacoraRepository.ObtenerBitacora();
             return MapearBitacora(tabla);
         }
 
         public List<Bitacora> ObtenerBitacoraPorFecha(DateTime desde, DateTime hasta)
         {
-            DataTable tabla = dal.ObtenerBitacoraPorFecha(desde, hasta);
+            DataTable tabla = bitacoraRepository.ObtenerBitacoraPorFecha(desde, hasta);
             return MapearBitacora(tabla);
         }
 

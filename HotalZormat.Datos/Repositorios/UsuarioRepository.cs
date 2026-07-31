@@ -1,4 +1,5 @@
 ﻿// Cedula: 402-1035106-6
+using HotalZormat.Datos.Conexion;
 using System;
 using System.Configuration;
 using System.Data;
@@ -6,11 +7,10 @@ using System.Data.SqlClient;
 
 namespace HotelZormat.Datos.Repositorios
 {
-    public class UsuarioDAL
+    public class UsuarioRepository
     {
         // Ajusta "HotelZormatConnectionString" al name= real de tu App.config
-        private string connString = ConfigurationManager
-            .ConnectionStrings["Conexion"].ConnectionString;
+        private string connString = ConexionBD.ObtenerConnectionString();
 
         // Trae los datos del usuario por nombre (para validar login)
         public DataRow ObtenerUsuarioPorNombre(string nombre)

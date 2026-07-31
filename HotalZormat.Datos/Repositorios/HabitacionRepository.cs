@@ -1,14 +1,14 @@
 ﻿// Cedula: 402-1035106-6
+using HotalZormat.Datos.Conexion;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 
 namespace HotelZormat.Datos.Repositorios
 {
-    public class HabitacionDAL
+    public class HabitacionRepository
     {
-        private string connString = ConfigurationManager
-            .ConnectionStrings["Conexion"].ConnectionString;
+        private string connString = ConexionBD.ObtenerConnectionString();
 
         public DataTable ObtenerTodas()
         {

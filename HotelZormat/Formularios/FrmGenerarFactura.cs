@@ -12,54 +12,61 @@ namespace HotelZormat.UI.Formularios
     {
         private readonly int idReserva;
         private readonly int idHabitacion;
-        private readonly decimal subtotal;
-        
-
+        private readonly int idEstadia;
         private readonly FacturaService facturaService = new FacturaService();
 
-        // Recibe todo ya resuelto desde FrmGestionReservas -- este form no busca nada por su cuenta.
-        public FrmGenerarFactura(int idReserva, int idHabitacion, decimal subtotal,
-            string numeroHabitacion, string nombreHuesped, DateTime fechaCheckIn,
-            DateTime fechaCheckOut, int cantidadNoches)
+        public FrmGenerarFactura(int idReserva, int idHabitacion, int idEstadia, string numeroHabitacion,
+            string nombreHuesped, DateTime fechaCheckIn, DateTime fechaCheckOut, int cantidadNoches)
         {
             InitializeComponent();
 
             this.idReserva = idReserva;
             this.idHabitacion = idHabitacion;
-            this.subtotal = subtotal;
-           
+            this.idEstadia = idEstadia;
 
             lblHabitacion.Text = numeroHabitacion;
             lblHuesped.Text = nombreHuesped;
             lblCheckIn.Text = fechaCheckIn.ToShortDateString();
             lblCheckOut.Text = fechaCheckOut.ToShortDateString();
             lblNoches.Text = cantidadNoches.ToString();
-            lblSubtotal.Text = "RD$" + subtotal.ToString("N2");
         }
 
         private void FrmGenerarFactura_Load(object sender, EventArgs e)
         {
-            // Enum -> ComboBox, mismo criterio que cmbTemporada en FrmCrearReserva
             cmbFormaPago.DataSource = Enum.GetValues(typeof(FormaPago));
-            ActualizarDesglose();
+            CargarDesglose();
+        }
+
+        private void CargarDesglose()
+        {
+            var desglose = facturaService.ObtenerDesglosePrevio(idReserva);
+
+            lblCostoReserva.Text = "RD$" + desglose.CostoReserva.ToString("N2");
+            lblConsumoServicios.Text = "RD$" + desglose.ConsumoServicios.ToString("N2");
+            lblSubtotal.Text = "RD$" + desglose.Subtotal.ToString("N2");
+            lblITBIS.Text = "RD$" + desglose.ITBIS.ToString("N2");
+            lblPropinaLegal.Text = "RD$" + desglose.PropinaLegal.ToString("N2");
+            lblMontoTotal.Text = "RD$" + desglose.MontoTotal.ToString("N2");
+        }
+
+        private void btnAgregarServicio_Click(object sender, EventArgs e)
+        {
+            var frmServicio = new FrmAgregarServicio(idEstadia);
+            frmServicio.ShowDialog();
+
+            // Se recalcula al volver, sin importar si se agrego algo o no --
+            // mas simple y seguro que tratar de rastrear si hubo cambios.
+            CargarDesglose();
         }
 
         private void cmbFormaPago_SelectedIndexChanged(object sender, EventArgs e)
         {
             // FormaPago no afecta el calculo, pero se recalcula igual por consistencia
             // con el patron de recalculo en tiempo real de FrmCrearReserva.
-            ActualizarDesglose();
+            CargarDesglose();
         }
 
-        private void ActualizarDesglose()
-        {
-            decimal itbis, propinaLegal, montoTotal;
-            facturaService.CalcularDesglose(subtotal, out itbis, out propinaLegal, out montoTotal);
-
-            lblITBIS.Text = "RD$" + itbis.ToString("N2");
-            lblPropinaLegal.Text = "RD$" + propinaLegal.ToString("N2");
-            lblMontoTotal.Text = "RD$" + montoTotal.ToString("N2");
-        }
+       
 
         private void btnGenerarFactura_Click(object sender, EventArgs e)
         {
@@ -75,7 +82,7 @@ namespace HotelZormat.UI.Formularios
             btnGenerarFactura.Enabled = false; // evita doble clic mientras se procesa
             try
             {
-                facturaService.GenerarFactura(idReserva, idHabitacion, subtotal, formaPago);
+                facturaService.GenerarFactura(idReserva, idHabitacion, formaPago);
 
                 this.DialogResult = DialogResult.OK; // FrmGestionReservas sabe que debe refrescar el grid
                 this.Close();

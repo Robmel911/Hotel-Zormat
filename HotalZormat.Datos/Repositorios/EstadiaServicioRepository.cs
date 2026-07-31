@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace HotelZormat.Datos
 {
-    public class EstadiaServicioDAL
+    public class EstadiaServicioRepository
     {
         private string connectionString = ConexionBD.ObtenerConnectionString();
 

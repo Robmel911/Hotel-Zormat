@@ -28,21 +28,22 @@ namespace HotelZormat.UI.Formularios
             this.btnAgregarServicio = new System.Windows.Forms.Button();
             this.btnTransferir = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnVerHistrorial = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstadias)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // lblTitulo
-            //
+            // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.Location = new System.Drawing.Point(20, 15);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(260, 25);
+            this.lblTitulo.Size = new System.Drawing.Size(270, 38);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Gestion de Estadias";
-            //
+            // 
             // dgvEstadias
-            //
+            // 
             this.dgvEstadias.AllowUserToAddRows = false;
             this.dgvEstadias.AllowUserToDeleteRows = false;
             this.dgvEstadias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -52,9 +53,9 @@ namespace HotelZormat.UI.Formularios
             this.dgvEstadias.RowHeadersWidth = 25;
             this.dgvEstadias.Size = new System.Drawing.Size(700, 350);
             this.dgvEstadias.TabIndex = 1;
-            //
+            // 
             // btnAgregarServicio
-            //
+            // 
             this.btnAgregarServicio.Location = new System.Drawing.Point(20, 420);
             this.btnAgregarServicio.Name = "btnAgregarServicio";
             this.btnAgregarServicio.Size = new System.Drawing.Size(180, 35);
@@ -62,9 +63,9 @@ namespace HotelZormat.UI.Formularios
             this.btnAgregarServicio.Text = "Agregar Servicio";
             this.btnAgregarServicio.UseVisualStyleBackColor = true;
             this.btnAgregarServicio.Click += new System.EventHandler(this.btnAgregarServicio_Click);
-            //
+            // 
             // btnTransferir
-            //
+            // 
             this.btnTransferir.Location = new System.Drawing.Point(220, 420);
             this.btnTransferir.Name = "btnTransferir";
             this.btnTransferir.Size = new System.Drawing.Size(180, 35);
@@ -72,20 +73,31 @@ namespace HotelZormat.UI.Formularios
             this.btnTransferir.Text = "Transferir Habitacion";
             this.btnTransferir.UseVisualStyleBackColor = true;
             this.btnTransferir.Click += new System.EventHandler(this.btnTransferir_Click);
-            //
+            // 
             // btnActualizar
-            //
-            this.btnActualizar.Location = new System.Drawing.Point(540, 420);
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(739, 420);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(180, 35);
             this.btnActualizar.TabIndex = 4;
             this.btnActualizar.Text = "Actualizar Lista";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            //
+            // 
+            // btnVerHistrorial
+            // 
+            this.btnVerHistrorial.Location = new System.Drawing.Point(453, 420);
+            this.btnVerHistrorial.Name = "btnVerHistrorial";
+            this.btnVerHistrorial.Size = new System.Drawing.Size(223, 35);
+            this.btnVerHistrorial.TabIndex = 5;
+            this.btnVerHistrorial.Text = "Ver Historial de Huespedes";
+            this.btnVerHistrorial.UseVisualStyleBackColor = true;
+            this.btnVerHistrorial.Click += new System.EventHandler(this.btnVerHistrorial_Click);
+            // 
             // FrmGestionEstadias
-            //
-            this.ClientSize = new System.Drawing.Size(740, 475);
+            // 
+            this.ClientSize = new System.Drawing.Size(948, 475);
+            this.Controls.Add(this.btnVerHistrorial);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnTransferir);
             this.Controls.Add(this.btnAgregarServicio);
@@ -99,6 +111,9 @@ namespace HotelZormat.UI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstadias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
+
+        private System.Windows.Forms.Button btnVerHistrorial;
     }
 }

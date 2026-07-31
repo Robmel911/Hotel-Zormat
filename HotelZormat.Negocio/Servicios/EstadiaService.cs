@@ -10,10 +10,10 @@ namespace HotelZormat.Negocio
 {
     public class EstadiaService
     {
-        private EstadiaDAL estadiaDAL = new EstadiaDAL();
-        private EstadiaServicioDAL estadiaServicioDAL = new EstadiaServicioDAL();
-        private ServicioDAL servicioDAL = new ServicioDAL();
-        private HabitacionDAL habitacionDAL = new HabitacionDAL();
+        private EstadiaRepository estadiaDAL = new EstadiaRepository();
+        private EstadiaServicioRepository estadiaServicioDAL = new EstadiaServicioRepository();
+        private ServicioRepository servicioDAL = new ServicioRepository();
+        private HabitacionRepository habitacionDAL = new HabitacionRepository();
 
         // ================= ESTADIA =================
 
@@ -176,6 +176,26 @@ namespace HotelZormat.Negocio
             consumo.PrecioUnitario = Convert.ToDecimal(fila["PrecioUnitario"]);
             consumo.FechaConsumo = Convert.ToDateTime(fila["FechaConsumo"]);
             return consumo;
+        }
+        public List<EstadiaHistorial> ObtenerHistorialPorHuesped(int idHuesped)
+        {
+            DataTable tabla = estadiaDAL.ObtenerHistorialPorHuesped(idHuesped);
+            List<EstadiaHistorial> lista = new List<EstadiaHistorial>();
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                EstadiaHistorial item = new EstadiaHistorial();
+                item.IdEstadia = Convert.ToInt32(fila["IdEstadia"]);
+                item.IdReserva = Convert.ToInt32(fila["IdReserva"]);
+                item.Numero = Convert.ToInt32(fila["Numero"]);
+                item.FechaInicio = Convert.ToDateTime(fila["FechaInicio"]);
+                item.FechaFin = fila["FechaFin"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(fila["FechaFin"]);
+                item.Motivo = fila["Motivo"] == DBNull.Value ? null : fila["Motivo"].ToString();
+                item.TotalServicios = Convert.ToDecimal(fila["TotalServicios"]);
+                lista.Add(item);
+            }
+
+            return lista;
         }
     }
 }

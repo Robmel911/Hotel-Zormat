@@ -58,6 +58,12 @@
     <Compile Include="Formularios\FrmBitacora.Designer.cs">
       <DependentUpon>FrmBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmCrearHabitaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCrearHabitaciones.Designer.cs">
+      <DependentUpon>FrmCrearHabitaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmCrearHuesped.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,17 +106,23 @@
     <Compile Include="Formularios\FrmGestionReservas.Designer.cs">
       <DependentUpon>FrmGestionReservas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmHistorialEstadias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmHistorialEstadias.Designer.cs">
+      <DependentUpon>FrmHistorialEstadias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FrmModificarHabitaciones.cs">
+    <Compile Include="Formularios\FrmAdministrarHabitaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FrmModificarHabitaciones.Designer.cs">
-      <DependentUpon>FrmModificarHabitaciones.cs</DependentUpon>
+    <Compile Include="Formularios\FrmAdministrarHabitaciones.Designer.cs">
+      <DependentUpon>FrmAdministrarHabitaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmCrearReserva.cs">
       <SubType>Form</SubType>
@@ -147,6 +159,9 @@
     <EmbeddedResource Include="Formularios\FrmCrearHuesped.resx">
       <DependentUpon>FrmCrearHuesped.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmGestionEstadias.resx">
+      <DependentUpon>FrmGestionEstadias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGestionHabitaciones.resx">
       <DependentUpon>FrmGestionHabitaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,8 +174,8 @@
     <EmbeddedResource Include="Formularios\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FrmModificarHabitaciones.resx">
-      <DependentUpon>FrmModificarHabitaciones.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\FrmAdministrarHabitaciones.resx">
+      <DependentUpon>FrmAdministrarHabitaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmCrearReserva.resx">
       <DependentUpon>FrmCrearReserva.cs</DependentUpon>

@@ -7,7 +7,7 @@ using HotalZormat.Datos.Conexion;
 
 namespace HotelZormat.Datos.Repositorios
 {
-    public class BitacoraDAL
+    public class BitacoraRepository
     {
         private string connString = ConexionBD.ObtenerConnectionString();
 

@@ -107,5 +107,11 @@ namespace HotelZormat.UI.Formularios
         {
             CargarGrid();
         }
+
+        private void btnVerHistrorial_Click(object sender, EventArgs e)
+        {
+            FrmHistorialEstadias frm = new FrmHistorialEstadias();
+            frm.ShowDialog();
+        }
     }
 }
