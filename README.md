@@ -22,13 +22,13 @@ HotelZormat.Datos      <- Acceso a SQL Server (repositorios)
 
 ## Módulos planificados
 - [x] Estructura por capas
-- [ ] Login y usuarios
-- [ ] Gestión de habitaciones
-- [ ] Gestión de huéspedes
-- [ ] Reservas
-- [ ] Check-in / Check-out
-- [ ] Facturación con NCF (ITBIS 18%, propina 10%)
-- [ ] Reportes
+- [x] Login y usuarios
+- [x] Gestión de habitaciones
+- [x] Gestión de huéspedes
+- [x] Reservas
+- [x] Check-in / Check-out
+- [x] Facturación con NCF (ITBIS 18%, propina 10%)
+- [x] Reportes
 
 ## Autor
 Robmel Lozano - 2024-2008
