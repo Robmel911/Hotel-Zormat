@@ -54,7 +54,7 @@
             // 
             this.txtBuscarNumero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscarNumero.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtBuscarNumero.Location = new System.Drawing.Point(112, 31);
+            this.txtBuscarNumero.Location = new System.Drawing.Point(123, 31);
             this.txtBuscarNumero.Name = "txtBuscarNumero";
             this.txtBuscarNumero.Size = new System.Drawing.Size(140, 33);
             this.txtBuscarNumero.TabIndex = 1;
@@ -65,7 +65,7 @@
             this.cboFiltroEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFiltroEstado.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cboFiltroEstado.FormattingEnabled = true;
-            this.cboFiltroEstado.Location = new System.Drawing.Point(467, 28);
+            this.cboFiltroEstado.Location = new System.Drawing.Point(498, 28);
             this.cboFiltroEstado.Name = "cboFiltroEstado";
             this.cboFiltroEstado.Size = new System.Drawing.Size(160, 33);
             this.cboFiltroEstado.TabIndex = 2;
@@ -76,7 +76,7 @@
             this.lblFiltroEstado.AutoSize = true;
             this.lblFiltroEstado.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblFiltroEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblFiltroEstado.Location = new System.Drawing.Point(290, 36);
+            this.lblFiltroEstado.Location = new System.Drawing.Point(311, 31);
             this.lblFiltroEstado.Name = "lblFiltroEstado";
             this.lblFiltroEstado.Size = new System.Drawing.Size(171, 25);
             this.lblFiltroEstado.TabIndex = 3;
@@ -87,7 +87,7 @@
             this.lblNuevoEstado.AutoSize = true;
             this.lblNuevoEstado.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblNuevoEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblNuevoEstado.Location = new System.Drawing.Point(24, 150);
+            this.lblNuevoEstado.Location = new System.Drawing.Point(24, 147);
             this.lblNuevoEstado.Name = "lblNuevoEstado";
             this.lblNuevoEstado.Size = new System.Drawing.Size(140, 25);
             this.lblNuevoEstado.TabIndex = 2;
@@ -152,11 +152,11 @@
             // lblSeleccion
             // 
             this.lblSeleccion.AutoSize = true;
-            this.lblSeleccion.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
+            this.lblSeleccion.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSeleccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
             this.lblSeleccion.Location = new System.Drawing.Point(24, 56);
             this.lblSeleccion.Name = "lblSeleccion";
-            this.lblSeleccion.Size = new System.Drawing.Size(69, 60);
+            this.lblSeleccion.Size = new System.Drawing.Size(26, 21);
             this.lblSeleccion.TabIndex = 1;
             this.lblSeleccion.Text = "—";
             // 
@@ -210,7 +210,7 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(40, 16);
+            this.lblTitulo.Location = new System.Drawing.Point(40, 8);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(428, 48);
             this.lblTitulo.TabIndex = 0;

@@ -174,11 +174,23 @@
     <EmbeddedResource Include="Formularios\FrmBitacora.resx">
       <DependentUpon>FrmBitacora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCrearHabitaciones.resx">
+      <DependentUpon>FrmCrearHabitaciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmCrearHuesped.resx">
       <DependentUpon>FrmCrearHuesped.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCrearUsuario.resx">
+      <DependentUpon>FrmCrearUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmGenerarFactura.resx">
+      <DependentUpon>FrmGenerarFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGestionEstadias.resx">
       <DependentUpon>FrmGestionEstadias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmGestionFacturas.resx">
+      <DependentUpon>FrmGestionFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGestionHabitaciones.resx">
       <DependentUpon>FrmGestionHabitaciones.cs</DependentUpon>
@@ -189,6 +201,9 @@
     <EmbeddedResource Include="Formularios\FrmGestionReservas.resx">
       <DependentUpon>FrmGestionReservas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmGestionUsuarios.resx">
+      <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +212,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmCrearReserva.resx">
       <DependentUpon>FrmCrearReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmReportes.resx">
+      <DependentUpon>FrmReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmTransferirHabitacion.resx">
+      <DependentUpon>FrmTransferirHabitacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmVerFactura.resx">
       <DependentUpon>FrmVerFactura.cs</DependentUpon>

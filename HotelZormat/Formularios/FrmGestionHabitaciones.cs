@@ -64,7 +64,8 @@ namespace HotelZormat.UI.Formularios
                 resultado = resultado.Where(h => h.Numero.ToString().Contains(txtBuscarNumero.Text.Trim()));
             }
 
-            if (cboFiltroEstado.SelectedItem != null && cboFiltroEstado.SelectedItem.ToString() != FiltroTodos)
+            if (cboFiltroEstado.SelectedItem != 
+                null && cboFiltroEstado.SelectedItem.ToString() != FiltroTodos)
             {
                 EstadoHabitacion estadoFiltro = (EstadoHabitacion)cboFiltroEstado.SelectedItem;
                 resultado = resultado.Where(h => h.Estado == estadoFiltro);

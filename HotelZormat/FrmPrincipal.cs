@@ -1,4 +1,5 @@
-﻿using HotelZormat.Negocio;
+﻿//Cedula 402-1035106-6
+using HotelZormat.Negocio;
 using HotelZormat.Negocio.Servicios;
 using HotelZormat.Negocio.Sesion;
 using HotelZormat.UI.Formularios;
@@ -12,7 +13,7 @@ namespace HotelZormat
     {
         // Formulario actualmente cargado dentro de pnlContenedor
         private Form frmActivo = null;
-
+        private int Matricula = 20242008;
         public FrmPrincipal()
         {
             InitializeComponent();

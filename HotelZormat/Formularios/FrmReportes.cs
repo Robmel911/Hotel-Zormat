@@ -1,6 +1,7 @@
-﻿using HotelZormat.Negocio.Servicios;
+﻿//Cedula 402-1035106-6
+using HotelZormat.Negocio.Servicios;
 using System;
-using System.Collections.Generic; // Agrega esta línea si facturas es una colección genérica
+using System.Collections.Generic; 
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;

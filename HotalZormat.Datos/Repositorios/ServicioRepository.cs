@@ -1,4 +1,4 @@
-﻿//
+﻿//Cedula 402-1035106-6
 using HotelZormat.Datos.Conexion;
 using System;
 using System.Data;

@@ -1,4 +1,4 @@
-﻿// Cedula: [PON AQUI TU CEDULA]
+﻿//Cedula 402-1035106-6
 using System;
 using System.Windows.Forms;
 using HotelZormat.Modelo;

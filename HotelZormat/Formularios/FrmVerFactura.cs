@@ -1,6 +1,5 @@
 ﻿//Cedula: 402-1035106-6
 
-
 using System;
 using System.Windows.Forms;
 using HotelZormat.Modelo;
@@ -12,6 +11,7 @@ namespace HotelZormat.UI.Formularios
     {
         private readonly int idReserva;
         private readonly FacturaService facturaService = new FacturaService();
+        
 
         public FrmVerFactura(int idReserva)
         {
