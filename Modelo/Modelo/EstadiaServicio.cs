@@ -1,7 +1,7 @@
 ﻿// EstadiaServicio.cs
 using System;
 
-namespace HotelZormat.Negocio
+namespace HotelZormat.Modelo
 {
     public class EstadiaServicio
     {

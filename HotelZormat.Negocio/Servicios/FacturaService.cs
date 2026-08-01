@@ -2,7 +2,7 @@
 
 using HotelZormat.Datos;
 using HotelZormat.Negocio.Excepciones;
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
 using HotelZormat.Negocio.Sesion;
 using System;
 using System.Collections.Generic;

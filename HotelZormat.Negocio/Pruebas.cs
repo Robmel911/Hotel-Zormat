@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HotalZormat.Datos.Conexion;
+using HotelZormat.Datos.Conexion;
 
 namespace HotelZormat.Negocio
 {

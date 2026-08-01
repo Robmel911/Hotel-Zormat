@@ -1,7 +1,7 @@
 ﻿// Cedula: 402-1035106-6
-namespace HotelZormat.Negocio.Modelo
+namespace HotelZormat.Modelo
 {
-    public class TipoHabitacion
+    public class TipoUsuario
     {
         public int IdTipo { get; set; }
         public string Tipo { get; set; }

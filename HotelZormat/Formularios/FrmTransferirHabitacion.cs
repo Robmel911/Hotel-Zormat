@@ -1,7 +1,7 @@
 ﻿// FrmTransferirHabitacion.cs
 
 using HotelZormat.Negocio;
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
 using HotelZormat.Negocio.Servicios;
 using System;
 using System.Collections.Generic;

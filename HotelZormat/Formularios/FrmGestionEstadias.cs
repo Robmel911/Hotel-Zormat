@@ -1,7 +1,5 @@
-﻿
-
-using HotelZormat.Negocio;
-using HotelZormat.Negocio.Modelo;
+﻿using HotelZormat.Negocio;
+using HotelZormat.Modelo;
 using HotelZormat.UI.Formularios;
 using System;
 using System.Windows.Forms;

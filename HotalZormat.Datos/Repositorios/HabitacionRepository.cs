@@ -1,5 +1,5 @@
 ﻿// Cedula: 402-1035106-6
-using HotalZormat.Datos.Conexion;
+using HotelZormat.Datos.Conexion;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;

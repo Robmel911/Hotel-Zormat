@@ -2,7 +2,7 @@
 // MetodoPago.cs
 // Enum en archivo separado, mismo criterio que EstadoFactura.
 
-namespace HotelZormat.Negocio.Modelo
+namespace HotelZormat.Modelo
 {
     public enum FormaPago
     {

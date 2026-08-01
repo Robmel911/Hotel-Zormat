@@ -1,5 +1,5 @@
 ﻿// Cedula: 402-1035106-6
-namespace HotelZormat.Negocio.Modelo
+namespace HotelZormat.Modelo
 {
     public enum Temporada
     {

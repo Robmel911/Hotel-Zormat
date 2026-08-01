@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 using HotelZormat.Negocio.Servicios;
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
 
 namespace HotelZormat.UI.Formularios
 {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using HotelZormat.Datos;
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
 
 namespace HotelZormat.Negocio.Servicios
 {

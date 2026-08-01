@@ -3,7 +3,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using HotalZormat.Datos.Conexion;
+using HotelZormat.Datos.Conexion;
 
 namespace HotelZormat.Datos.Repositorios
 {

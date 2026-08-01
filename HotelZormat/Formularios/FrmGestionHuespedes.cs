@@ -1,6 +1,6 @@
 ﻿// Cedula: [tu cedula aqui]
 using HotelZormat.UI.Formularios;
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
 using HotelZormat.Negocio.Servicios;
 using System;
 using System.Windows.Forms;

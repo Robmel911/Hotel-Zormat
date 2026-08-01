@@ -70,6 +70,12 @@
     <Compile Include="Formularios\FrmCrearHuesped.Designer.cs">
       <DependentUpon>FrmCrearHuesped.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmCrearUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCrearUsuario.Designer.cs">
+      <DependentUpon>FrmCrearUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmGenerarFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,12 @@
     <Compile Include="Formularios\FrmGestionReservas.Designer.cs">
       <DependentUpon>FrmGestionReservas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmGestionUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmGestionUsuarios.Designer.cs">
+      <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmHistorialEstadias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +141,12 @@
     </Compile>
     <Compile Include="Formularios\FrmCrearReserva.Designer.cs">
       <DependentUpon>FrmCrearReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmReportes.Designer.cs">
+      <DependentUpon>FrmReportes.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmVerFactura.cs">
       <SubType>Form</SubType>
@@ -213,6 +231,10 @@
     <ProjectReference Include="..\HotelZormat.Negocio\HotelZormat.Negocio.csproj">
       <Project>{8fd598f0-2f38-4356-8aa8-e55311730d29}</Project>
       <Name>HotelZormat.Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo\HotelZormat.Modelo.csproj">
+      <Project>{8C9C954E-647B-4F38-AE8F-3677D6B75CBC}</Project>
+      <Name>HotelZormat.Modelo</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

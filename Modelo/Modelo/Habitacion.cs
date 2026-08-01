@@ -1,4 +1,4 @@
-﻿namespace HotelZormat.Negocio.Modelo
+﻿namespace HotelZormat.Modelo
 {
     public class Habitacion
     {

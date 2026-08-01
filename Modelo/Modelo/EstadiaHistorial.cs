@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HotelZormat.Negocio
+namespace HotelZormat.Modelo
 {
     public class EstadiaHistorial
     {

@@ -1,5 +1,5 @@
-﻿// EstadiaServicioDAL.cs
-using HotalZormat.Datos.Conexion;
+﻿
+using HotelZormat.Datos.Conexion;
 using System;
 using System.Data;
 using System.Data.SqlClient;

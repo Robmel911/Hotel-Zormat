@@ -26,7 +26,7 @@
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnMenuHuespedes = new System.Windows.Forms.Button();
             this.pnSubmenuHuespedes = new System.Windows.Forms.Panel();
-            this.btnBuscarHuesped = new System.Windows.Forms.Button();
+            this.btnVerHistorial = new System.Windows.Forms.Button();
             this.btnGestionHuespedes = new System.Windows.Forms.Button();
             this.btnMenuReservas = new System.Windows.Forms.Button();
             this.pnSubmenuReservas = new System.Windows.Forms.Panel();
@@ -34,13 +34,18 @@
             this.btnFacturas = new System.Windows.Forms.Button();
             this.btnBitacora = new System.Windows.Forms.Button();
             this.pnBarraLateral = new System.Windows.Forms.Panel();
-            this.pnlContenedor = new System.Windows.Forms.Panel();
             this.btnEstadias = new System.Windows.Forms.Button();
+            this.pnlContenedor = new System.Windows.Forms.Panel();
+            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.pnSubMenuInicio = new System.Windows.Forms.Panel();
+            this.btnReportes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.pnSubmenuHabitaciones.SuspendLayout();
             this.pnSubmenuHuespedes.SuspendLayout();
             this.pnSubmenuReservas.SuspendLayout();
             this.pnBarraLateral.SuspendLayout();
+            this.pnSubMenuInicio.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbLogo
@@ -50,7 +55,7 @@
             this.pbLogo.Image = global::HotelZormat.Properties.Resources.Logo_oscuro_transparente;
             this.pbLogo.Location = new System.Drawing.Point(0, 0);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(250, 140);
+            this.pbLogo.Size = new System.Drawing.Size(265, 140);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbLogo.TabIndex = 0;
             this.pbLogo.TabStop = false;
@@ -67,7 +72,7 @@
             this.btnHome.Location = new System.Drawing.Point(0, 140);
             this.btnHome.Name = "btnHome";
             this.btnHome.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(250, 55);
+            this.btnHome.Size = new System.Drawing.Size(265, 55);
             this.btnHome.TabIndex = 1;
             this.btnHome.Text = "Inicio";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -83,10 +88,10 @@
             this.btnMenuHabitaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuHabitaciones.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnMenuHabitaciones.ForeColor = System.Drawing.Color.White;
-            this.btnMenuHabitaciones.Location = new System.Drawing.Point(0, 195);
+            this.btnMenuHabitaciones.Location = new System.Drawing.Point(0, 251);
             this.btnMenuHabitaciones.Name = "btnMenuHabitaciones";
             this.btnMenuHabitaciones.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnMenuHabitaciones.Size = new System.Drawing.Size(250, 60);
+            this.btnMenuHabitaciones.Size = new System.Drawing.Size(265, 60);
             this.btnMenuHabitaciones.TabIndex = 2;
             this.btnMenuHabitaciones.Text = "Habitaciones";
             this.btnMenuHabitaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -99,9 +104,9 @@
             this.pnSubmenuHabitaciones.Controls.Add(this.btnAdministarHabitaciones);
             this.pnSubmenuHabitaciones.Controls.Add(this.btnGestion);
             this.pnSubmenuHabitaciones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnSubmenuHabitaciones.Location = new System.Drawing.Point(0, 255);
+            this.pnSubmenuHabitaciones.Location = new System.Drawing.Point(0, 311);
             this.pnSubmenuHabitaciones.Name = "pnSubmenuHabitaciones";
-            this.pnSubmenuHabitaciones.Size = new System.Drawing.Size(250, 100);
+            this.pnSubmenuHabitaciones.Size = new System.Drawing.Size(265, 100);
             this.pnSubmenuHabitaciones.TabIndex = 3;
             this.pnSubmenuHabitaciones.Visible = false;
             // 
@@ -117,7 +122,7 @@
             this.btnAdministarHabitaciones.Location = new System.Drawing.Point(0, 50);
             this.btnAdministarHabitaciones.Name = "btnAdministarHabitaciones";
             this.btnAdministarHabitaciones.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnAdministarHabitaciones.Size = new System.Drawing.Size(250, 50);
+            this.btnAdministarHabitaciones.Size = new System.Drawing.Size(265, 50);
             this.btnAdministarHabitaciones.TabIndex = 1;
             this.btnAdministarHabitaciones.Text = "Administar Habitaciones";
             this.btnAdministarHabitaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,7 +141,7 @@
             this.btnGestion.Location = new System.Drawing.Point(0, 0);
             this.btnGestion.Name = "btnGestion";
             this.btnGestion.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnGestion.Size = new System.Drawing.Size(250, 50);
+            this.btnGestion.Size = new System.Drawing.Size(265, 50);
             this.btnGestion.TabIndex = 0;
             this.btnGestion.Text = "Gestión Habitaciones";
             this.btnGestion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -152,10 +157,10 @@
             this.btnMenuHuespedes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuHuespedes.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnMenuHuespedes.ForeColor = System.Drawing.Color.White;
-            this.btnMenuHuespedes.Location = new System.Drawing.Point(0, 355);
+            this.btnMenuHuespedes.Location = new System.Drawing.Point(0, 411);
             this.btnMenuHuespedes.Name = "btnMenuHuespedes";
             this.btnMenuHuespedes.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnMenuHuespedes.Size = new System.Drawing.Size(250, 60);
+            this.btnMenuHuespedes.Size = new System.Drawing.Size(265, 60);
             this.btnMenuHuespedes.TabIndex = 4;
             this.btnMenuHuespedes.Text = "Huéspedes";
             this.btnMenuHuespedes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -165,33 +170,33 @@
             // pnSubmenuHuespedes
             // 
             this.pnSubmenuHuespedes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.pnSubmenuHuespedes.Controls.Add(this.btnBuscarHuesped);
+            this.pnSubmenuHuespedes.Controls.Add(this.btnVerHistorial);
             this.pnSubmenuHuespedes.Controls.Add(this.btnGestionHuespedes);
             this.pnSubmenuHuespedes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnSubmenuHuespedes.Location = new System.Drawing.Point(0, 415);
+            this.pnSubmenuHuespedes.Location = new System.Drawing.Point(0, 471);
             this.pnSubmenuHuespedes.Name = "pnSubmenuHuespedes";
-            this.pnSubmenuHuespedes.Size = new System.Drawing.Size(250, 100);
+            this.pnSubmenuHuespedes.Size = new System.Drawing.Size(265, 100);
             this.pnSubmenuHuespedes.TabIndex = 5;
             this.pnSubmenuHuespedes.Visible = false;
             // 
-            // btnBuscarHuesped
+            // btnVerHistorial
             // 
-            this.btnBuscarHuesped.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(38)))), ((int)(((byte)(58)))));
-            this.btnBuscarHuesped.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBuscarHuesped.FlatAppearance.BorderSize = 0;
-            this.btnBuscarHuesped.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.btnBuscarHuesped.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarHuesped.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnBuscarHuesped.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarHuesped.Location = new System.Drawing.Point(0, 50);
-            this.btnBuscarHuesped.Name = "btnBuscarHuesped";
-            this.btnBuscarHuesped.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnBuscarHuesped.Size = new System.Drawing.Size(250, 50);
-            this.btnBuscarHuesped.TabIndex = 1;
-            this.btnBuscarHuesped.Text = "Buscar Huésped";
-            this.btnBuscarHuesped.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarHuesped.UseVisualStyleBackColor = false;
-            this.btnBuscarHuesped.Click += new System.EventHandler(this.btnBuscarHuesped_Click);
+            this.btnVerHistorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(38)))), ((int)(((byte)(58)))));
+            this.btnVerHistorial.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVerHistorial.FlatAppearance.BorderSize = 0;
+            this.btnVerHistorial.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnVerHistorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerHistorial.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnVerHistorial.ForeColor = System.Drawing.Color.White;
+            this.btnVerHistorial.Location = new System.Drawing.Point(0, 50);
+            this.btnVerHistorial.Name = "btnVerHistorial";
+            this.btnVerHistorial.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnVerHistorial.Size = new System.Drawing.Size(265, 50);
+            this.btnVerHistorial.TabIndex = 1;
+            this.btnVerHistorial.Text = "Historial de visitas";
+            this.btnVerHistorial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVerHistorial.UseVisualStyleBackColor = false;
+            this.btnVerHistorial.Click += new System.EventHandler(this.btnBuscarHuesped_Click);
             // 
             // btnGestionHuespedes
             // 
@@ -205,7 +210,7 @@
             this.btnGestionHuespedes.Location = new System.Drawing.Point(0, 0);
             this.btnGestionHuespedes.Name = "btnGestionHuespedes";
             this.btnGestionHuespedes.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnGestionHuespedes.Size = new System.Drawing.Size(250, 50);
+            this.btnGestionHuespedes.Size = new System.Drawing.Size(265, 50);
             this.btnGestionHuespedes.TabIndex = 0;
             this.btnGestionHuespedes.Text = "Gestión Huéspedes";
             this.btnGestionHuespedes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -221,10 +226,10 @@
             this.btnMenuReservas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuReservas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnMenuReservas.ForeColor = System.Drawing.Color.White;
-            this.btnMenuReservas.Location = new System.Drawing.Point(0, 515);
+            this.btnMenuReservas.Location = new System.Drawing.Point(0, 571);
             this.btnMenuReservas.Name = "btnMenuReservas";
             this.btnMenuReservas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnMenuReservas.Size = new System.Drawing.Size(250, 60);
+            this.btnMenuReservas.Size = new System.Drawing.Size(265, 60);
             this.btnMenuReservas.TabIndex = 6;
             this.btnMenuReservas.Text = "Reservas";
             this.btnMenuReservas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -236,9 +241,9 @@
             this.pnSubmenuReservas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
             this.pnSubmenuReservas.Controls.Add(this.btnGestionReservas);
             this.pnSubmenuReservas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnSubmenuReservas.Location = new System.Drawing.Point(0, 575);
+            this.pnSubmenuReservas.Location = new System.Drawing.Point(0, 631);
             this.pnSubmenuReservas.Name = "pnSubmenuReservas";
-            this.pnSubmenuReservas.Size = new System.Drawing.Size(250, 56);
+            this.pnSubmenuReservas.Size = new System.Drawing.Size(265, 56);
             this.pnSubmenuReservas.TabIndex = 7;
             this.pnSubmenuReservas.Visible = false;
             // 
@@ -254,7 +259,7 @@
             this.btnGestionReservas.Location = new System.Drawing.Point(0, 0);
             this.btnGestionReservas.Name = "btnGestionReservas";
             this.btnGestionReservas.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnGestionReservas.Size = new System.Drawing.Size(250, 50);
+            this.btnGestionReservas.Size = new System.Drawing.Size(265, 50);
             this.btnGestionReservas.TabIndex = 0;
             this.btnGestionReservas.Text = "Gestión Reservas";
             this.btnGestionReservas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,10 +275,10 @@
             this.btnFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFacturas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnFacturas.ForeColor = System.Drawing.Color.White;
-            this.btnFacturas.Location = new System.Drawing.Point(0, 631);
+            this.btnFacturas.Location = new System.Drawing.Point(0, 687);
             this.btnFacturas.Name = "btnFacturas";
             this.btnFacturas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnFacturas.Size = new System.Drawing.Size(250, 60);
+            this.btnFacturas.Size = new System.Drawing.Size(265, 60);
             this.btnFacturas.TabIndex = 8;
             this.btnFacturas.Text = "Facturas";
             this.btnFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -289,10 +294,10 @@
             this.btnBitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBitacora.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnBitacora.ForeColor = System.Drawing.Color.White;
-            this.btnBitacora.Location = new System.Drawing.Point(0, 969);
+            this.btnBitacora.Location = new System.Drawing.Point(0, 909);
             this.btnBitacora.Name = "btnBitacora";
             this.btnBitacora.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnBitacora.Size = new System.Drawing.Size(250, 55);
+            this.btnBitacora.Size = new System.Drawing.Size(265, 55);
             this.btnBitacora.TabIndex = 9;
             this.btnBitacora.Text = "Bitácora";
             this.btnBitacora.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -302,6 +307,9 @@
             // pnBarraLateral
             // 
             this.pnBarraLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.pnBarraLateral.Controls.Add(this.btnBitacora);
+            this.pnBarraLateral.Controls.Add(this.btnCerrarSesion);
+            this.pnBarraLateral.Controls.Add(this.btnUsuarios);
             this.pnBarraLateral.Controls.Add(this.btnEstadias);
             this.pnBarraLateral.Controls.Add(this.btnFacturas);
             this.pnBarraLateral.Controls.Add(this.pnSubmenuReservas);
@@ -310,23 +318,14 @@
             this.pnBarraLateral.Controls.Add(this.btnMenuHuespedes);
             this.pnBarraLateral.Controls.Add(this.pnSubmenuHabitaciones);
             this.pnBarraLateral.Controls.Add(this.btnMenuHabitaciones);
+            this.pnBarraLateral.Controls.Add(this.pnSubMenuInicio);
             this.pnBarraLateral.Controls.Add(this.btnHome);
             this.pnBarraLateral.Controls.Add(this.pbLogo);
-            this.pnBarraLateral.Controls.Add(this.btnBitacora);
             this.pnBarraLateral.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnBarraLateral.Location = new System.Drawing.Point(0, 0);
             this.pnBarraLateral.Name = "pnBarraLateral";
-            this.pnBarraLateral.Size = new System.Drawing.Size(250, 1024);
+            this.pnBarraLateral.Size = new System.Drawing.Size(265, 1024);
             this.pnBarraLateral.TabIndex = 10;
-            // 
-            // pnlContenedor
-            // 
-            this.pnlContenedor.BackColor = System.Drawing.Color.White;
-            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContenedor.Location = new System.Drawing.Point(250, 0);
-            this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(1648, 1024);
-            this.pnlContenedor.TabIndex = 11;
             // 
             // btnEstadias
             // 
@@ -337,15 +336,92 @@
             this.btnEstadias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstadias.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEstadias.ForeColor = System.Drawing.Color.White;
-            this.btnEstadias.Location = new System.Drawing.Point(0, 691);
+            this.btnEstadias.Location = new System.Drawing.Point(0, 747);
             this.btnEstadias.Name = "btnEstadias";
             this.btnEstadias.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnEstadias.Size = new System.Drawing.Size(250, 60);
+            this.btnEstadias.Size = new System.Drawing.Size(265, 60);
             this.btnEstadias.TabIndex = 10;
             this.btnEstadias.Text = "Estadias";
             this.btnEstadias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEstadias.UseVisualStyleBackColor = false;
             this.btnEstadias.Click += new System.EventHandler(this.btnEstadias_Click);
+            // 
+            // pnlContenedor
+            // 
+            this.pnlContenedor.BackColor = System.Drawing.Color.White;
+            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContenedor.Location = new System.Drawing.Point(265, 0);
+            this.pnlContenedor.Name = "pnlContenedor";
+            this.pnlContenedor.Size = new System.Drawing.Size(1633, 1024);
+            this.pnlContenedor.TabIndex = 11;
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnUsuarios.ForeColor = System.Drawing.Color.White;
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 807);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnUsuarios.Size = new System.Drawing.Size(265, 60);
+            this.btnUsuarios.TabIndex = 11;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuarios.UseVisualStyleBackColor = false;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 964);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(265, 60);
+            this.btnCerrarSesion.TabIndex = 12;
+            this.btnCerrarSesion.Text = "Cerrar Sesion";
+            this.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
+            // pnSubMenuInicio
+            // 
+            this.pnSubMenuInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.pnSubMenuInicio.Controls.Add(this.btnReportes);
+            this.pnSubMenuInicio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnSubMenuInicio.Location = new System.Drawing.Point(0, 195);
+            this.pnSubMenuInicio.Name = "pnSubMenuInicio";
+            this.pnSubMenuInicio.Size = new System.Drawing.Size(265, 56);
+            this.pnSubMenuInicio.TabIndex = 8;
+            this.pnSubMenuInicio.Visible = false;
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(38)))), ((int)(((byte)(58)))));
+            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnReportes.ForeColor = System.Drawing.Color.White;
+            this.btnReportes.Location = new System.Drawing.Point(0, 0);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnReportes.Size = new System.Drawing.Size(265, 50);
+            this.btnReportes.TabIndex = 0;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // FrmPrincipal
             // 
@@ -367,6 +443,7 @@
             this.pnSubmenuHuespedes.ResumeLayout(false);
             this.pnSubmenuReservas.ResumeLayout(false);
             this.pnBarraLateral.ResumeLayout(false);
+            this.pnSubMenuInicio.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -384,7 +461,6 @@
         private System.Windows.Forms.Button btnMenuHuespedes;
         private System.Windows.Forms.Panel pnSubmenuHuespedes;
         private System.Windows.Forms.Button btnGestionHuespedes;
-        private System.Windows.Forms.Button btnBuscarHuesped;
 
         private System.Windows.Forms.Button btnMenuReservas;
         private System.Windows.Forms.Panel pnSubmenuReservas;
@@ -396,5 +472,10 @@
         private System.Windows.Forms.Panel pnBarraLateral;
         private System.Windows.Forms.Panel pnlContenedor;
         private System.Windows.Forms.Button btnEstadias;
+        private System.Windows.Forms.Button btnVerHistorial;
+        private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Panel pnSubMenuInicio;
+        private System.Windows.Forms.Button btnReportes;
     }
 }

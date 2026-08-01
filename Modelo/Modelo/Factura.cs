@@ -1,7 +1,7 @@
 ﻿// Cedula: 402-1035106-6
 using System;
 
-namespace HotelZormat.Negocio.Modelo
+namespace HotelZormat.Modelo
 {
     public class Factura
     {

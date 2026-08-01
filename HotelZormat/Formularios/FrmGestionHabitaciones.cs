@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using HotelZormat.Negocio.Servicios;
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
 
 namespace HotelZormat.UI.Formularios
 {

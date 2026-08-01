@@ -1,7 +1,7 @@
 ﻿// Cedula: [PON AQUI TU CEDULA]
 using System;
 using System.Windows.Forms;
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
 using HotelZormat.Negocio.Servicios;
 using HotelZormat.Negocio.Sesion;
 

@@ -24,6 +24,7 @@ namespace HotelZormat
             {
                 btnBitacora.Visible = false;
                 btnAdministarHabitaciones.Visible = false;
+                btnUsuarios.Visible = false;
             }
 
             MostrarInicio();
@@ -31,7 +32,10 @@ namespace HotelZormat
 
         private void FrmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            
+            
+                Application.Exit();
+            
         }
 
         // ---------------------------------------------------------------
@@ -62,7 +66,10 @@ namespace HotelZormat
         // ---------------------------------------------------------------
         private void btnHome_Click(object sender, EventArgs e)
         {
+            bool estabaAbierto = pnSubMenuInicio.Visible;
             MostrarInicio();
+            pnSubMenuInicio.Visible = !estabaAbierto;
+
         }
 
         private void MostrarInicio()
@@ -99,6 +106,7 @@ namespace HotelZormat
             pnSubmenuHabitaciones.Visible = false;
             pnSubmenuHuespedes.Visible = false;
             pnSubmenuReservas.Visible = false;
+            pnSubMenuInicio.Visible = false;
         }
 
         private void btnMenuHabitaciones_Click(object sender, EventArgs e)
@@ -145,8 +153,7 @@ namespace HotelZormat
 
         private void btnBuscarHuesped_Click(object sender, EventArgs e)
         {
-            // TODO: reemplazar por el nombre real de tu formulario de búsqueda de huésped
-            //CargarFormularioEnPanel(new FrmBuscarHuesped());
+            CargarFormularioEnPanel(new FrmHistorialEstadias());
         }
 
         // ---------------------------------------------------------------
@@ -155,12 +162,6 @@ namespace HotelZormat
         private void btnGestionReservas_Click(object sender, EventArgs e)
         {
             CargarFormularioEnPanel(new FrmGestionReservas());
-        }
-
-        private void btnNuevaReserva_Click(object sender, EventArgs e)
-        {
-            // TODO: reemplazar por el nombre real de tu formulario de nueva reserva
-            //CargarFormularioEnPanel(new FrmNuevaReserva());
         }
 
         // ---------------------------------------------------------------
@@ -179,6 +180,33 @@ namespace HotelZormat
         private void btnEstadias_Click(object sender, EventArgs e)
         {
             CargarFormularioEnPanel(new FrmGestionEstadias());
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            CargarFormularioEnPanel(new FrmGestionUsuarios());
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmacion = MessageBox.Show(
+                "¿Seguro que desea cerrar sesion?",
+                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion != DialogResult.Yes)
+                return;
+
+            SesionActual.CerrarSesion();
+
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.Show();
+
+            this.Dispose();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            CargarFormularioEnPanel(new FrmReportes());
         }
     }
 }

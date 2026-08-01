@@ -53,12 +53,19 @@
     <Compile Include="Repositorios\FacturaRepository.cs" />
     <Compile Include="Repositorios\HabitacionRepository.cs" />
     <Compile Include="Repositorios\HuespedRepository.cs" />
+    <Compile Include="Repositorios\ReportesRepository.cs" />
     <Compile Include="Repositorios\ReservaRepository.cs" />
     <Compile Include="Repositorios\ServicioRepository.cs" />
     <Compile Include="Repositorios\UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modelo\HotelZormat.Modelo.csproj">
+      <Project>{8c9c954e-647b-4f38-ae8f-3677d6b75cbc}</Project>
+      <Name>HotelZormat.Modelo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

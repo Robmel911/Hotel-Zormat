@@ -1,5 +1,6 @@
 ﻿// Cedula: 402-1035106-6
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
+
 
 namespace HotelZormat.Negocio.Sesion
 {
@@ -20,6 +21,7 @@ namespace HotelZormat.Negocio.Sesion
         public static void CerrarSesion()
         {
             UsuarioActivo = null;
+
         }
     }
 }

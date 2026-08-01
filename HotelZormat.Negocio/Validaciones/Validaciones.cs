@@ -1,7 +1,7 @@
 ﻿// Cedula: [tu cedula aqui]
 using System.Text.RegularExpressions;
 using HotelZormat.Negocio.Excepciones;
-using HotalZormat.Datos.Conexion;
+using HotelZormat.Datos.Conexion;
 using HotelZormat.Negocio.Exepciones;
 
 namespace HotelZormat.Negocio.Validaciones

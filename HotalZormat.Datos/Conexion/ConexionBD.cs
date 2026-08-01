@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration; 
 
-namespace HotalZormat.Datos.Conexion
+namespace HotelZormat.Datos.Conexion
 {
     public class ConexionBD
     {

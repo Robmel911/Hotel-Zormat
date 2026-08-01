@@ -1,7 +1,7 @@
 ﻿// Cedula 402-1035106-6
 using HotelZormat.Datos;
 using HotelZormat.Datos.Repositorios;
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Data;

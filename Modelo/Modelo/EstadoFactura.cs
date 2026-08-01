@@ -2,7 +2,7 @@
 // EstadoFactura.cs
 // Enum en archivo separado por cohesion/reutilizacion, mismo criterio que EstadoReserva y Temporada.
 
-namespace HotelZormat.Negocio.Modelo
+namespace HotelZormat.Modelo
 {
     public enum EstadoFactura
     {
