@@ -7,8 +7,8 @@
     <ProjectGuid>{0BF5035B-8C60-468B-802B-7E7DFD00E99E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HotalZormat.Datos</RootNamespace>
-    <AssemblyName>HotalZormat.Datos</AssemblyName>
+    <RootNamespace>HotelZormat.Datos</RootNamespace>
+    <AssemblyName>HotelZormat.Datos</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
