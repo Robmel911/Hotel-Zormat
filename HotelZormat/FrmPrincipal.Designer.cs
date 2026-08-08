@@ -34,12 +34,13 @@
             this.btnFacturas = new System.Windows.Forms.Button();
             this.btnBitacora = new System.Windows.Forms.Button();
             this.pnBarraLateral = new System.Windows.Forms.Panel();
-            this.btnEstadias = new System.Windows.Forms.Button();
-            this.pnlContenedor = new System.Windows.Forms.Panel();
-            this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnEstadias = new System.Windows.Forms.Button();
             this.pnSubMenuInicio = new System.Windows.Forms.Panel();
             this.btnReportes = new System.Windows.Forms.Button();
+            this.pnlContenedor = new System.Windows.Forms.Panel();
+            this.btnCreditos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.pnSubmenuHabitaciones.SuspendLayout();
             this.pnSubmenuHuespedes.SuspendLayout();
@@ -161,7 +162,7 @@
             this.btnMenuHuespedes.Name = "btnMenuHuespedes";
             this.btnMenuHuespedes.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnMenuHuespedes.Size = new System.Drawing.Size(265, 60);
-            this.btnMenuHuespedes.TabIndex = 4;
+            this.btnMenuHuespedes.TabIndex = 3;
             this.btnMenuHuespedes.Text = "Huéspedes";
             this.btnMenuHuespedes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuHuespedes.UseVisualStyleBackColor = false;
@@ -230,7 +231,7 @@
             this.btnMenuReservas.Name = "btnMenuReservas";
             this.btnMenuReservas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnMenuReservas.Size = new System.Drawing.Size(265, 60);
-            this.btnMenuReservas.TabIndex = 6;
+            this.btnMenuReservas.TabIndex = 4;
             this.btnMenuReservas.Text = "Reservas";
             this.btnMenuReservas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuReservas.UseVisualStyleBackColor = false;
@@ -279,7 +280,7 @@
             this.btnFacturas.Name = "btnFacturas";
             this.btnFacturas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnFacturas.Size = new System.Drawing.Size(265, 60);
-            this.btnFacturas.TabIndex = 8;
+            this.btnFacturas.TabIndex = 5;
             this.btnFacturas.Text = "Facturas";
             this.btnFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFacturas.UseVisualStyleBackColor = false;
@@ -298,7 +299,7 @@
             this.btnBitacora.Name = "btnBitacora";
             this.btnBitacora.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnBitacora.Size = new System.Drawing.Size(265, 55);
-            this.btnBitacora.TabIndex = 9;
+            this.btnBitacora.TabIndex = 8;
             this.btnBitacora.Text = "Bitácora";
             this.btnBitacora.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBitacora.UseVisualStyleBackColor = false;
@@ -307,6 +308,7 @@
             // pnBarraLateral
             // 
             this.pnBarraLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.pnBarraLateral.Controls.Add(this.btnCreditos);
             this.pnBarraLateral.Controls.Add(this.btnBitacora);
             this.pnBarraLateral.Controls.Add(this.btnCerrarSesion);
             this.pnBarraLateral.Controls.Add(this.btnUsuarios);
@@ -327,33 +329,24 @@
             this.pnBarraLateral.Size = new System.Drawing.Size(265, 1024);
             this.pnBarraLateral.TabIndex = 10;
             // 
-            // btnEstadias
+            // btnCerrarSesion
             // 
-            this.btnEstadias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.btnEstadias.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEstadias.FlatAppearance.BorderSize = 0;
-            this.btnEstadias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.btnEstadias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstadias.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnEstadias.ForeColor = System.Drawing.Color.White;
-            this.btnEstadias.Location = new System.Drawing.Point(0, 747);
-            this.btnEstadias.Name = "btnEstadias";
-            this.btnEstadias.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnEstadias.Size = new System.Drawing.Size(265, 60);
-            this.btnEstadias.TabIndex = 10;
-            this.btnEstadias.Text = "Estadias";
-            this.btnEstadias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEstadias.UseVisualStyleBackColor = false;
-            this.btnEstadias.Click += new System.EventHandler(this.btnEstadias_Click);
-            // 
-            // pnlContenedor
-            // 
-            this.pnlContenedor.BackColor = System.Drawing.Color.White;
-            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContenedor.Location = new System.Drawing.Point(265, 0);
-            this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(1633, 1024);
-            this.pnlContenedor.TabIndex = 11;
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 964);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(265, 60);
+            this.btnCerrarSesion.TabIndex = 9;
+            this.btnCerrarSesion.Text = "Cerrar Sesion";
+            this.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // btnUsuarios
             // 
@@ -368,30 +361,30 @@
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnUsuarios.Size = new System.Drawing.Size(265, 60);
-            this.btnUsuarios.TabIndex = 11;
+            this.btnUsuarios.TabIndex = 7;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsuarios.UseVisualStyleBackColor = false;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
-            // btnCerrarSesion
+            // btnEstadias
             // 
-            this.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
-            this.btnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 964);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnCerrarSesion.Size = new System.Drawing.Size(265, 60);
-            this.btnCerrarSesion.TabIndex = 12;
-            this.btnCerrarSesion.Text = "Cerrar Sesion";
-            this.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarSesion.UseVisualStyleBackColor = false;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            this.btnEstadias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.btnEstadias.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEstadias.FlatAppearance.BorderSize = 0;
+            this.btnEstadias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnEstadias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstadias.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnEstadias.ForeColor = System.Drawing.Color.White;
+            this.btnEstadias.Location = new System.Drawing.Point(0, 747);
+            this.btnEstadias.Name = "btnEstadias";
+            this.btnEstadias.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnEstadias.Size = new System.Drawing.Size(265, 60);
+            this.btnEstadias.TabIndex = 6;
+            this.btnEstadias.Text = "Estadias";
+            this.btnEstadias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEstadias.UseVisualStyleBackColor = false;
+            this.btnEstadias.Click += new System.EventHandler(this.btnEstadias_Click);
             // 
             // pnSubMenuInicio
             // 
@@ -422,6 +415,32 @@
             this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReportes.UseVisualStyleBackColor = false;
             this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
+            // pnlContenedor
+            // 
+            this.pnlContenedor.BackColor = System.Drawing.Color.White;
+            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContenedor.Location = new System.Drawing.Point(265, 0);
+            this.pnlContenedor.Name = "pnlContenedor";
+            this.pnlContenedor.Size = new System.Drawing.Size(1633, 1024);
+            this.pnlContenedor.TabIndex = 11;
+            // 
+            // btnCreditos
+            // 
+            this.btnCreditos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(38)))), ((int)(((byte)(58)))));
+            this.btnCreditos.FlatAppearance.BorderSize = 0;
+            this.btnCreditos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnCreditos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreditos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCreditos.ForeColor = System.Drawing.Color.White;
+            this.btnCreditos.Location = new System.Drawing.Point(3, 3);
+            this.btnCreditos.Name = "btnCreditos";
+            this.btnCreditos.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.btnCreditos.Size = new System.Drawing.Size(45, 47);
+            this.btnCreditos.TabIndex = 10;
+            this.btnCreditos.Text = "?";
+            this.btnCreditos.UseVisualStyleBackColor = false;
+            this.btnCreditos.Click += new System.EventHandler(this.btnCreditos_Click);
             // 
             // FrmPrincipal
             // 
@@ -477,5 +496,6 @@
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Panel pnSubMenuInicio;
         private System.Windows.Forms.Button btnReportes;
+        private System.Windows.Forms.Button btnCreditos;
     }
 }

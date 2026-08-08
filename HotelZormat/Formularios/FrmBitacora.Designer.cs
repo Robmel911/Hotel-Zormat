@@ -232,7 +232,7 @@
             this.lblHasta.AutoSize = true;
             this.lblHasta.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblHasta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblHasta.Location = new System.Drawing.Point(320, 38);
+            this.lblHasta.Location = new System.Drawing.Point(316, 38);
             this.lblHasta.Name = "lblHasta";
             this.lblHasta.Size = new System.Drawing.Size(67, 25);
             this.lblHasta.TabIndex = 2;

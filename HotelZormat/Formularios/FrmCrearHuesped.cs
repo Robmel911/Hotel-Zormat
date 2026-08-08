@@ -192,18 +192,20 @@ namespace HotelZormat.UI.Formularios
         private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtNumeroDocumento.Mask = "";
-            switch (cboTipoDocumento.SelectedIndex) 
+            switch (cboTipoDocumento.Text) 
             {
-                case 0://cedula
+                case "Cedula":
                     txtNumeroDocumento.Mask = "000 - 0000000 - 0";
                     break;
-                case 1://Pasaporte
+                case "Pasaporte":
                     txtNumeroDocumento.Mask = "AAAAAAAAAA";
                     break;
-                case 2://Licencia
+                case "Licencia":
                     txtNumeroDocumento.Mask = "AAAAAAAAAAA";
                     break;
-
+                default:
+                    txtNumeroDocumento.Mask = "";
+                    break;
             }
         }
         private void btnCancelar_Click(object sender, EventArgs e)

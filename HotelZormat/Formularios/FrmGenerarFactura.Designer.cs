@@ -238,7 +238,7 @@
             this.btnAgregarServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
             this.btnAgregarServicio.Location = new System.Drawing.Point(360, 210);
             this.btnAgregarServicio.Name = "btnAgregarServicio";
-            this.btnAgregarServicio.Size = new System.Drawing.Size(230, 34);
+            this.btnAgregarServicio.Size = new System.Drawing.Size(230, 46);
             this.btnAgregarServicio.TabIndex = 12;
             this.btnAgregarServicio.Text = "+  Agregar Servicio";
             this.btnAgregarServicio.UseVisualStyleBackColor = false;
@@ -283,7 +283,7 @@
             this.lblCostoReserva.AutoSize = true;
             this.lblCostoReserva.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblCostoReserva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.lblCostoReserva.Location = new System.Drawing.Point(476, 42);
+            this.lblCostoReserva.Location = new System.Drawing.Point(435, 42);
             this.lblCostoReserva.Name = "lblCostoReserva";
             this.lblCostoReserva.Size = new System.Drawing.Size(80, 25);
             this.lblCostoReserva.TabIndex = 1;
@@ -305,7 +305,7 @@
             this.lblConsumoServicios.AutoSize = true;
             this.lblConsumoServicios.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblConsumoServicios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.lblConsumoServicios.Location = new System.Drawing.Point(476, 74);
+            this.lblConsumoServicios.Location = new System.Drawing.Point(435, 74);
             this.lblConsumoServicios.Name = "lblConsumoServicios";
             this.lblConsumoServicios.Size = new System.Drawing.Size(80, 25);
             this.lblConsumoServicios.TabIndex = 3;
@@ -327,7 +327,7 @@
             this.lblSubtotal.AutoSize = true;
             this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblSubtotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.lblSubtotal.Location = new System.Drawing.Point(475, 106);
+            this.lblSubtotal.Location = new System.Drawing.Point(435, 106);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(80, 25);
             this.lblSubtotal.TabIndex = 5;
@@ -349,7 +349,7 @@
             this.lblITBIS.AutoSize = true;
             this.lblITBIS.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblITBIS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.lblITBIS.Location = new System.Drawing.Point(474, 138);
+            this.lblITBIS.Location = new System.Drawing.Point(435, 138);
             this.lblITBIS.Name = "lblITBIS";
             this.lblITBIS.Size = new System.Drawing.Size(80, 25);
             this.lblITBIS.TabIndex = 7;
@@ -371,7 +371,7 @@
             this.lblPropinaLegal.AutoSize = true;
             this.lblPropinaLegal.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblPropinaLegal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.lblPropinaLegal.Location = new System.Drawing.Point(475, 170);
+            this.lblPropinaLegal.Location = new System.Drawing.Point(435, 170);
             this.lblPropinaLegal.Name = "lblPropinaLegal";
             this.lblPropinaLegal.Size = new System.Drawing.Size(80, 25);
             this.lblPropinaLegal.TabIndex = 9;
@@ -403,7 +403,7 @@
             this.lblMontoTotal.AutoSize = true;
             this.lblMontoTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblMontoTotal.ForeColor = System.Drawing.Color.White;
-            this.lblMontoTotal.Location = new System.Drawing.Point(390, 11);
+            this.lblMontoTotal.Location = new System.Drawing.Point(280, 10);
             this.lblMontoTotal.Name = "lblMontoTotal";
             this.lblMontoTotal.Size = new System.Drawing.Size(111, 32);
             this.lblMontoTotal.TabIndex = 1;

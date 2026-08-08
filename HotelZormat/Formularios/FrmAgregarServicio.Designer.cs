@@ -51,9 +51,9 @@
             // 
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblTitulo.Location = new System.Drawing.Point(0, 25);
+            this.lblTitulo.Location = new System.Drawing.Point(-3, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(380, 32);
+            this.lblTitulo.Size = new System.Drawing.Size(380, 49);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Agregar Servicio";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -63,7 +63,7 @@
             this.lblServicio.AutoSize = true;
             this.lblServicio.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblServicio.Location = new System.Drawing.Point(25, 74);
+            this.lblServicio.Location = new System.Drawing.Point(3, 49);
             this.lblServicio.Name = "lblServicio";
             this.lblServicio.Size = new System.Drawing.Size(88, 25);
             this.lblServicio.TabIndex = 1;
@@ -74,9 +74,9 @@
             this.cboServicios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboServicios.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboServicios.FormattingEnabled = true;
-            this.cboServicios.Location = new System.Drawing.Point(25, 102);
+            this.cboServicios.Location = new System.Drawing.Point(3, 77);
             this.cboServicios.Name = "cboServicios";
-            this.cboServicios.Size = new System.Drawing.Size(210, 36);
+            this.cboServicios.Size = new System.Drawing.Size(266, 36);
             this.cboServicios.TabIndex = 2;
             // 
             // lblCantidad
@@ -84,7 +84,7 @@
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblCantidad.Location = new System.Drawing.Point(250, 76);
+            this.lblCantidad.Location = new System.Drawing.Point(283, 49);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(97, 25);
             this.lblCantidad.TabIndex = 3;
@@ -93,7 +93,7 @@
             // nudCantidad
             // 
             this.nudCantidad.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.nudCantidad.Location = new System.Drawing.Point(250, 102);
+            this.nudCantidad.Location = new System.Drawing.Point(275, 79);
             this.nudCantidad.Minimum = new decimal(new int[] {
             1,
             0,

@@ -209,5 +209,11 @@ namespace HotelZormat
         {
             CargarFormularioEnPanel(new FrmReportes());
         }
+
+        private void btnCreditos_Click(object sender, EventArgs e)
+        {
+            FrmCreditos frmCreditos = new FrmCreditos();
+            frmCreditos.ShowDialog();
+        }
     }
 }

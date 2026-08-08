@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exepciones\CambioEstadoNoPermitidoException.cs" />
+    <Compile Include="Exepciones\CheckInNoRealizadoExeption.cs" />
     <Compile Include="Exepciones\EmailInvalidoException.cs" />
     <Compile Include="Exepciones\FacturaNoGeneradaException.cs" />
     <Compile Include="Exepciones\NoConexionBdException.cs" />

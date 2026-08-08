@@ -6,6 +6,7 @@ using HotelZormat.UI.Formularios;
 using HotelZormat.Negocio.Exepciones;
 using System;
 using System.Windows.Forms;
+using HotelZormat.Negocio.Excepciones;
 
 namespace HotelZormat.UI.Formularios
 {
@@ -103,7 +104,7 @@ namespace HotelZormat.UI.Formularios
             }
             catch (ReservaNoDisponibleException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -134,7 +135,7 @@ namespace HotelZormat.UI.Formularios
             }
             catch (ReservaNoDisponibleException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -145,16 +146,32 @@ namespace HotelZormat.UI.Formularios
                 Reserva reserva = ObtenerReservaSeleccionada();
                 Habitacion habitacion = habitacionService.ObtenerPorId(reserva.IdHabitacion);
                 Estadia estadia = estadiaService.ObtenerActivaPorReserva(reserva.IdReserva);
-                FrmGenerarFactura frm = new FrmGenerarFactura(
-                    reserva.IdReserva,reserva.IdHabitacion,estadia.IdEstadia
-                    , Convert.ToString(habitacion.Numero) ,reserva.NombreHuesped
-                    , reserva.FechaCheckIn, reserva.FechaCheckOut, reserva.CantidadNoches);
-                frm.ShowDialog();
+                if (estadia != null)
+                {
+                    FrmGenerarFactura frm = new FrmGenerarFactura(
+                        reserva.IdReserva, reserva.IdHabitacion, estadia.IdEstadia
+                        , Convert.ToString(habitacion.Numero), reserva.NombreHuesped
+                        , reserva.FechaCheckIn, reserva.FechaCheckOut, reserva.CantidadNoches);
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    throw new CheckInNoRealizadoExeption("El Check In no se ha realizado");
+                }
             }
             catch (ReservaNoDisponibleException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+            catch (CheckInNoRealizadoExeption ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         // ================= FILTROS =================

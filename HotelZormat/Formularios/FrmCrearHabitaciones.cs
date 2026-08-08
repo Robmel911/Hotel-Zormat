@@ -65,7 +65,7 @@ namespace HotelZormat.UI.Formularios
             epHabitaciones.Clear();
             bool esValido = true;
 
-            if (string.IsNullOrWhiteSpace(txtNumero.Text) || !int.TryParse(txtNumero.Text, out int numero) || numero <= 0)
+            if (string.IsNullOrWhiteSpace(txtNumero.Text) || !int.TryParse(txtNumero.Text, out int numero) || numero <= 100)
             {
                 epHabitaciones.SetError(txtNumero, "Ingrese un numero de habitacion valido");
                 esValido = false;

@@ -166,7 +166,7 @@ namespace HotelZormat.UI.Formularios
             this.btnVerHistrorial.ForeColor = System.Drawing.Color.White;
             this.btnVerHistrorial.Location = new System.Drawing.Point(30, 162);
             this.btnVerHistrorial.Name = "btnVerHistrorial";
-            this.btnVerHistrorial.Size = new System.Drawing.Size(220, 56);
+            this.btnVerHistrorial.Size = new System.Drawing.Size(220, 74);
             this.btnVerHistrorial.TabIndex = 2;
             this.btnVerHistrorial.Text = "Ver Historial de Huéspedes";
             this.btnVerHistrorial.UseVisualStyleBackColor = false;

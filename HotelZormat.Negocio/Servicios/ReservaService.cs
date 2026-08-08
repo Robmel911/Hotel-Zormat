@@ -96,7 +96,7 @@ namespace HotelZormat.Negocio
         {
             string estadoHabitacion = habitaciondatos.ObtenerEstado(idHabitacion);
 
-            if (estadoHabitacion != "Disponible")
+            if (estadoHabitacion != "Reservada")
             {
                 throw new ReservaNoDisponibleException(
                     "La habitacion no esta disponible para hacer check-in (estado actual: " 

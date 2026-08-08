@@ -4,13 +4,14 @@ using System.Windows.Forms;
 using HotelZormat.Modelo;
 using HotelZormat.Negocio.Servicios;
 using HotelZormat.Negocio.Sesion;
+using HotelZormat.Negocio.Validaciones;
 
 namespace HotelZormat.UI.Formularios
 {
     public partial class FrmLogin : Form
     {
         private UsuarioService usuarioService = new UsuarioService();
-
+       
         public FrmLogin()
         {
             InitializeComponent();
@@ -71,7 +72,7 @@ namespace HotelZormat.UI.Formularios
                 txtContrasena.Focus();
                 return;
             }
-
+            Validador.ProbarConexionBD();
             AbrirFormPrincipal();
         }
 
