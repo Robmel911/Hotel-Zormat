@@ -88,7 +88,7 @@ namespace HotelZormat
 
             Label lblBienvenida = new Label
             {
-                Text = "Bienvenido a Hotel Arrecife",
+                Text = "Bienvenido a Hotel Arrecife ("+ SesionActual.UsuarioActivo.Rol + ")",
                 Font = new Font("Segoe UI", 20F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(13, 27, 42),
                 AutoSize = false,
