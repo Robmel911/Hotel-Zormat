@@ -9,17 +9,18 @@ namespace HotelZormat.Negocio.Servicios
 {
     public class HuespedService
     {
-        private HuespedRepository huespedDAL = new HuespedRepository();
+        private HuespedRepository huespedDatos = new HuespedRepository();
+        private BitacoraService bitacoraService = new BitacoraService();
 
         public List<Huesped> ObtenerTodos()
         {
-            DataTable tabla = huespedDAL.ObtenerTodos();
+            DataTable tabla = huespedDatos.ObtenerTodos();
             return MapearLista(tabla);
         }
 
         public Huesped ObtenerPorId(int idHuesped)
         {
-            DataTable tabla = huespedDAL.ObtenerPorId(idHuesped);
+            DataTable tabla = huespedDatos.ObtenerPorId(idHuesped);
 
             if (tabla.Rows.Count == 0)
                 return null;
@@ -29,13 +30,13 @@ namespace HotelZormat.Negocio.Servicios
 
         public List<Huesped> Buscar(string texto)
         {
-            DataTable tabla = huespedDAL.Buscar(texto);
+            DataTable tabla = huespedDatos.Buscar(texto);
             return MapearLista(tabla);
         }
 
         public List<Nacionalidad> ObtenerNacionalidades()
         {
-            DataTable tabla = huespedDAL.ObtenerNacionalidades();
+            DataTable tabla = huespedDatos.ObtenerNacionalidades();
             List<Nacionalidad> lista = new List<Nacionalidad>();
 
             foreach (DataRow fila in tabla.Rows)
@@ -53,14 +54,16 @@ namespace HotelZormat.Negocio.Servicios
         public void Insertar(string nombre, string apellido, TipoDocumento tipoDocumento, string numeroDocumento,
             int idNacionalidad, string nacionalidadEspecifica, string telefono, string email)
         {
-            huespedDAL.Insertar(nombre, apellido, tipoDocumento.ToString(), numeroDocumento,
+            huespedDatos.Insertar(nombre, apellido, tipoDocumento.ToString(), numeroDocumento,
                 idNacionalidad, nacionalidadEspecifica, telefono, email);
+            bitacoraService.Registrar("Creo Huesped ", $"El usuario creo al huesped" 
+                + nombre + apellido + numeroDocumento);
         }
 
         public void Actualizar(int idHuesped, string nombre, string apellido, TipoDocumento tipoDocumento, string numeroDocumento,
             int idNacionalidad, string nacionalidadEspecifica, string telefono, string email)
         {
-            huespedDAL.Actualizar(idHuesped, nombre, apellido, tipoDocumento.ToString(), numeroDocumento,
+            huespedDatos.Actualizar(idHuesped, nombre, apellido, tipoDocumento.ToString(), numeroDocumento,
                 idNacionalidad, nacionalidadEspecifica, telefono, email);
         }
 
@@ -77,7 +80,9 @@ namespace HotelZormat.Negocio.Servicios
         }
         public void Eliminar(int idHuesped)
         {
-            huespedDAL.Eliminar(idHuesped);
+            huespedDatos.Eliminar(idHuesped);
+            bitacoraService.Registrar("Eliminacion de huesped ",
+                $"El usuario Elimino al Huesped con ID {idHuesped}");
         }
         private Huesped MapearHuesped(DataRow fila)
         {

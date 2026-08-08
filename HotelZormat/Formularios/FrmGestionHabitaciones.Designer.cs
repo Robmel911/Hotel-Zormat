@@ -30,6 +30,7 @@
             this.lblSeleccion = new System.Windows.Forms.Label();
             this.flpHabitaciones = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnVerDetalleHab = new System.Windows.Forms.Button();
             this.timerRefresco = new System.Windows.Forms.Timer(this.components);
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -174,6 +175,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.btnVerDetalleHab);
             this.groupBox2.Controls.Add(this.txtBuscarNumero);
             this.groupBox2.Controls.Add(this.lblNumero);
             this.groupBox2.Controls.Add(this.lblFiltroEstado);
@@ -188,6 +190,22 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
+            // 
+            // btnVerDetalleHab
+            // 
+            this.btnVerDetalleHab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btnVerDetalleHab.FlatAppearance.BorderSize = 0;
+            this.btnVerDetalleHab.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
+            this.btnVerDetalleHab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerDetalleHab.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnVerDetalleHab.ForeColor = System.Drawing.Color.White;
+            this.btnVerDetalleHab.Location = new System.Drawing.Point(725, 18);
+            this.btnVerDetalleHab.Name = "btnVerDetalleHab";
+            this.btnVerDetalleHab.Size = new System.Drawing.Size(240, 52);
+            this.btnVerDetalleHab.TabIndex = 5;
+            this.btnVerDetalleHab.Text = "Ver Detalle de Hab";
+            this.btnVerDetalleHab.UseVisualStyleBackColor = false;
+            this.btnVerDetalleHab.Click += new System.EventHandler(this.btnVerDetalleHab_Click);
             // 
             // timerRefresco
             // 
@@ -272,5 +290,6 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label lblSeleccionTitulo;
+        private System.Windows.Forms.Button btnVerDetalleHab;
     }
 }

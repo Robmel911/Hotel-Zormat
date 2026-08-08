@@ -17,7 +17,6 @@
 
         // ---- Controles originales (mismos nombres, para no romper el codebehind) ----
         private System.Windows.Forms.Label lblNumerohab;
-        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.ComboBox cboTipo;
         private System.Windows.Forms.Label lblPiso;
@@ -25,7 +24,6 @@
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.NumericUpDown nudCapacidad;
         private System.Windows.Forms.Label lblTarifa;
-        private System.Windows.Forms.TextBox txtTarifaBase;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ErrorProvider epHabitaciones;
@@ -38,7 +36,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lblNumerohab = new System.Windows.Forms.Label();
-            this.txtNumero = new System.Windows.Forms.TextBox();
             this.lblTipo = new System.Windows.Forms.Label();
             this.cboTipo = new System.Windows.Forms.ComboBox();
             this.lblPiso = new System.Windows.Forms.Label();
@@ -46,12 +43,13 @@
             this.lblCantidad = new System.Windows.Forms.Label();
             this.nudCapacidad = new System.Windows.Forms.NumericUpDown();
             this.lblTarifa = new System.Windows.Forms.Label();
-            this.txtTarifaBase = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.epHabitaciones = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelCard = new System.Windows.Forms.Panel();
             this.lblTituloVentana = new System.Windows.Forms.Label();
+            this.txtNumero = new System.Windows.Forms.MaskedTextBox();
+            this.txtTarifaBase = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudPiso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCapacidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epHabitaciones)).BeginInit();
@@ -68,15 +66,6 @@
             this.lblNumerohab.Size = new System.Drawing.Size(91, 25);
             this.lblNumerohab.TabIndex = 1;
             this.lblNumerohab.Text = "Número:";
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNumero.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNumero.Location = new System.Drawing.Point(25, 102);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(270, 34);
-            this.txtNumero.TabIndex = 2;
             // 
             // lblTipo
             // 
@@ -97,6 +86,7 @@
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(270, 36);
             this.cboTipo.TabIndex = 4;
+            this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
             // 
             // lblPiso
             // 
@@ -114,7 +104,7 @@
             this.nudPiso.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.nudPiso.Location = new System.Drawing.Point(25, 234);
             this.nudPiso.Maximum = new decimal(new int[] {
-            50,
+            5,
             0,
             0,
             0});
@@ -131,6 +121,7 @@
             0,
             0,
             0});
+            this.nudPiso.ValueChanged += new System.EventHandler(this.nudPiso_ValueChanged);
             // 
             // lblCantidad
             // 
@@ -177,15 +168,6 @@
             this.lblTarifa.TabIndex = 9;
             this.lblTarifa.Text = "Tarifa Base:";
             // 
-            // txtTarifaBase
-            // 
-            this.txtTarifaBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTarifaBase.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTarifaBase.Location = new System.Drawing.Point(25, 366);
-            this.txtTarifaBase.Name = "txtTarifaBase";
-            this.txtTarifaBase.Size = new System.Drawing.Size(270, 34);
-            this.txtTarifaBase.TabIndex = 10;
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
@@ -227,9 +209,10 @@
             // panelCard
             // 
             this.panelCard.BackColor = System.Drawing.Color.White;
+            this.panelCard.Controls.Add(this.txtTarifaBase);
+            this.panelCard.Controls.Add(this.txtNumero);
             this.panelCard.Controls.Add(this.lblTituloVentana);
             this.panelCard.Controls.Add(this.lblNumerohab);
-            this.panelCard.Controls.Add(this.txtNumero);
             this.panelCard.Controls.Add(this.lblTipo);
             this.panelCard.Controls.Add(this.cboTipo);
             this.panelCard.Controls.Add(this.lblPiso);
@@ -237,7 +220,6 @@
             this.panelCard.Controls.Add(this.lblCantidad);
             this.panelCard.Controls.Add(this.nudCapacidad);
             this.panelCard.Controls.Add(this.lblTarifa);
-            this.panelCard.Controls.Add(this.txtTarifaBase);
             this.panelCard.Controls.Add(this.btnGuardar);
             this.panelCard.Controls.Add(this.btnCancelar);
             this.panelCard.Location = new System.Drawing.Point(30, 30);
@@ -255,6 +237,22 @@
             this.lblTituloVentana.TabIndex = 0;
             this.lblTituloVentana.Text = "Crear Habitación";
             this.lblTituloVentana.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(25, 98);
+            this.txtNumero.Mask = "100";
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(270, 26);
+            this.txtNumero.TabIndex = 13;
+            // 
+            // txtTarifaBase
+            // 
+            this.txtTarifaBase.Location = new System.Drawing.Point(25, 368);
+            this.txtTarifaBase.Mask = "00000";
+            this.txtTarifaBase.Name = "txtTarifaBase";
+            this.txtTarifaBase.Size = new System.Drawing.Size(270, 26);
+            this.txtTarifaBase.TabIndex = 14;
             // 
             // FrmCrearHabitaciones
             // 
@@ -282,5 +280,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.MaskedTextBox txtTarifaBase;
+        private System.Windows.Forms.MaskedTextBox txtNumero;
     }
 }

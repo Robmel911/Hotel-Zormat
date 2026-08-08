@@ -58,7 +58,7 @@
             // pbLogoLogin
             // 
             this.pbLogoLogin.BackColor = System.Drawing.Color.Transparent;
-            this.pbLogoLogin.Image = global::HotelZormat.Properties.Resources.Logo_Solo_Edificio;
+            this.pbLogoLogin.Image = global::HotelZormat.UI.Properties.Resources.Logo_Solo_Edificio;
             this.pbLogoLogin.Location = new System.Drawing.Point(71, 15);
             this.pbLogoLogin.Name = "pbLogoLogin";
             this.pbLogoLogin.Size = new System.Drawing.Size(194, 143);

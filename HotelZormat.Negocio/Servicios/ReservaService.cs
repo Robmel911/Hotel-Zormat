@@ -2,6 +2,8 @@
 using HotelZormat.Datos;
 using HotelZormat.Datos.Repositorios;
 using HotelZormat.Modelo;
+using HotelZormat.Negocio.Servicios;
+using HotelZormat.Negocio.Exepciones;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,19 +12,21 @@ namespace HotelZormat.Negocio
 {
     public class ReservaService
     {
-        private ReservaRepository reservaDAL = new ReservaRepository();
-        private HabitacionRepository habitacionDAL = new HabitacionRepository();
+        private ReservaRepository reservadatos = new ReservaRepository();
+        private HabitacionRepository habitaciondatos = new HabitacionRepository();
         private EstadiaService estadiaService = new EstadiaService();
+        private BitacoraService bitacoraService = new BitacoraService();
+       
 
         public List<Reserva> ObtenerTodos()
         {
-            DataTable tabla = reservaDAL.ObtenerTodos();
+            DataTable tabla = reservadatos.ObtenerTodos();
             return MapearLista(tabla);
         }
 
         public Reserva ObtenerPorId(int idReserva)
         {
-            DataTable tabla = reservaDAL.ObtenerPorId(idReserva);
+            DataTable tabla = reservadatos.ObtenerPorId(idReserva);
             if (tabla.Rows.Count == 0)
             {
                 return null;
@@ -32,7 +36,7 @@ namespace HotelZormat.Negocio
 
         public List<Reserva> ObtenerProximas7Dias()
         {
-            DataTable tabla = reservaDAL.ObtenerProximas7Dias();
+            DataTable tabla = reservadatos.ObtenerProximas7Dias();
             return MapearLista(tabla);
         }
 
@@ -49,7 +53,7 @@ namespace HotelZormat.Negocio
             int noches = (checkOut - checkIn).Days;
             decimal montoTotal = CalcularMonto(noches, tarifaBase, temporada);
 
-            return reservaDAL.Insertar(idHabitacion, idHuesped, checkIn, checkOut,
+            return reservadatos.Insertar(idHabitacion, idHuesped, checkIn, checkOut,
                                         temporada.ToString(), tarifaBase, montoTotal);
         }
 
@@ -63,35 +67,46 @@ namespace HotelZormat.Negocio
         // Confirmar: valida que no haya otra reserva confirmada cruzando esas fechas
         public void ConfirmarReserva(int idReserva, int idHabitacion, DateTime checkIn, DateTime checkOut)
         {
-            if (reservaDAL.ExisteSolapamiento(idHabitacion, checkIn, checkOut, idReserva))
+            string estadoHabitacion = habitaciondatos.ObtenerEstado(idHabitacion);
+            if (reservadatos.ExisteSolapamiento(idHabitacion, checkIn, checkOut, idReserva))
             {
                 throw new ReservaNoDisponibleException(
                     "La habitacion ya tiene una reserva confirmada en esas fechas.");
             }
-
-            reservaDAL.ActualizarEstado(idReserva, EstadoReserva.Confirmada.ToString());
+            if (estadoHabitacion != "Disponible")
+            {
+                throw new ReservaNoDisponibleException(
+                    "La habitacion no esta disponible para Confirmar reserva (estado actual: " 
+                    + estadoHabitacion + ").");
+            }
+            reservadatos.ActualizarEstado(idReserva, EstadoReserva.Confirmada.ToString());
+            habitaciondatos.ActualizarEstado(idHabitacion,EstadoHabitacion.Reservada.ToString());
+            bitacoraService.Registrar("Corfirmo Reserva ", $"El usuario confirmo la reserva {idReserva}");
         }
 
         public void CancelarReserva(int idReserva)
         {
-            reservaDAL.ActualizarEstado(idReserva, EstadoReserva.Cancelada.ToString());
+            reservadatos.ActualizarEstado(idReserva, EstadoReserva.Cancelada.ToString());
+            bitacoraService.Registrar("Cancelacion de Reserva ",
+                $"El usuario Cancelo la reserva {idReserva}");
         }
 
         // Check-in real: solo si la habitacion esta Disponible
         public int RealizarCheckIn(int idReserva, int idHabitacion)
         {
-            string estadoHabitacion = habitacionDAL.ObtenerEstado(idHabitacion);
+            string estadoHabitacion = habitaciondatos.ObtenerEstado(idHabitacion);
 
             if (estadoHabitacion != "Disponible")
             {
                 throw new ReservaNoDisponibleException(
-                    "La habitacion no esta disponible para hacer check-in (estado actual: " + estadoHabitacion + ").");
+                    "La habitacion no esta disponible para hacer check-in (estado actual: " 
+                    + estadoHabitacion + ").");
             }
 
-            habitacionDAL.ActualizarEstado(idHabitacion, "Ocupada");
+            habitaciondatos.ActualizarEstado(idHabitacion, EstadoHabitacion.Ocupada.ToString());
 
             int idEstadia = estadiaService.CrearEstadia(idReserva, idHabitacion, "Check-in inicial");
-
+            bitacoraService.Registrar("Check-in ", $"El Usuario relizo el Check-In de {idReserva}");
             return idEstadia;
         }
 

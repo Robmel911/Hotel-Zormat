@@ -3,6 +3,7 @@ using HotelZormat.Negocio;
 using HotelZormat.Modelo;
 using HotelZormat.Negocio.Servicios;
 using HotelZormat.UI.Formularios;
+using HotelZormat.Negocio.Exepciones;
 using System;
 using System.Windows.Forms;
 

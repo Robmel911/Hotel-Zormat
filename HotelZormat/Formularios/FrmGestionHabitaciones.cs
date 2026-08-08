@@ -1,11 +1,13 @@
 ﻿// Cedula: 402-1035106-6
+using HotelZormat.Modelo;
+using HotelZormat.Negocio.Excepciones;
+using HotelZormat.Negocio.Servicios;
 using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using HotelZormat.Negocio.Servicios;
-using HotelZormat.Modelo;
 
 namespace HotelZormat.UI.Formularios
 {
@@ -182,13 +184,17 @@ namespace HotelZormat.UI.Formularios
             tarjeta.BorderStyle = BorderStyle.Fixed3D;
             habitacionSeleccionada = h;
             ActualizarLabelSeleccion();
+
+            // Solo permite intentar el cambio si esta en Limpieza
+            btnCambiarEstado.Enabled = h.Estado == EstadoHabitacion.Limpieza;
+            cboEstado.Enabled = h.Estado == EstadoHabitacion.Limpieza;
         }
 
         private void ActualizarLabelSeleccion()
         {
             lblSeleccion.Text = habitacionSeleccionada == null
                 ? "Ninguna habitacion seleccionada"
-                : "Seleccionada: Hab. " + habitacionSeleccionada.Numero + " (" + habitacionSeleccionada.Estado + ")";
+                : "Seleccionada: Hab. " + habitacionSeleccionada.Numero;
         }
 
         private Color ColorPorEstado(EstadoHabitacion estado)
@@ -226,13 +232,43 @@ namespace HotelZormat.UI.Formularios
 
             EstadoHabitacion nuevoEstado = (EstadoHabitacion)cboEstado.SelectedItem;
 
-            habitacionService.CambiarEstado(habitacionSeleccionada.IdHabitacion, nuevoEstado);
-            CargarDashboard();
+            try
+            {
+                habitacionService.CambiarEstado(habitacionSeleccionada.IdHabitacion, nuevoEstado);
+                CargarDashboard();
+            }
+            catch (CambioEstadoNoPermitidoException ex)
+            {
+                MessageBox.Show(ex.Message, "Cambio no permitido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Ocurrio un error de base de datos al cambiar el estado.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrio un error inesperado al cambiar el estado.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FrmGestionHabitaciones_FormClosed(object sender, FormClosedEventArgs e)
         {
             timerRefresco.Stop();
+        }
+        private void btnVerDetalleHab_Click(object sender, EventArgs e)
+        {
+            if (habitacionSeleccionada == null)
+            {
+                MessageBox.Show("Seleccione una habitacion haciendo clic sobre su tarjeta.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            FrmInfoHabitacion frm = new FrmInfoHabitacion(habitacionSeleccionada.IdHabitacion);
+            frm.ShowDialog();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace HotelZormat
     {
         // Formulario actualmente cargado dentro de pnlContenedor
         private Form frmActivo = null;
-        private int Matricula = 20242008;
+   
         public FrmPrincipal()
         {
             InitializeComponent();

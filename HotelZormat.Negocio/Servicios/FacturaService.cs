@@ -13,7 +13,7 @@ namespace HotelZormat.Negocio.Servicios
 {
     public class FacturaService
     {
-        private FacturaRepository facturaDAL = new FacturaRepository();
+        private FacturaRepository facturaDatos = new FacturaRepository();
         private BitacoraService bitacoraService = new BitacoraService();
 
         // Factores de ITBIS y PropinaLegal, mismos porcentajes que las columnas
@@ -39,7 +39,7 @@ namespace HotelZormat.Negocio.Servicios
         /// </summary>
         public DesgloseFactura ObtenerDesglosePrevio(int idReserva)
         {
-            DataTable tabla = facturaDAL.ObtenerSubtotalParaFacturar(idReserva);
+            DataTable tabla = facturaDatos.ObtenerSubtotalParaFacturar(idReserva);
             if (tabla.Rows.Count == 0)
             {
                 throw new FacturaNoGeneradaException("No se encontró información de la reserva para facturar.");
@@ -72,7 +72,7 @@ namespace HotelZormat.Negocio.Servicios
             int idFactura;
             try
             {
-                idFactura = facturaDAL.GenerarFactura(idReserva, idHabitacion, formaPago.ToString());
+                idFactura = facturaDatos.GenerarFactura(idReserva, idHabitacion, formaPago.ToString());
             }
             catch (SqlException ex)
             {
@@ -90,7 +90,7 @@ namespace HotelZormat.Negocio.Servicios
         /// </summary>
         public List<Factura> ObtenerTodos()
         {
-            DataTable tabla = facturaDAL.ObtenerTodos();
+            DataTable tabla = facturaDatos.ObtenerTodos();
             return MapearLista(tabla);
         }
 
@@ -99,7 +99,7 @@ namespace HotelZormat.Negocio.Servicios
         /// </summary>
         public Factura ObtenerPorId(int idFactura)
         {
-            DataTable tabla = facturaDAL.ObtenerPorId(idFactura);
+            DataTable tabla = facturaDatos.ObtenerPorId(idFactura);
             if (tabla.Rows.Count == 0) return null;
             return MapearFactura(tabla.Rows[0]);
         }
@@ -109,7 +109,7 @@ namespace HotelZormat.Negocio.Servicios
         /// </summary>
         public Factura ObtenerPorReserva(int idReserva)
         {
-            DataTable tabla = facturaDAL.ObtenerPorReserva(idReserva);
+            DataTable tabla = facturaDatos.ObtenerPorReserva(idReserva);
             if (tabla.Rows.Count == 0) return null;
             return MapearFactura(tabla.Rows[0]);
         }
@@ -120,7 +120,7 @@ namespace HotelZormat.Negocio.Servicios
         /// </summary>
         public bool TieneFacturaAsociada(int idReserva)
         {
-            return facturaDAL.ExisteFacturaPorReserva(idReserva);
+            return facturaDatos.ExisteFacturaPorReserva(idReserva);
         }
 
         /// <summary>
@@ -128,7 +128,9 @@ namespace HotelZormat.Negocio.Servicios
         /// </summary>
         public void Anular(int idFactura)
         {
-            facturaDAL.Anular(idFactura);
+            facturaDatos.Anular(idFactura);
+            bitacoraService.Registrar("Anulacion de factura ", 
+                $"Se anulo la factura con ID {idFactura}");
         }
 
         private List<Factura> MapearLista(DataTable tabla)

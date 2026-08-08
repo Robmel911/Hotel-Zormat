@@ -163,7 +163,7 @@
             this.lblHuesped.AutoSize = true;
             this.lblHuesped.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblHuesped.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblHuesped.Location = new System.Drawing.Point(45, 118);
+            this.lblHuesped.Location = new System.Drawing.Point(25, 118);
             this.lblHuesped.Name = "lblHuesped";
             this.lblHuesped.Size = new System.Drawing.Size(96, 25);
             this.lblHuesped.TabIndex = 1;
@@ -174,7 +174,7 @@
             this.lblHabitacion.AutoSize = true;
             this.lblHabitacion.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblHabitacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblHabitacion.Location = new System.Drawing.Point(45, 185);
+            this.lblHabitacion.Location = new System.Drawing.Point(13, 185);
             this.lblHabitacion.Name = "lblHabitacion";
             this.lblHabitacion.Size = new System.Drawing.Size(114, 25);
             this.lblHabitacion.TabIndex = 3;

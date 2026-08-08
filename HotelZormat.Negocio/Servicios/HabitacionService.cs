@@ -1,19 +1,21 @@
 ﻿// Cedula: 402-1035106-6
+using HotelZormat.Datos.Repositorios;
+using HotelZormat.Modelo;
+using HotelZormat.Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using HotelZormat.Datos.Repositorios;
-using HotelZormat.Modelo;
+using System.Windows.Forms;
 
 namespace HotelZormat.Negocio.Servicios
 {
     public class HabitacionService
     {
-        private HabitacionRepository dal = new HabitacionRepository();
+        private HabitacionRepository habdatos = new HabitacionRepository();
 
         public List<Habitacion> ObtenerTodas()
         {
-            DataTable dt = dal.ObtenerTodas();
+            DataTable dt = habdatos.ObtenerTodas();
             return MapearLista(dt);
         }
 
@@ -31,7 +33,7 @@ namespace HotelZormat.Negocio.Servicios
 
         public List<TipoHabitacion> ObtenerTiposHabitacion()
         {
-            DataTable dt = dal.ObtenerTiposHabitacion();
+            DataTable dt = habdatos.ObtenerTiposHabitacion();
             List<TipoHabitacion> lista = new List<TipoHabitacion>();
             foreach (DataRow row in dt.Rows)
             {
@@ -46,17 +48,28 @@ namespace HotelZormat.Negocio.Servicios
 
         public void Insertar(int numero, int idTipo, int piso, int capacidad, decimal tarifaBase)
         {
-            dal.Insertar(numero, idTipo, piso, capacidad, tarifaBase);
+            habdatos.Insertar(numero, idTipo, piso, capacidad, tarifaBase);
         }
 
         public void Actualizar(int idHabitacion, int numero, int idTipo, int piso, int capacidad, decimal tarifaBase)
         {
-            dal.Actualizar(idHabitacion, numero, idTipo, piso, capacidad, tarifaBase);
+            habdatos.Actualizar(idHabitacion, numero, idTipo, piso, capacidad, tarifaBase);
         }
 
         public void CambiarEstado(int idHabitacion, EstadoHabitacion nuevoEstado)
         {
-            dal.ActualizarEstado(idHabitacion, nuevoEstado.ToString());
+            string estadoActualTexto = habdatos.ObtenerEstado(idHabitacion);
+            EstadoHabitacion estadoActual = (EstadoHabitacion)Enum.Parse(typeof(EstadoHabitacion), estadoActualTexto);
+
+            bool esCambioValido = estadoActual == EstadoHabitacion.Limpieza
+                                && nuevoEstado == EstadoHabitacion.Disponible;
+
+            if (!esCambioValido)
+            {
+                throw new CambioEstadoNoPermitidoException(estadoActual, nuevoEstado);
+            }
+
+            habdatos.ActualizarEstado(idHabitacion, nuevoEstado.ToString());
         }
 
         private List<Habitacion> MapearLista(DataTable dt)
@@ -84,16 +97,17 @@ namespace HotelZormat.Negocio.Servicios
         }
         public decimal ObtenerTarifaBase(int idHabitacion)
         {
-            return dal.ObtenerTarifaBase(idHabitacion);
+            return habdatos.ObtenerTarifaBase(idHabitacion);
         }
         public Habitacion ObtenerPorId(int idHabitacion)
         {
-            DataTable dt = dal.ObtenerPorId(idHabitacion);
+            DataTable dt = habdatos.ObtenerPorId(idHabitacion);
 
             if (dt.Rows.Count == 0)
                 return null;
 
             return MapearHabitacion(dt.Rows[0]);
         }
+
     }
 }

@@ -52,7 +52,7 @@
             // 
             this.pbLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
             this.pbLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pbLogo.Image = global::HotelZormat.Properties.Resources.Logo_oscuro_transparente;
+            this.pbLogo.Image = global::HotelZormat.UI.Properties.Resources.Logo_oscuro_transparente;
             this.pbLogo.Location = new System.Drawing.Point(0, 0);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(265, 140);

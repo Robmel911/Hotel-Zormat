@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using HotelZormat.Negocio.Servicios;
 using HotelZormat.Modelo;
+using System.Drawing;
 
 namespace HotelZormat.UI.Formularios
 {
@@ -125,6 +126,38 @@ namespace HotelZormat.UI.Formularios
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void nudPiso_ValueChanged(object sender, EventArgs e)
+        {
+            decimal Prefijo = this.nudPiso.Value;
+
+            txtNumero.Mask= Prefijo.ToString()+ "00";
+        }
+
+        private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+            switch (cboTipo.Text)
+            {
+                case "Doble":
+                    nudCapacidad.Value = 1;
+                    nudCapacidad.Maximum = 2;
+                    break;
+                case "Individual":
+                    nudCapacidad.Value = 1;
+                    nudCapacidad.Maximum = 1;
+                    break;
+                case "Suite":
+                    nudCapacidad.Value = 1;
+                    nudCapacidad.Maximum = 10;
+                    break;
+                case "Familiar":
+                    nudCapacidad.Value = 3;
+                    nudCapacidad.Minimum = 3;
+                    nudCapacidad.Maximum = 8;
+                    break;
+            }
         }
     }
 }

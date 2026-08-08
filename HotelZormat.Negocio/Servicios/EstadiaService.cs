@@ -2,11 +2,12 @@
 using HotelZormat.Datos;
 using HotelZormat.Datos.Repositorios;
 using HotelZormat.Modelo;
+using HotelZormat.Negocio.Exepciones;
 using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace HotelZormat.Negocio
+namespace HotelZormat.Negocio.Servicios
 {
     public class EstadiaService
     {

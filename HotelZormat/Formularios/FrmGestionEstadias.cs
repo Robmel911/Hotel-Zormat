@@ -1,7 +1,8 @@
 ﻿//Cedula 402-1035106-6
-using HotelZormat.Negocio;
+using HotelZormat.Negocio.Servicios;
 using HotelZormat.Modelo;
 using HotelZormat.UI.Formularios;
+using HotelZormat.Negocio.Exepciones;
 using System;
 using System.Windows.Forms;
 

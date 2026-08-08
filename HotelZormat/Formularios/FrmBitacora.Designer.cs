@@ -106,7 +106,7 @@
             // 
             this.dtpDesde.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(105, 33);
+            this.dtpDesde.Location = new System.Drawing.Point(110, 33);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(180, 33);
             this.dtpDesde.TabIndex = 1;
@@ -115,7 +115,7 @@
             // 
             this.dtpHasta.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(382, 33);
+            this.dtpHasta.Location = new System.Drawing.Point(389, 33);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(180, 33);
             this.dtpHasta.TabIndex = 3;
@@ -221,7 +221,7 @@
             this.lblDesde.AutoSize = true;
             this.lblDesde.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblDesde.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblDesde.Location = new System.Drawing.Point(40, 38);
+            this.lblDesde.Location = new System.Drawing.Point(33, 38);
             this.lblDesde.Name = "lblDesde";
             this.lblDesde.Size = new System.Drawing.Size(71, 25);
             this.lblDesde.TabIndex = 0;

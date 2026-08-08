@@ -91,6 +91,12 @@
     <Compile Include="Formularios\FrmCrearUsuario.Designer.cs">
       <DependentUpon>FrmCrearUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmCreditos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCreditos.Designer.cs">
+      <DependentUpon>FrmCreditos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmGenerarFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,12 @@
     </Compile>
     <Compile Include="Formularios\FrmHistorialEstadias.Designer.cs">
       <DependentUpon>FrmHistorialEstadias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmInfoHabitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmInfoHabitacion.Designer.cs">
+      <DependentUpon>FrmInfoHabitacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -198,6 +210,9 @@
     <EmbeddedResource Include="Formularios\FrmCrearUsuario.resx">
       <DependentUpon>FrmCrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCreditos.resx">
+      <DependentUpon>FrmCreditos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGenerarFactura.resx">
       <DependentUpon>FrmGenerarFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGestionUsuarios.resx">
       <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmInfoHabitacion.resx">
+      <DependentUpon>FrmInfoHabitacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

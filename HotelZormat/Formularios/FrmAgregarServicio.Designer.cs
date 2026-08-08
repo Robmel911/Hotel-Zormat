@@ -63,7 +63,7 @@
             this.lblServicio.AutoSize = true;
             this.lblServicio.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(27)))), ((int)(((byte)(42)))));
-            this.lblServicio.Location = new System.Drawing.Point(25, 76);
+            this.lblServicio.Location = new System.Drawing.Point(25, 74);
             this.lblServicio.Name = "lblServicio";
             this.lblServicio.Size = new System.Drawing.Size(88, 25);
             this.lblServicio.TabIndex = 1;
